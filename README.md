@@ -1,4 +1,4 @@
 # Boost Converter Design
 
-This Github file explains the how a boost converter works, different types of components design, design an inductor check thermal,efficiency, EMI and more of the practical model.
+This Github file explains the Boost converter 101, semi above amature level. Some background knowledge of Electrical Engineering is needed 😢
 
