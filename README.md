@@ -1,4 +1,5 @@
-# Boost Converter Design
+# Boost Converter 
 
-This Github file explains the Boost converter 101, semi above amature level. Some background knowledge of Electrical Engineering is needed 😢
+I had access to a boost converter, so why not abuse it
+
 
