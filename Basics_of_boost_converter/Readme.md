@@ -14,4 +14,15 @@ As for the output current, only when the switch is open current goes to the outp
 ![](Images/Boost_converter_schematics.jpg)
 ![](Images/Boost_converter.gif)
 
+## Operation mode of boost converter
+### On stage
+
+### Off stage
+
+### Continous conduction mode (CCM),Boundry condition mode (BCM) and Discontinous conduction mode (DCM)
+
 ## Mathamatics for boost converter
+I could go into mathmatical detail for all 3 operating mode, but i will only show the CCM and BCM mode. The reason is that DCM will not be used for the main boost converter folder. Plus those operating modes are easier to derive 😅.
+
+
+## Simulation vs mathmatical comparison. 
