@@ -1,8 +1,8 @@
 # Author: Hitesh Dialani
 # Last modified: 21-04-22
 
-Switching_Frequency = float(8.0e04)   # Hz
-Output_Voltage = int(150)   # V
-Input_Voltage = int(45)   # V
-Load_Resistor = int(400)    # Ohm
-Current_Ripple_Ratio = float(0.4)
+Fs = float(8.0e04)   # Hz
+Vout = int(150)   # V
+Vin = int(45)   # V
+Load = int(400)    # Ohm
+Delta_I_Ratio = float(0.4)
