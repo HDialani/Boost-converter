@@ -11,6 +11,6 @@ Looking at the model either the inductor(L),transistor(S),capacitor(C), diode(D)
  ![](Images/3D_Model_Thermal_transfer_IC.jpg)
  source:https://www.electronics-cooling.com/2017/07/advanced-cooling-power-electronics/
 
-A nice overview of each component and how they effect the temperature of the IC.
+A nice overview of each component and how they effect the temperature of the IC.<br />
  ![](Images/IC_with_heatsink_thermal.gif)
  source:https://www.ipes.ethz.ch/mod/lesson/view.php?id=16
