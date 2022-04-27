@@ -10,11 +10,14 @@ V_in = int(45)   # V
 Load = int(400)    # Ohm
 Delta_I_Ratio = float(0.4)
 
-### Continous Conduction Mode
+### Continous Conduction Mode  FIX THE IMPORT PROBLEM
+# from CCM import CCMPlots
+# CCMPlots()
+
 D=1-V_in/V_out
-I_out=V_out/Load
-I_in=V_out*I_out/V_in
-I_ripple=Delta_I_Ratio*I_in
+I_out=V_out/Load #A
+I_in=V_out*I_out/V_in #A
+I_ripple=Delta_I_Ratio*I_in #A
 Vd=0.6 #V
 
 S=1000 # Sampling resolution
