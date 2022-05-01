@@ -25,7 +25,10 @@ http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWK0BMLIHZNgBxgQGy
 As mentioned before the current throught the inductor will be rising when the switch is closed and discharging when the switch is open. If the current rises and discharges above _0A_ it is in CCM. If it rises and discharges at _0A_ it is in BCM. Current can't go below _0A_ for the system so instead in the BCM it will first discharge to _0A_ and stays _0A_ untill it starts rising again. 
 
 ## Mathamatics for boost converter
-This folder only uses CCM, so only that mode will be given.
-
+First CCM since it is easier
+### Inductor
+General equation for inductor <img src="https://render.githubusercontent.com/render/math?math=I_L=\frac{1}{L}\int_{t_2}^{t_1} V_L \,dt"> <br />
+When S is closed  <img src="https://render.githubusercontent.com/render/math?math=V_L=V_{in}"> <br />
+When S is open  <img src="https://render.githubusercontent.com/render/math?math=V_L=V_{in}-V_{out}"> <br />
 
 ## Simulation vs mathmatical comparison. 
