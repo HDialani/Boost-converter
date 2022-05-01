@@ -30,5 +30,13 @@ First CCM since it is easier
 General equation for inductor <img src="https://render.githubusercontent.com/render/math?math=I_L=\frac{1}{L}\int_{t_2}^{t_1} V_L \,dt"> <br />
 When S is closed  <img src="https://render.githubusercontent.com/render/math?math=V_L=V_{in}"> <br />
 When S is open  <img src="https://render.githubusercontent.com/render/math?math=V_L=V_{in}-V_{out}"> <br />
+![](Images/CCM_Inductor_Plots.svg)
 
+### Transistor
+When S is closed <img src="https://render.githubusercontent.com/render/math?math=V_S=0"> and <img src="https://render.githubusercontent.com/render/math?math=I_S=I_L"> <br />
+When S is open <img src="https://render.githubusercontent.com/render/math?math=V_S=V_{out}"> and <img src="https://render.githubusercontent.com/render/math?math=I_S=0"> <br />
+
+### Diode
+When S is closed <img src="https://render.githubusercontent.com/render/math?math=V_D=-V_{out}"> and <img src="https://render.githubusercontent.com/render/math?math=I_D=0"> <br />
+When S is open <img src="https://render.githubusercontent.com/render/math?math=V_S=V_{forward\_drop}"> and <img src="https://render.githubusercontent.com/render/math?math=I_S=I_L"> <br />
 ## Simulation vs mathmatical comparison. 
