@@ -39,4 +39,7 @@ When S is open <img src="https://render.githubusercontent.com/render/math?math=V
 ### Diode
 When S is closed <img src="https://render.githubusercontent.com/render/math?math=V_D=-V_{out}"> and <img src="https://render.githubusercontent.com/render/math?math=I_D=0"> <br />
 When S is open <img src="https://render.githubusercontent.com/render/math?math=V_S=V_{forward\_drop}"> and <img src="https://render.githubusercontent.com/render/math?math=I_S=I_L"> <br />
+
+### Capacitor
+
 ## Simulation vs mathmatical comparison. 
