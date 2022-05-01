@@ -12,7 +12,7 @@ Pro's
 * Linear I=V/R
 * Cost €1.08
 
-Con
+Con's
 * Current needs to flow through it
 * No isolation
 * Very noisy
