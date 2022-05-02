@@ -1,5 +1,5 @@
 # Readme
-Current sensors so many options how to choose, but which one is the right one? I was forced to learned systems engineering so I guess I might aswell us it.
+Current sensors so many options, but which one is the right one? I was forced to learned systems engineering so I guess I might aswell us it.
 
 There are multiple types, but I only had access to Resistive shunt,Hall sensor,Rogowski Coil and Current transducer. So many option but which one is best?
 ## Options
