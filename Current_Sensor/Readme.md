@@ -5,7 +5,7 @@ There are multiple types, but I only had access to Resistive shunt,Hall sensor,R
 ## Options
 
 ### Resistive shunt used OAR3 - R020FI
-Pretty straighforward the resistance the voltage being applied is also know, so the current can be calculated. The typical value for a shunt is in the mOhm's, this way the voltage drop over the shunt is insignificant. 
+Pretty straighforward the voltage being applied is know, so the current can be calculated. The typical value for a shunt is in the mOhm's, this way the voltage drop over the shunt is insignificant. 
 
 Pro's
 * Measure AC and DC
@@ -13,6 +13,6 @@ Pro's
 * Cost €1.08
 
 Con's
-* Current needs to flow through it
-* No isolation
-* Very noisy
+* Current needs to flow through it, so it needs to be designed into the PCB
+* No isolation, can accidently make contact with high current when probing
+* Very noisy signal.
