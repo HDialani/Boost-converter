@@ -53,5 +53,6 @@ When S is open <img src="https://render.githubusercontent.com/render/math?math=V
 
 ## Generatal equations. 
 
-### CCM-DCM
+### CCM-BCM
 ![](Images/CCM-BCM-Equations.jpg)
+### DCM
