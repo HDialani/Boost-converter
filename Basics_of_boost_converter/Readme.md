@@ -15,6 +15,7 @@ As for the output current, only when the switch is open current goes to the outp
 ![](Images/Boost_converter.gif)
 Websimulation link:
 http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWK0BMLIHZNgBxgQGyQFYAsBICkll1CApgLRhgBQAZiOjuAJwpdCfAQGYBYaEhiQUrAErDwpUkpVhlUTaTqbqMBKwDugimAwUUQ9SsisANousnVmiNLC8MKFqTRYMOHAiPLYAJs5OYtROAqH07ACGAK52AC5GIFHOlhZCtsY52ULcUKwA5kW5Fl66rABOIMo8Tk3O0fAZrYVZhfmZ6C6tTrYA8o2kzRqkvKYabqwAblyQPIUlHgLU4vA0UsgGBSuVbazovP3RGj15yPCQELywVHB4ARgiBB+39+CnmI5zfggGaNEAANQAlgA7P4YcaTFStEEqMEAeyS6VR4AENkoYio4D00DcXGxmVYWJYoK2kAmOKJEEZrGCZIAYhA9mA4CBmCAACIYgCeAB0AM4AYUFAGM7PRWEA
+
 ### Continous conduction mode (CCM),Boundry condition mode (BCM) and Discontinous conduction mode (DCM)
 As mentioned before the current throught the inductor will be rising when the switch is closed and discharging when the switch is open. If the current rises and discharges above _0A_ it is in CCM. If it rises and discharges at _0A_ it is in BCM. Current can't go below _0A_ for the system so instead in the BCM it will first discharge to _0A_ and stays _0A_ untill it starts rising again. 
 
@@ -30,10 +31,12 @@ As mentioned before the current throught the inductor will be rising when the sw
 ### Off stage
 ![](Images/Boost_converter_OFF_mode.jpg)
 ### Zero stage
-![](Images/Boost_converter_Zero_mode.jpg)
+
+<img src="Images/Boost_converter_Zero_mode.jpg" width=1800 >
 
 ## Mathamatics for boost converter
 First CCM since it is easier
+
 ### Inductor
 General equation for inductor <img src="https://render.githubusercontent.com/render/math?math=I_L=\frac{1}{L}\int_{t_2}^{t_1} V_L \,dt"> <br />
 When S is closed  <img src="https://render.githubusercontent.com/render/math?math=V_L=V_{in}"> <br />
