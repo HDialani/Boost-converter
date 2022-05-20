@@ -51,4 +51,5 @@ When S is open <img src="https://render.githubusercontent.com/render/math?math=V
 
 ### Capacitor
 
-## Simulation vs mathmatical comparison. 
+## Generatal equations. 
+
