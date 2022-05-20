@@ -56,3 +56,4 @@ When S is open <img src="https://render.githubusercontent.com/render/math?math=V
 ### CCM-BCM
 ![](Images/CCM-BCM-Equations.jpg)
 ### DCM
+![](Images/DCM-Equations.jpg)
