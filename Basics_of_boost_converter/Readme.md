@@ -28,7 +28,7 @@ As mentioned before the current throught the inductor will be rising when the sw
 ## Operation mode of boost converter in DCM
 ### On stage
 ![](Images/Boost_converter_ON_mode.jpg)
-### Off stage
+### △1 stage
 ![](Images/Boost_converter_OFF_mode.jpg)
 ### Zero stage
 
