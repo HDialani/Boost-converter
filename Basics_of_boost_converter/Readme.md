@@ -30,6 +30,7 @@ As mentioned before the current throught the inductor will be rising when the sw
 ### Off stage
 ![](Images/Boost_converter_OFF_mode.jpg)
 ### Zero stage
+![](Images/Boost_converter_Zero_mode.jpg)
 
 ## Mathamatics for boost converter
 First CCM since it is easier
