@@ -29,8 +29,10 @@ print("Choice",Core_size[res])
 
 if res==0:
     A_c = ETD44.A_c_middle_leg
+    V_e= ETD44.V_e
 else:
     A_c = ETD54.A_c_middle_leg
+    V_e = ETD54.V_e
 
 B_max=float(input("Enter max saturation point in mTesla "))
 
