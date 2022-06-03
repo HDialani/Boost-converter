@@ -11,6 +11,7 @@ Load = int(400)    # Ohm
 Delta_I_Ratio = float(0.4)
 
 ### Continous Conduction Mode  FIX THE IMPORT PROBLEM
-from CCM import CCMPlots
-CCMPlots()
+import CCM
+
+CCM.CCMPlots()
 
