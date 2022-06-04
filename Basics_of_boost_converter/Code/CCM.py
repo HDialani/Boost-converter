@@ -125,7 +125,7 @@ def CCMPlots():
     plt.subplot(211)
     plt.plot(1e6 * X, V_c)
     plt.xlim([0, N * 1e6 * Ts])
-    plt.ylim([0, V_out + 5])
+    plt.ylim([V_out - 5, V_out + 5])
     # plt.xlabel('Time [$\mu s$]')
     plt.ylabel('$V_c$ [$V$]')
 

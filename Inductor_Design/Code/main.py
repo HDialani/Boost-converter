@@ -1,49 +1,46 @@
 # Author: Hitesh Dialani
-# Last modified: 27-04-22
+# Last modified: 04-06-22
 
 import math as math
 import scipy.constants
 
-
-import ETD54
-import ETD44
+import Core_material
+import Core_shape
 import Boost_parameters
+import Functions
 
-def let_user_pick(options):
-    for idx, element in enumerate(options):
-        print("{}) {}".format(idx + 1, element))
+kw=0.4                    # Window area utilization
+Jrms=5                    #A/mm^2   Current density in wire
+B_max_factor=0.64
 
-    i = input("Choose number: ")
-    try:
-        if 0 < int(i) <= len(options):
-            return int(i) - 1
-    except:
-        pass
-    return None
+print("")
+B_max=B_max_factor*Core_material.Bsat_3C90
+L=Boost_parameters.Mosfet_CCM_Inductance
+I_peak=Boost_parameters.Mosfet_CCM_I_peak
+I_RMS=Boost_parameters.Mosfet_CCM_I_RMS
 
-Core_size = ["ETD44", "ETD54"]
+Ap=L*I_peak*I_RMS/(kw*Jrms*B_max*10**-3)
+print("Window area is ",Ap,"mm^4\n")
+
+Core_size = ["ETD44,Ap=50541 mm^4","ETD54,Ap=131477 mm^4"]
 print("Core shape option")
-res = let_user_pick(Core_size)
-print("Choice",Core_size[res])
+res = Functions.let_user_pick(Core_size)
+print("Choice",Core_size[res],"\n")
 
 
 if res==0:
-    A_c = ETD44.A_c_middle_leg
-    V_e= ETD44.V_e
+    A_c = Core_shape.ETD44_A_c
+    V_e= Core_shape.ETD44_V_e
 else:
-    A_c = ETD54.A_c_middle_leg
-    V_e = ETD54.V_e
-
-B_max=float(input("Enter max saturation point in mTesla "))
-
-L=Boost_parameters.Mosfet_CCM_Inductance
-I_peak=Boost_parameters.Mosfet_CCM_I_peak
+    A_c = Core_shape.ETD54_A_c
+    V_e = Core_shape.ETD54_V_e
 
 
-N=(L*I_peak)/((B_max/1000)*A_c)
-
+N=(L*I_peak)/(B_max*A_c)
 print("Number of turns is ", math.ceil(N))
 
 l_air=(N**2 *A_c* scipy.constants.mu_0 /(2*L))*(10**3)
+print("Airgap length ", l_air,"mm")
 
-print("Airgap length ", l_air)
+B_peak=L*I_peak/(N *A_c)
+print("Peak flux density", B_peak,"Tesla")
