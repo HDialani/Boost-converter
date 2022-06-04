@@ -53,10 +53,13 @@ When S is open <img src="https://render.githubusercontent.com/render/math?math=V
 
 ### Diode
 When S is closed <img src="https://render.githubusercontent.com/render/math?math=V_D=-V_{out}"> and <img src="https://render.githubusercontent.com/render/math?math=I_D=0"> <br />
-When S is open <img src="https://render.githubusercontent.com/render/math?math=V_S=V_{forward\_drop}"> and <img src="https://render.githubusercontent.com/render/math?math=I_S=I_L"> <br />
+When S is open <img src="https://render.githubusercontent.com/render/math?math=V_D=V_{forward\_drop}"> and <img src="https://render.githubusercontent.com/render/math?math=I_D=I_L"> <br />
 ![](Images/CCM_Diode_Plots.svg)
 
 ### Capacitor
+When S is closed <img src="https://render.githubusercontent.com/render/math?math=V_C=V_{out}"> and <img src="https://render.githubusercontent.com/render/math?math=I_C=-I_{out}"> <br />
+When S is open <img src="https://render.githubusercontent.com/render/math?math=V_C=V_{out}"> and <img src="https://render.githubusercontent.com/render/math?math=I_C=I_D-I_{out}"> <br />
+![](CCM_Capacitor_Plots.svg)
 
 ## Generatal equations. 
 
