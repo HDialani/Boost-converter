@@ -137,3 +137,4 @@ def CCMPlots():
     plt.ylabel('$I_{c}$ [$A$]')
     plt.suptitle('Capacitor')
     plt.show()
+    return None
