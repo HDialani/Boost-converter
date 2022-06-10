@@ -1,7 +1,14 @@
 # Readme
 This folder explains how I made the inductor, then how well it worked compared to the practical model.
 
-## Theoretical design design
+## Design requirements
+* Size, the smaller the better
+* Efficiency, the higher the better
+* EMI, as low as possible
+* Thermal limit, as low as possible
+* Cost, as low as possible
+
+## Theoretical design 
 The steps taken to design this inductor are from the different articles in the article folder, with some modifications in steps taken. 
 
 ### Application
@@ -13,7 +20,7 @@ The steps taken to design this inductor are from the different articles in the a
 * Inductace value $L$
 * Operaton frequency $f$
 * Current peak $i_{peak}$
-* Current RMS $i_{rms}$
+* Current RMS Inductor $i_{rms}$
 * Operation mode CCM/DCM
 * Allowable power dissipation $P_{core}$
 * Maximum surface temperature of the inductor $T_s$
@@ -42,3 +49,34 @@ Obviously the smaller the better
 
 
 $A_P=\frac{L\cdot i_{peak} \cdot i_{RMS}}{kw \cdot J_{RMS}\cdot B_{max}}$
+
+## Designed inductor
+
+### MOSFET transistor CCM mode
+#### Given parameters
+* $L=0.75mH$
+* $f=80kHz$
+* $i_peak=1.5 A$
+* $i_rms=1.25 A$
+
+
+#### Design
+* 3C90 core
+* ETD44 core shape
+* Number of turns=39
+* Airgap=0.2mm
+* Wire chosen 26 AWG
+* Peak inductance 0.25 Tesla
+* 
+
+#### Simulation
+
+#### Practical model
+
+### MOSFET transistor DCM mode
+
+
+### IGBT transistor CCM mode
+
+
+### IGBT transistor DCM mode
