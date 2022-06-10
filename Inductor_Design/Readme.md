@@ -56,8 +56,8 @@ $A_P=\frac{L\cdot i_{peak} \cdot i_{RMS}}{kw \cdot J_{RMS}\cdot B_{max}}$
 #### Given parameters
 * $L=0.75mH$
 * $f=80kHz$
-* $i_peak=1.5 A$
-* $i_rms=1.25 A$
+* $i_{peak}=1.5 A$
+* $i_{rms}=1.25 A$
 
 
 #### Design
@@ -66,7 +66,7 @@ $A_P=\frac{L\cdot i_{peak} \cdot i_{RMS}}{kw \cdot J_{RMS}\cdot B_{max}}$
 * Number of turns=39
 * Airgap=0.2mm
 * Wire chosen 26 AWG
-* Peak inductance 0.25 Tesla
+* $B_{max}=$ 0.25 Tesla
 * 
 
 #### Simulation
@@ -78,6 +78,18 @@ For simulation the program femm was used, because it is free and good enough for
 
 
 ### IGBT transistor CCM mode
+#### Given parameters
+* $L=1mH$
+* $f=1.5 kHz$
+* $i_{peak}=  A$
+* $i_{rms}=  A$
 
+#### Design
+* 3C90 core
+* ETD54 core shape
+* Number of turns= 87
+* Airgap=1.3mm
+* Wire chosen 18 AWG
+* $B_{max}=$ 0.22 Tesla
 
 ### IGBT transistor DCM mode
