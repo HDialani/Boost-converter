@@ -31,14 +31,14 @@ The steps taken to design this inductor are from the different articles in the a
 * $J_{RMS}$ limited to avoid excessive h eat inside th e coil, values are
 * $B_{max}$ limited due to saturation of th e core material, values are
 
-### Step 2  Core materials type https://en.wikipedia.org/wiki/Magnetic_core#Core_materials and https://www.researchgate.net/publication/340073905_Advanced_Ferromagnetic_Materials_in_Power_Electronic_Converters_A_State_of_the_Art
+### Step 3 Core materials type https://en.wikipedia.org/wiki/Magnetic_core#Core_materials and https://www.researchgate.net/publication/340073905_Advanced_Ferromagnetic_Materials_in_Power_Electronic_Converters_A_State_of_the_Art
 * Iron based
 * Powder metal
 * Ferrites
 
 Read wiki for full detail
 
-### Step 3 core shape types
+### Step 4 core shape types
 * E core
 * ETD core
 * I core
@@ -47,7 +47,7 @@ Read wiki for full detail
 
 Pick the shape that fits your application
 
-### Step 4 pick the size
+### Step 5 pick the size
 Obviously the smaller the better
 
 <img src="Images/AP_Method_Areas_of_Interest.jpg" width=400 >
@@ -59,7 +59,7 @@ $A_P= A_w A_\epsilon$
 
 Now you need to pick the shaps, whose $A_P$ is larger than the one calculated.
 
-### Step 5 calculate number of turns
+### Step 6 calculate number of turns
 
 $N=\frac{L i_{peak} }{B_{max} A_\epsilon}$
 
