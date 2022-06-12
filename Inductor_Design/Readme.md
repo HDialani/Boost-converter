@@ -26,6 +26,11 @@ The steps taken to design this inductor are from the different articles in the a
 * Maximum surface temperature of the inductor $T_s$
 * Maximum ambient temperature $T_a$
 
+### Step 2  Assumption parameter
+* $kw$ is the window area utilization, typical values are 
+* $J_{RMS}$ limited to avoid excessive h eat inside th e coil, values are
+* $B_{max}$ limited due to saturation of th e core material, values are
+
 ### Step 2  Core materials type https://en.wikipedia.org/wiki/Magnetic_core#Core_materials and https://www.researchgate.net/publication/340073905_Advanced_Ferromagnetic_Materials_in_Power_Electronic_Converters_A_State_of_the_Art
 * Iron based
 * Powder metal
@@ -49,6 +54,14 @@ Obviously the smaller the better
 
 
 $A_P=\frac{L\cdot i_{peak} \cdot i_{RMS}}{kw \cdot J_{RMS}\cdot B_{max}}$
+
+$A_P= A_w A_\epsilon$
+
+Now you need to pick the shaps, whose $A_P$ is larger than the one calculated.
+
+### Step 5 calculate number of turns
+
+$N=\frac{L i_{peak} }{B_{max} A_\epsilon}$
 
 ## Designed inductor
 
