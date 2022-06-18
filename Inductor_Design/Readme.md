@@ -1,6 +1,9 @@
 # Readme
 This folder explains how I made the inductor, then how well it worked compared to the practical model.
 
+## Inductor theory
+https://www.youtube.com/watch?v=-EqmJx4rJTc&list=RDCMUCsWRAAMs_Cn78_kRLSpkb6w&start_radio=1&rv=-EqmJx4rJTc&t=751
+
 ## Design requirements
 * Size, the smaller the better
 * Efficiency, the higher the better
