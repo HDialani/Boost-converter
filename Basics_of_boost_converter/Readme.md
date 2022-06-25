@@ -74,7 +74,7 @@ When S is open $V_C=V_{out}$ and $I_C=I_{D}-I_{out}$ <br />
 
 ## When can it enter DCM or CCM/BCM?
 
-There are only 3 paramters that can change the Boost operation mode: inductor value, load resistance and duty cycle. This part show how each of them can effect this.
+There are only 4 paramters that can change the Boost operation mode: inductor value, load resistance, switching frequency and duty cycle. This part show how each of them can effect this.
 
 ### Load resistor
 Assuming everything else is the same increasing the load resistance can push the Boost converter to enter discontinuous mode. The relationship is that as load resistance increases the output current decreases, which means the average current of the inductor will decrease. The load resistance does not affect the ripple current, however, so if the average input current is less than the ripple current it will go to zero and stay zero till the inductor starts to charge again. The boundary condition is $I_{in}=\frac{\Delta I_L}{2}$ if $I_{in}=\frac{\Delta I_L}{2}>$ then it is CCM, the other way around is DCM.
@@ -100,3 +100,5 @@ If $L< L_{crit}$ you are in DCM mode.
 ### Duty cycle
 <img src="Images/CCM_DCM_K_crit_graph.jpg" width=500 >, source:https://ninova.itu.edu.tr/en/courses/institute-of-science-and-technology/132/elk-506e/ekkaynaklar?g45743 <br />
 Here $K_{crit}=D(1-D)$ and $K=\frac{2Lf_{sw}}{R}$
+
+### Switching frequency
