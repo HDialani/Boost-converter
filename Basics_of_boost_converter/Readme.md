@@ -1,6 +1,3 @@
-
-
-
 # Readme
 This is a simplified explanation of what a boost converter is for people without a bachelor of Electrical Engineering knowledge. What a Boost converter does is it boost up the input voltage while boost down the input current, since power in= power out. It does this by controlling the electronic switch(S). 
 
@@ -15,7 +12,6 @@ As for the output current, only when the switch is open current goes to the outp
 
 ## Schematic and operation of boost converter
 ![](Images/Boost_converter_schematics.jpg)
-
 
 ### Continous conduction mode (CCM),Boundry condition mode (BCM) and Discontinous conduction mode (DCM)
 As mentioned before the current throught the inductor will be rising when the switch is closed and discharging when the switch is open. If the current rises and discharges above _0A_ it is in CCM. If it rises and discharges at _0A_ it is in BCM. Current can't go below _0A_ for the system so instead in the BCM it will first discharge to _0A_ and stays _0A_ untill it starts rising again. 
@@ -41,28 +37,29 @@ http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWKsEA4wHYvoCwCZIB
 <img src="Images/Boost_converter_Zero_mode.jpg" width=1800 >
 
 ## Mathamatics for boost converter
-First CCM since it is easier
+All graphs made in this section are made using the code found in
 
-### Inductor
+### CCM
+#### Inductor
 General equation for inductor $ I_L=\frac{1}{L}\int_{t_2}^{t_1} V_L \,dt$  <br />
 When S is closed $V_L=V_{in}$    <br />
 When S is open $V_L=V_{in}-V_{out}$   <br />
 
 ![](Images/CCM_Inductor_Plots.svg)
 
-### Transistor
+#### Transistor
 When S is closed $V_{S}=0$  and $I_{S}=I_L$ <br />
 When S is open $V_{S}=V_{out}$  and $I_{S}=0$
 
 ![](Images/CCM_Transistor_Plots.svg)
 
-### Diode
+#### Diode
 When S is closed $V_{D}=V_{out}$ and $I_{D}=0$ <br />
 When S is open $V_{D}=V_{forward-drop}$ and $I_{D}=I_L$ <br />
 
 ![](Images/CCM_Diode_Plots.svg)
 
-### Capacitor
+#### Capacitor
 When S is closed $V_C=V_{out}$ and $I_C=-I_{out}$ <br />
 When S is open $V_C=V_{out}$ and $I_C=I_{D}-I_{out}$ <br />
 
@@ -101,3 +98,5 @@ If $L>L_{crit}$ you are in CCM mode. <br />
 If $L< L_{crit}$ you are in DCM mode.
 
 ### Duty cycle
+<img src="Images/CCM_DCM_K_crit_graph.jpg" width=500 >, source:https://ninova.itu.edu.tr/en/courses/institute-of-science-and-technology/132/elk-506e/ekkaynaklar?g45743 <br />
+Here $K_{crit}=D(1-D)$ and $K=frac{2Lf_{sw}}{R}$
