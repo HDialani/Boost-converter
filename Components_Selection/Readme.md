@@ -8,7 +8,7 @@ E-cap | low | $150^0 C$ | high | mid/large |THT/SMD | low kHz | low | high | #9 
 --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
 Film | mid | $110^0 C$ | low | mid/large | THT | High MHz |  | high| mid | 276 | Decoupling,Filter with certain cut-off frequency,High reliability application, EMI suppresion
 MLCC's| high| $200^0 C$ | mid | lowe | SMD | can go to GHz | high | low | 272 | 276 | Decoupling,High frequency Energy storage,Filter with rough cut-off frequency, EMI suppresion
-      | Cost | Max temp | Ripple current | Size | Mouniting | frequency range of operation | Reliabily of not breaking over time | energy density | 272 | 276 | Typical applicitation
+ Criterias | Cost | Max temp | Ripple current | Size | Mouniting | frequency range of operation | Reliabily of not breaking over time | energy density | 272 | 276 | Typical applicitation
 ## Inductor
 
 ## Diode
