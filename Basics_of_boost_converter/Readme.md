@@ -45,29 +45,28 @@ First CCM since it is easier
 
 ### Inductor
 General equation for inductor $ I_L=\frac{1}{L}\int_{t_2}^{t_1} V_L \,dt$  <br />
-When S is closed $ V_L=V_{in}$    <br />
+When S is closed $V_L=V_{in}$    <br />
 When S is open $V_L=V_{in}-V_{out}$   <br />
 
 ![](Images/CCM_Inductor_Plots.svg)
 
 ### Transistor
-When S is closed $ V_S=0$  and $ I_S=I_L$ <br />
-When S is open $ V_S=V_{out}$  and $ I_S=0$
+When S is closed $V_{S}=0$  and $I_{S}=I_L$ <br />
+When S is open $V_{S}=V_{out}$  and $I_{S}=0$
 
 ![](Images/CCM_Transistor_Plots.svg)
 
 ### Diode
-When S is closed $ V_D=V_{out}$ and $ I_D=0$ <br />
-When S is open $ V_D=V_{forward-drop}$  and $ I_D=I_L$ <br />
+When S is closed $V_{D}=V_{out}$ and $I_{D}=0$ <br />
+When S is open $V_{D}=V_{forward-drop}$ and $I_{D}=I_L$ <br />
 
 ![](Images/CCM_Diode_Plots.svg)
 
 ### Capacitor
-When S is closed $ V_C=V_{out}$ and $ I_C=-I_{out}$ <br />
-When S is open $V_C=V_{out}$ and $ I_C=I_{D}-I_{out}$ <br />
+When S is closed $V_C=V_{out}$ and $I_C=-I_{out}$ <br />
+When S is open $V_C=V_{out}$ and $I_C=I_{D}-I_{out}$ <br />
 
 ![](Images/CCM_Capacitor_Plots.svg)
-
 
 ## Generatal equations. 
 
@@ -75,3 +74,24 @@ When S is open $V_C=V_{out}$ and $ I_C=I_{D}-I_{out}$ <br />
 ![](Images/CCM-BCM-Equations.jpg)
 ### DCM
 ![](Images/DCM-Equations.jpg)
+
+## When can it enter DCM or CCM/BCM?
+
+There are only 3 paramters that can change the Boost operation mode: inductor value, load resistance and duty cycle. This part show how each of them can effect this.
+
+### Load resistor
+Assuming everything else is the same increasing the load resistance can push the Boost converter to enter discontinuous mode. The relationship is that as load resistance increases the output current decreases, which means the average current of the inductor will decrease. The load resistance does not affect the ripple current, however, so if the average input current is less than the ripple current it will go to zero and stay zero till the inductor starts to charge again. The boundary condition is $I_{in}=\frac{\Delta I_L}{2}$ if $I_{in}=\frac{\Delta I_L}{2}>$ then it is CCM, the other way around is DCM.
+
+<p float="left">
+  <img src="Images/CCM_DCM_R_Load_CCM_Mode.jpg" width=500 > 
+  <img src="Images/CCM_DCM_R_Load_DCM_Mode.jpg" width=500 > 
+</p>
+
+
+### Inductance 
+For inductance you are manipulating $\Delta I_L$, while keeping $I_{in}$ the same. 
+This is due to the equation $\Delta I_L=\frac{V_{in}}{L}DT_{S}$
+Changin $L$ doen't effect $I_{in}$. 
+So this time increasing the inductance can result in the boost converter going from CCM to DCM mode and decreasing it can mode the converter from DCM to CCM mode.
+
+### Duty cycle
