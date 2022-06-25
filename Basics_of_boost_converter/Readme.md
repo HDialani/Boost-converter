@@ -37,7 +37,7 @@ http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWKsEA4wHYvoCwCZIB
 <img src="Images/Boost_converter_Zero_mode.jpg" width=1800 >
 
 ## Mathamatics for boost converter
-All graphs made in this section are made using the code found in
+All graphs made in this section are made using the code found in [Code](Code)
 
 ### CCM
 #### Inductor
