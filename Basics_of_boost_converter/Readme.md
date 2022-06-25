@@ -94,4 +94,10 @@ This is due to the equation $\Delta I_L=\frac{V_{in}}{L}DT_{S}$
 Changin $L$ doen't effect $I_{in}$. 
 So this time increasing the inductance can result in the boost converter going from CCM to DCM mode and decreasing it can mode the converter from DCM to CCM mode.
 
+$L_{crit}=\frac{ V_{in}^2DR}{2f_{sw}V_{out}^2}$ this video shows the entire derivation if you are interested
+https://www.youtube.com/watch?v=YIg7J3YjnbM&list=PLmK1EnKxphinxBub5hL0ZoJXWoqjkGE19&index=33&t=3
+
+If $L>L_{crit}$ you are in CCM mode. <br />
+If $L< L_{crit}$ you are in DCM mode.
+
 ### Duty cycle
