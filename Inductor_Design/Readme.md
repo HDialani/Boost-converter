@@ -1,5 +1,5 @@
 # Readme
-This folder explains how I made the inductor, then how well it worked compared to the practical model.
+This folder explains how I made the inductor, then how well it worked compared to the practical model. They main purpose of these experiments are to compare DCM and CCM and also MOSFET and IGBT technology. For DCM and CCM the same input,output,switching frequency and duty cycle. For IGBT vs MOSFET they have different everything except input voltage. The reason is I just went with the value given to me, I tried researching and thinking of my own values but it was wasting time and leading nowhere, so I chose what the uni chose. 
 
 ## Inductor theory
 https://www.youtube.com/watch?v=-EqmJx4rJTc&list=RDCMUCsWRAAMs_Cn78_kRLSpkb6w&start_radio=1&rv=-EqmJx4rJTc&t=751
@@ -55,7 +55,6 @@ Obviously the smaller the better
 
 <img src="Images/AP_Method_Areas_of_Interest.jpg" width=400 >
 
-
 $A_P=\frac{L\cdot i_{peak} \cdot i_{RMS}}{kw \cdot J_{RMS}\cdot B_{max}}$
 
 $A_P= A_w A_\epsilon$
@@ -68,13 +67,18 @@ $N=\frac{L i_{peak} }{B_{max} A_\epsilon}$
 
 ## Designed inductor
 
+### MOSFET
+* $V_{in}=45V$
+* $V_{out}=150V$
+* $f_{sw}=80 kHz$
+* $D=0.7 $
+
 ### MOSFET transistor CCM mode
 #### Given parameters
 * $L=0.75mH$
 * $f=80kHz$
 * $i_{peak}=1.5 A$
 * $i_{rms}=1.25 A$
-
 
 #### Design
 * 3C90 core
@@ -83,7 +87,6 @@ $N=\frac{L i_{peak} }{B_{max} A_\epsilon}$
 * Airgap=0.2mm
 * Wire chosen 26 AWG
 * $B_{max}=$ 0.25 Tesla
-* 
 
 #### Simulation
 For simulation the program femm was used, because it is free and good enough for simple FEM simulation. https://www.femm.info/wiki/HomePage, here are some tutorials, https://www.youtube.com/watch?v=5LvWE1JscO4 , 
@@ -91,7 +94,15 @@ For simulation the program femm was used, because it is free and good enough for
 #### Practical model
 
 ### MOSFET transistor DCM mode
-
+#### Given parameters
+#### Design
+#### Simulation
+#### Practical model
+### IGBT
+* $V_{in}=45V$
+* $V_{out}=300V$
+* $f_{sw}=15kHz$
+* $D=0.8 $
 
 ### IGBT transistor CCM mode
 #### Given parameters
@@ -107,5 +118,11 @@ For simulation the program femm was used, because it is free and good enough for
 * Airgap=1.3mm
 * Wire chosen 18 AWG
 * $B_{max}=$ 0.22 Tesla
+#### Simulation
+#### Practical model
 
 ### IGBT transistor DCM mode
+#### Given parameters
+#### Design
+#### Simulation
+#### Practical model
