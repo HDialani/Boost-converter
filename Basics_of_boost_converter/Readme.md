@@ -97,8 +97,18 @@ https://www.youtube.com/watch?v=YIg7J3YjnbM&list=PLmK1EnKxphinxBub5hL0ZoJXWoqjkG
 If $L>L_{crit}$ you are in CCM mode. <br />
 If $L< L_{crit}$ you are in DCM mode.
 
-### Duty cycle
-<img src="Images/CCM_DCM_K_crit_graph.jpg" width=500 >, source:https://ninova.itu.edu.tr/en/courses/institute-of-science-and-technology/132/elk-506e/ekkaynaklar?g45743 <br />
-Here $K_{crit}=D*(1-D)^2$ and $K=\frac{2Lf_{sw}}{R}$
-
 ### Switching frequency
+
+
+### Duty cycle
+
+<p float="left">
+  <img src="Images/CCM_DCM_K_crit_graph.jpg" width=300 > 
+  <img src="Images/CCM_DCM_operation_check.svg" width=700 > 
+</p>
+ 
+
+source left:https://ninova.itu.edu.tr/en/courses/institute-of-science-and-technology/132/elk-506e/ekkaynaklar?g45743 <br />
+source right me [Code](Code)
+
+Here $K_{crit}=D*(1-D)^2$ and $K=\frac{2Lf_{sw}}{R}$
