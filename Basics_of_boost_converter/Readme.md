@@ -99,6 +99,6 @@ If $L< L_{crit}$ you are in DCM mode.
 
 ### Duty cycle
 <img src="Images/CCM_DCM_K_crit_graph.jpg" width=500 >, source:https://ninova.itu.edu.tr/en/courses/institute-of-science-and-technology/132/elk-506e/ekkaynaklar?g45743 <br />
-Here $K_{crit}=D(1-D)$ and $K=\frac{2Lf_{sw}}{R}$
+Here $K_{crit}=D*(1-D)^2$ and $K=\frac{2Lf_{sw}}{R}$
 
 ### Switching frequency
