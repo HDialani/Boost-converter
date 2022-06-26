@@ -38,9 +38,9 @@ IGBT_CCM_Inductance = (IGBT_Duty_Cycle*IGBT_Input_Voltage)/(IGBT_Switching_Frequ
 IGBT_CCM_I_peak=IGBT_CCM_Input_Current+0.5*IGBT_CCM_Ripple_Current
 IGBT_CCM_I_RMS=math.sqrt( (IGBT_Output_Current/(1-IGBT_Duty_Cycle))**2 + (IGBT_CCM_Ripple_Current**2 /12))
 
-IGBT_DCM_Inductance=2*IGBT_Duty_Cycle**2 *Load /(IGBT_Switching_Frequency*((2*IGBT_Output_Voltage/MOSFET_Input_Voltage-1)**2 -1))
+IGBT_DCM_Inductance=2*IGBT_Duty_Cycle**2 *Load /(IGBT_Switching_Frequency*((2*IGBT_Output_Voltage/IGBT_Input_Voltage-1)**2 -1))
 IGBT_DCM_Delta_1=2*IGBT_Output_Voltage*IGBT_DCM_Inductance*IGBT_Switching_Frequency/(IGBT_Input_Voltage*IGBT_Duty_Cycle)
 IGBT_DCM_Ripple_Current= IGBT_Input_Voltage*IGBT_Duty_Cycle/(IGBT_DCM_Inductance*IGBT_Switching_Frequency)
-IGBT_DCM_Input_Current=(IGBT_Duty_Cycle+Mosfet_DCM_Delta_1 )/2 *IGBT_DCM_Ripple_Current
+IGBT_DCM_Input_Current=(IGBT_Duty_Cycle+IGBT_DCM_Delta_1 )/2 *IGBT_DCM_Ripple_Current
 IGBT_DCM_I_peak=IGBT_DCM_Input_Current+0.5*IGBT_DCM_Ripple_Current
-IGBT_DCM_I_RMS=math.sqrt((IGBT_Duty_Cycle+Mosfet_DCM_Delta_1)*IGBT_DCM_Ripple_Current**2 /3)
+IGBT_DCM_I_RMS=math.sqrt((IGBT_Duty_Cycle+IGBT_DCM_Delta_1)*IGBT_DCM_Ripple_Current**2 /3)
