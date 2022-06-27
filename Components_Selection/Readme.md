@@ -35,8 +35,18 @@ For MLCC look here for detailed explanation:https://en.wikipedia.org/wiki/Cerami
 
 If you know this part you can skip, but people who only know ideal capacitor behaviour this might be usefull. This section is highly influenced by FesZ electronics, more specefically this video from him:https://www.youtube.com/watch?v=QpWPTolhfEo&t=1099s
 
-Just like him I will use LTspice to try and model an actual capacitor. The LTspice simulation can be found in .... and the measured signal can be found in .... the circuit used to do this measurement is shown in ... 
+Just like him I will use LTspice to try and model an actual capacitor. The LTspice simulation can be found in [LTSpice](LTSpice) and the measured signals data can be found in .... 
 
+The circuit used to do this measurement is shown below. Blue is .. and yellow is ...
+
+The frequency in is which the images are shown are:$0 Hz$, $10 Hz$, $100 Hz$, $1 kHz$, $5 kHz$, $100 kHz$, $500 kHz$,$1 MHz$.
+
+At $0 Hz$ the input and measured amplitude don't match? As frequency increases the capacitor acts as it should as expected. The measured keeps decreases till ..., but after ... something interesting happens it starts to increase instead. But a capacitor shouldn't be doing this? Well an ideal capacitor won't but a practical will. 
+
+First step is to do a impedance-frequency plot of the capacitor. So initially its impedance decreases as frequency increases, but then at a certain point it starts to increase?
+
+Time to real world parasitics. 
+ 
 ### Understanding capacitor datasheet 
 
 ## Inductor
