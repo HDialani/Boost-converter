@@ -76,3 +76,23 @@ Other important parameters that are usefull to know is how the capacitor changes
 ## Diode
 
 ## Transistor
+### Technologies
+<img src="Images/Transistor_topologies.jpg" width=500 ><br />
+source:https://www.allaboutcircuits.com/technical-articles/fet-vs-bjt-vs-igbt-whats-the-right-choice-for-your-power-stage-design/
+
+Low power<br />
+<p float="left">
+  <img src="Images/Transistor_topologies_BJT.jpg" width=500 > 
+  <img src="Images/Transistor_topologies_MOSFET.jpg" width=500 > 
+</p>
+source:https://wiraelectrical.com/bjt-vs-mosfet-difference/
+
+High Power<br />
+<img src="Images/Transistor_topology_high_power.jpg" width=500 ><br />
+source:https://techweb.rohm.com/knowledge/
+
+### Important parameters when picking technology
+* Voltage rating
+* Switching frequency
+* Conduction losses
+
