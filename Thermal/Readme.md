@@ -30,13 +30,13 @@ A nice overview of each component and how they effect the temperature of the IC.
 
 If components get too hot they can explode, so to make sure this doesn't happen cooling is needed. So the following are the commenly used cooling options: Air, forced air cooling, heatsink, heatsink and forced air and water cooling. Each of them have their own pros and cons.
 
-Method | Cost| Cooling effect  |Space | Effort | Risk
---- | ---| --- | ---| ---| ---
-Air | Free  | | | |
-Forced air|   |
-Heatsink |  |  
-Heatsink and forced air|   |
-Water cooling |  |  
+Method                 | Cost                                                               | Cooling effect  |Space               | Effort | Risk
+---                    | ---                                                                | ---             | ---                | ---    | ---
+Air                    | Free                                                               |                 |Takes no extra space|        |        
+Forced air             | Needs fans,powersupply for fan and optional PWM controller for fan |                 |      |        |
+Heatsink               | Needs a big piece of metal with fins                               |  
+Heatsink and forced air| Needs both the above mentioned things                              |
+Water cooling          | Needs water, tubes, pump with powersupply and controller to move water and reservoir to store water|  
 
 ## Simulated temperatures
 
