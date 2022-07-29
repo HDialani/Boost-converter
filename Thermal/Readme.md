@@ -13,11 +13,11 @@ Looking at the model either the inductor(L),transistor(S),capacitor(C), diode(D)
 The losses can be calculated as $P_{resisitive} [W]=I_{out}^2 [A] \cdot R_{load} [\Omega]$. If a single resistor is used it will get all the losses, but if multiple resistors are used the $P_{resisitive}$ is divided over the resistors. Once losses it known now the thermal resistance, which is ususally given with the symbol $R_{\theta}$ in $[^{\circ}C/W]$ of load is needed. So the final equalibrium temperature of the load without any cooling can be calculated as $T_{resistor}=I^2 \cdot  R \cdot R_{\theta}$. The speed in which the load reaches is dependend on the thermal capacitance, which is usally given with the symbol $C_{\theta}$ in $[J/K]$. The larger the thermal capacitance the longer it will take till for the load to reach its equilibrium state. Think of it as a RC Charging Circuit, but with temperature instead of voltage.
 
 ### Diode
-Before calculuting the theoretical temperature rise of an diode it is important to understand what causes losses in and inductor. There are 2 sources of losses, its resistance during the period when it is conduction $R_{dson}$ and the forward voltage drop
+Before calculuting the theoretical temperature rise of an diode it is important to understand what causes losses in and inductor. There are 2 sources of losses, its resistance during the period when it is conduction $R_{dson}$ and the forward voltage drop $V_{f}$
  ![](Images/Diode_model.jpg)
+ 
 ### Transistor
-
- For the transistors and diode they follow the same top level approach. Since these are used in "high power" application a heatsink is needed, else they will fry. shows a cross section of chip on heatsink and below that you can see the how the heat transferes. 
+For the transistors and diode they follow the same top level approach. Since these are used in "high power" application a heatsink is needed, else they will fry. shows a cross section of chip on heatsink and below that you can see the how the heat transferes. 
  ![](Images/3D_Model_Thermal_transfer_IC.jpg)
  source:https://www.electronics-cooling.com/2017/07/advanced-cooling-power-electronics/
 
