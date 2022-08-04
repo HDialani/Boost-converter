@@ -75,7 +75,22 @@ Now you need to pick the shaps, whose $A_P$ is larger than the one calculated.
 
 ### Step 6 calculate number of turns
 
-$N=\frac{L i_{peak} }{B_{max} A_\epsilon}$
+$N=\frac{L i_{peak}}{B_{max} A_\epsilon}$
+
+### Step 7 calculate air gap
+
+$l_{air}=\frac{N^2 \mu_0 A_c}{2L}$
+
+### Step 8 modify air gap or number of turns if needed
+A too large air gap results in a lot of lost magnetic field and too many turn can result in larger conduction losses. These are 2 reasons as to why either of the both parameters may need to be tuned. The benefit of the previous steps is that it gives a good starting point. Now either the airgap or the number of turns need to be modified, while still staying in $B_{max}$. Either of the following equations can be used to find the new parameters. $N=\sqrt{\frac{2L l_{air}}{\mu_0 A_c}}$ or l_{air}=\frac{N^2 \mu_0 A_c}{2L}.
+
+
+### Step 9 wire thickness
+
+The wire thickness has an effect on the conduction losses, skin and proximity effect.
+
+The skin dept set the limit to the maximum allowed wire thickness. For this $\delta=\sqrt{\frac{1}{\mu_0 \mu_r \pi \sigma_{copper} f_{sw}}}$ is used.
+
 
 ## Designed inductor
 
