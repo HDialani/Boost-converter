@@ -2,7 +2,7 @@
 This folder explains how I made the inductor, then how well it worked compared to the practical model. They main purpose of these experiments are to compare DCM and CCM and also MOSFET and IGBT technology. For DCM and CCM the same input,output,switching frequency and duty cycle. For IGBT vs MOSFET they have different everything except input voltage. The reason is I just went with the value given to me, I tried researching and thinking of my own values but it was wasting time and leading nowhere, so I chose what the uni chose. 
 
 ## Inductor theory
-An inductor is a passive electronic componen which can store electrical energy in the form of magnetic energy. I am going to assume the reader knows about magnetic circuit model. If not please read [this](https://automationforum.co/difference-between-the-electric-circuit-and-magnetic-circuit/#:~:text=In%20an%20electric%20circuit%2C%20electric,each%20element%20in%20the%20circuit.)
+An inductor is a passive electronic componen which can store electrical energy in the form of magnetic energy. I am going to assume the reader knows about magnetic circuit model. If not, please read [this](https://automationforum.co/difference-between-the-electric-circuit-and-magnetic-circuit/) or [this](https://dipslab.com/difference-electrical-magnetic-circuit/). The resistor analogy was used to find the inductance of the circuit. For this the flux linkage equation $\lambda=N\phi=L i$ and the flux equation $\frac{Ni}{R_m}$ were combined to get $L=\frac{N^2}{R_m}$, where $N$ is the number of turns and $R_m$ is the reluctance of the material. The general equation for reluctance is $R_m=\frac{l}{\mu_0 \mu_r A}$, which looks similair to the equation for resistance $R_m=\frac{l}{\sigma A}$. Just like with a electrical model where the current going through the circuit is $i=\frac{V}{R_{tot}}$ the magnetic circuit's inductance is $L=\frac{N^2}{R_{tot}}$.
 
 
 ## Design requirements
@@ -18,7 +18,6 @@ The steps taken to design this inductor are from the different articles in the a
 ### Application
  * This is a boost converter so it is a single winding inductor.
  * I was given the operation mode is CCM, but DCM seems more logical. Sources: https://www.quora.com/What-is-differences-between-CCM-and-DCM-mode-in-buck-boost-converter-How-can-I-choose-the-right-mode and https://www.designnews.com/selecting-your-boost-converter-inductance
-
 
 ### Step 1  Needed input paramters
 * Inductace value $L$
