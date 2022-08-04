@@ -2,7 +2,8 @@
 This folder explains how I made the inductor, then how well it worked compared to the practical model. They main purpose of these experiments are to compare DCM and CCM and also MOSFET and IGBT technology. For DCM and CCM the same input,output,switching frequency and duty cycle. For IGBT vs MOSFET they have different everything except input voltage. The reason is I just went with the value given to me, I tried researching and thinking of my own values but it was wasting time and leading nowhere, so I chose what the uni chose. 
 
 ## Inductor theory
-https://www.youtube.com/watch?v=-EqmJx4rJTc&list=RDCMUCsWRAAMs_Cn78_kRLSpkb6w&start_radio=1&rv=-EqmJx4rJTc&t=751
+An inductor is a passive electronic componen which can store electrical energy in the form of magnetic energy. I am going to assume the reader knows about magnetic circuit model. If not please read [this](https://automationforum.co/difference-between-the-electric-circuit-and-magnetic-circuit/#:~:text=In%20an%20electric%20circuit%2C%20electric,each%20element%20in%20the%20circuit.)
+
 
 ## Design requirements
 * Size, the smaller the better
