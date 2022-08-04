@@ -12,12 +12,16 @@ The inductance equation can be rewritten as $L=\frac{N^2 \mu_0 \mu_r A}{l}$. Loo
 </p>
 
  Just like with a electrical model where the current going through the circuit is $i=\frac{V}{R_{tot}}$ the magnetic circuit's inductance is $L=\frac{N^2}{R_{tot}}$.
+<img src="Images/Total_reluctance_Inductor.jpg" width=700 > 
+
+In practice magnetic fiels leaks to the air this is knows as leakage inductance. A way to minimize this is to take a material with high $\mu_r$ the simulation below shows the effect increasing the material's permeability has on the effective flux being produced. The green bar represents the magnitude of the magnetic flux between the two current carrying conductors.<br>
+<img src="Images/Inductor_magnetic_flux_different_ur.gif" width=300 > 
 
 ## Design requirements
 * Size, the smaller the better
 * Efficiency, the higher the better
 * EMI, as low as possible
-* Thermal limit, as low as possible
+* Temperature, as low as possible
 * Cost, as low as possible
 
 ## Theoretical design 
@@ -25,7 +29,7 @@ The steps taken to design this inductor are from the different articles in the a
 
 ### Application
  * This is a boost converter so it is a single winding inductor.
- * I was given the operation mode is CCM, but DCM seems more logical. Sources: https://www.quora.com/What-is-differences-between-CCM-and-DCM-mode-in-buck-boost-converter-How-can-I-choose-the-right-mode and https://www.designnews.com/selecting-your-boost-converter-inductance
+ * I will operate in both CCM and DCM mode.
 
 ### Step 1  Needed input paramters
 * Inductace value $L$
@@ -35,12 +39,12 @@ The steps taken to design this inductor are from the different articles in the a
 * Operation mode CCM/DCM
 * Allowable power dissipation $P_{core}$
 * Maximum surface temperature of the inductor $T_s$
-* Maximum ambient temperature $T_a$
+
 
 ### Step 2  Assumption parameter
-* $kw$ is the window area utilization, typical values are 
-* $J_{RMS}$ limited to avoid excessive h eat inside th e coil, values are
-* $B_{max}$ limited due to saturation of th e core material, values are
+* $k_w$ is the window area utilization, typical values are $k_w\approx 0.4 ... 0.6$. This factor is needed since the entire winding window can't be fully filled with copper wire. A portion of the area will be used up by the insulating material and airgaps that can't be avoided.
+* $J_{RMS}$ limited to avoid excessive heat inside th e coil, values are $J_{RMS}\approx 4 ... 5 A/mm^2$. Lower current density results in lower ohmic power loss. But it comes at the cost of larger wires, since $J=\frac{i}{A}$.
+* $B_{max}$ limited due to saturation of th e core material, values are $B_{Max}\approx  0.6 .. 0.8 B_{sat}$, lower $B_{Max}$ gives larger safety margin against saturation, however it comes at the cost of a larger inductor volume.
 
 ### Step 3 Core materials type https://en.wikipedia.org/wiki/Magnetic_core#Core_materials and https://www.researchgate.net/publication/340073905_Advanced_Ferromagnetic_Materials_in_Power_Electronic_Converters_A_State_of_the_Art
 * Iron based
