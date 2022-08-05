@@ -175,7 +175,10 @@ For simulation the program femm was used, because it is free and good enough for
 #### Practical model
 
 ### IGBT transistor DCM mode
-#### Given parameters
+#### Important inductor parameters
+* $L= 0.25mH$ 
+* $i_{rms}=  5.8 A$
+* $i_{peak}=  10 A$
 #### Design
 #### Simulation
 #### Practical model
