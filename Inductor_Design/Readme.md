@@ -93,7 +93,7 @@ The skin dept sets the upper limit for wire thickness. For this $\delta=\sqrt{\f
 The $J_{RMS}$ sets the lower limit for wire thickness. With $A_{wire}=\frac{i_{rms}}{J_{RMS}}$<br>
 Larger wires have worse proximity effect losses. The equation is quite scary so I won't add it.
 
-Step 10 inductor temperature
+### Step 10 inductor temperature
 
 
 ## Designed inductor
