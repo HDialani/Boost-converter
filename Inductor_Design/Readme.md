@@ -99,16 +99,24 @@ Larger wires have worse proximity effect losses. The equation is quite scary so 
 ## Designed inductor
 
 ### MOSFET
+#### Given parameters for both modes
 * $V_{in}=45V$
 * $V_{out}=150V$
 * $f_{sw}=80 kHz$
-* $D=0.7 $
+* $D=0.7$
+* $\Delta$,Ripple factor Peak-Peak during CCM mode is 0.4
 
 ### MOSFET transistor CCM mode
-#### Given parameters
+
+#### Important inductor parameters
+* $L=\frac{D V_{in}}{f_{sw}\Delta  i_{in}}$
 * $L=0.75mH$
-* $i_{peak}=1.5 A$
+* $\Delta I_{L}=\frac{ D V_{in} }{L f_{sw}}$
+* $\Delta I_{L}=0.5 A$
+* $i_{rms}=\sqrt{\left(\frac{I_{o}}{1-D}\right)^{2}+\frac{\Delta I_{L}^{2}}{12}} $
 * $i_{rms}=1.25 A$
+* $i_{peak}=i_{rms}+0.5*\Delta I_{L}$
+* $i_{peak}=1.5 A$
 
 #### Design
 * 3C90 core
@@ -128,17 +136,21 @@ For simulation the program femm was used, because it is free and good enough for
 #### Design
 #### Simulation
 #### Practical model
+
 ### IGBT
+#### Given parameters for both modes
 * $V_{in}=45V$
 * $V_{out}=300V$
 * $f_{sw}=15kHz$
-* $D=0.8 $
+* $D=0.85$
+* $\Delta$,Ripple factor Peak-Peak during CCM mode is 0.5
 
 ### IGBT transistor CCM mode
-#### Given parameters
+#### Important inductor parameters
 * $L=1mH$ 
-* $i_{peak}=  A$
-* $i_{rms}=  A$
+* $i_{rms}=  5 A$
+* $i_{peak}=  6.3 A$
+
 
 #### Design
 * 3C90 core
