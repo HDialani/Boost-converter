@@ -107,7 +107,6 @@ Larger wires have worse proximity effect losses. The equation is quite scary so 
 ### MOSFET transistor CCM mode
 #### Given parameters
 * $L=0.75mH$
-* $f=80kHz$
 * $i_{peak}=1.5 A$
 * $i_{rms}=1.25 A$
 
@@ -137,8 +136,7 @@ For simulation the program femm was used, because it is free and good enough for
 
 ### IGBT transistor CCM mode
 #### Given parameters
-* $L=1mH$
-* $f=1.5 kHz$
+* $L=1mH$ 
 * $i_{peak}=  A$
 * $i_{rms}=  A$
 
