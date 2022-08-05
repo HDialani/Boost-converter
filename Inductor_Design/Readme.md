@@ -90,7 +90,7 @@ A too large air gap results in a lot of lost magnetic field and too many turn ca
 The wire thickness has an effect on the conduction losses, skin and proximity effect.
 
 The skin dept sets the upper limit for wire thickness. For this $\delta=\sqrt{\frac{1}{\mu_0 \mu_r \pi \sigma_{copper} f_{sw}}}$ is used.<br>
-The $J_{RMS}$ sets the lower limit for wire thickness. With $A_{wire}=\frac{i{rms}}{J_{RMS}}$<br>
+The $J_{RMS}$ sets the lower limit for wire thickness. With $A_{wire}=\frac{i_{rms}}{J_{RMS}}$<br>
 Larger wires have worse proximity effect losses. The equation is quite scary so I won't add it.
 
 ## Designed inductor
