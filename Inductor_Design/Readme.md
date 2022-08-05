@@ -146,6 +146,13 @@ For simulation the program femm was used, because it is free and good enough for
 * $i_{peak}=2.5 A$
 
 #### Design
+* 3C90 core
+* ETD44 core shape
+* Number of turns=17
+* Airgap=0.2mm
+* Wire chosen   AWG
+* $B_{max}=$   Tesla
+
 #### Simulation
 #### Practical model
 
