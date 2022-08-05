@@ -150,7 +150,7 @@ For simulation the program femm was used, because it is free and good enough for
 * ETD44 core shape
 * Number of turns=17
 * Airgap=0.2mm
-* Wire chosen   AWG
+* Wire chosen 26 AWG
 * $B_{max}=$   Tesla
 
 #### Simulation
