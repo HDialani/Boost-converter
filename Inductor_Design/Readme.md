@@ -132,7 +132,19 @@ For simulation the program femm was used, because it is free and good enough for
 #### Practical model
 
 ### MOSFET transistor DCM mode
-#### Given parameters
+
+#### Important inductor parameters
+* $L=\frac{D^2 R V_{in}}{2 V_{out} f_{sw} (V_{out}-V_{in})} $, rewrite the duty cycle equation for DCM
+* $L=0.16mH$
+* $\Delta I_{L}=\frac{ D V_{in} }{L f_{sw}}$
+* $\Delta I_{L}=2.5 A$
+* $\Delta_1= \frac{2 V_{out}L f_{sw} }{D R V_{in}} $
+* $\Delta_1=  0.3 $
+* $i_{rms}=\sqrt{\left(D+\Delta_{1}\right) \frac{\Delta I_{L}^{2}}{3}} $
+* $i_{rms}=1.4 A$
+* $i_{peak}= \frac{V_{in} D}{L f_{sw}}$
+* $i_{peak}=2.5 A$
+
 #### Design
 #### Simulation
 #### Practical model
