@@ -142,7 +142,7 @@ For simulation the program femm was used, because it is free and good enough for
 * $\Delta_1=  0.3 $
 * $i_{rms}=\sqrt{\left(D+\Delta_{1}\right) \frac{\Delta I_{L}^{2}}{3}} $
 * $i_{rms}=1.4 A$
-* $i_{peak}= \frac{V_{in} D}{L f_{sw}}$
+* $i_{peak}= \frac{V_{in} D}{L f_{sw}}$ [Reason](https://www.youtube.com/watch?v=6RuPplUim4E&list=PLmK1EnKxphinxBub5hL0ZoJXWoqjkGE19&index=36)
 * $i_{peak}=2.5 A$
 
 #### Design
