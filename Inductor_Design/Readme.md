@@ -95,6 +95,21 @@ Larger wires have worse proximity effect losses. The equation is quite scary so 
 
 ### Step 10 inductor temperature
 
+## Constructing an inductor
+
+### Materials
+* 2 Magnetic cores
+* Bobbin
+* 2 Metal clamps
+* Chosen wire for turns
+* Some materials to construct the needed airgap
+
+### Tools
+* Wire cutter
+* LCR meter
+* 
+
+### End product
 
 ## Designed inductor
 
