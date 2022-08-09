@@ -1,17 +1,14 @@
 # Read me
 
-Here the gate-source and drain to source signals will be observed and investigated.
+The micro-controller will sent PWM signal with the desired duty cycle to the gate drivers, which will then send the  desired square waves to the chosen transistor.
 
-## Typical waveforms
+# Important information from datasheet
 
-Rise and fall and typical datasheet information
+# Simple inverter circuit
 
-##  Resistive test
+# Boost converter circuit
 
-##  Double pulse test
-
-##  Paramters that effect switching effect
-
-##  Losses and how to minimize it
-
-
+## MOSFET
+ 
+### IGBT
+ 
