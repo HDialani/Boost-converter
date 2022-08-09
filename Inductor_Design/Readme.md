@@ -156,6 +156,8 @@ Air gap         | $0.2mm$ | $0.22$    |
 Max flux density|         |           |
 Inductance      | $0.75mH$| $0.755mH$ |  
 
+<img src="Images/MOSFET_CCM_inductor.jpeg" width=500 >
+
 ## MOSFET transistor DCM mode
 
 ### Important inductor parameters
