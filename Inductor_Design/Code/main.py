@@ -33,9 +33,9 @@ if mode==0:
     I_RMS = Boost_parameters.IGBT_CCM_I_RMS
     Ap = L * I_peak * I_RMS / (kw * Jrms * B_max * 10 ** -3)
 else:
-    L = Boost_parameters.Mosfet_CCM_Inductance
-    I_peak = Boost_parameters.Mosfet_CCM_I_peak
-    I_RMS = Boost_parameters.Mosfet_CCM_I_RMS
+    L = Boost_parameters.MOSFET_CCM_Inductance
+    I_peak = Boost_parameters.MOSFET_CCM_I_peak
+    I_RMS = Boost_parameters.MOSFET_CCM_I_RMS
     Ap = L * I_peak * I_RMS / (kw * Jrms * B_max * 10 ** -3)
 
 print("Window area is ", Ap, "mm^4\n")
