@@ -144,7 +144,17 @@ Larger wires have worse proximity effect losses. The equation is quite scary so 
 ### Simulation
 For simulation the program femm was used, because it is free and good enough for simple FEM simulation. https://www.femm.info/wiki/HomePage, here are some tutorials, https://www.youtube.com/watch?v=5LvWE1JscO4 , 
 
-### Practical model
+### Actual model
+
+For airgap I had access to spacers of 0.09,0.13 and 0.60 mm. So that needs to be modified. Also some addition turns had to be added or removed.
+
+Parameters      | Designed | Actual    |  
+---             | ---      | ---       | 
+Core shape      | ETD44   | ETD44     |          
+Number of turns | $38$    | $40$      |     
+Air gap         | $0.2mm$ | $0.22$    |  
+Max flux density|         |           |
+Inductance      | $0.75mH$| $0.755mH$ |  
 
 ## MOSFET transistor DCM mode
 
@@ -169,9 +179,19 @@ For simulation the program femm was used, because it is free and good enough for
 * $B_{max}=$   Tesla
 
 ### Simulation
-### Practical model
+
+### Actual model
+
+Parameters      | Designed| Actual  |  
+---             | ---     | ---     | 
+Core shape      | ETD44   | ETD44   |          
+Number of turns | $12$    | $14$    |     
+Air gap         | $0.09mm$| $0.09mm$  |  
+Max flux density|         |         |
+Inductance      | $0.16mH$| $0.16mH$|  
 
 ## IGBT
+
 ### Given parameters for both modes
 * $V_{in}=45V$
 * $V_{out}=300V$
@@ -194,7 +214,16 @@ For simulation the program femm was used, because it is free and good enough for
 * Wire chosen 18 AWG
 * $B_{max}=$ 0.22 Tesla
 ### Simulation
-### Practical model
+
+### Actual model
+
+Parameters      | Designed| Actual  |  
+---             | ---     | ---     | 
+Core shape      | ETD54   | ETD54   |          
+Number of turns | $84$    | $72$    |     
+Air gap         | $1.2mm$| $1.22mm$  |  
+Max flux density|         |         |
+Inductance      | $1mH$| $1mH$|  
 
 ## IGBT transistor DCM mode
 ### Important inductor parameters
@@ -203,4 +232,4 @@ For simulation the program femm was used, because it is free and good enough for
 * $i_{peak}=  10 A$
 ### Design
 ### Simulation
-### Practical model
+### Actual model
