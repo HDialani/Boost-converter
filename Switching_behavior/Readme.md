@@ -21,7 +21,10 @@ http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA
 
 # Important information from datasheet
 
+
 # Simple inverter circuit
+
+http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgpABZsKBTAWjDACgAzcFPEH3sBkJ88vbCnDQkMSCjYBzcEJDYEEwcOyFeVSGwBOS4ZnXKUKGlGRw2AJSN8LDsMQm7aVSld1S2AdwcTPnw+DDc2ADcQPCpVCRiRHT5glKZpKF8AhP5uXhy9LNi1cEIi8ICNFWKwUqryh1xLSrioNjRybNFoqgsqSwA1eQBnNshyNDyw4LynAYATEYB7ZBBCSz7IYl4aH3hNoQRCFHT1WJBBpfAINasdre6MvbJCQ+OrdQh6foW2IA
 
 # Boost converter circuit
 
