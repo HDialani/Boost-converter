@@ -29,14 +29,53 @@ The larger $V_{GS}$ is the larger the slope becomes. Since $R=V/I$ a larger slop
 
 ## Isolation between HV and LV ground
 
-And finally another reason to use a gate driver is to make sure that the LV part of the PCB is safe from the HV part.
-
-# Important information from datasheet
-
+And finally another reason to use a gate driver is to make sure that the LV part of the PCB is safe from the HV part. ToDo..........
 
 # Simple inverter circuit
+I will first build a simple inverted circuit and then see what happens.
 
-http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgpABZsKBTAWjDACgAzcFPEH3sBkJ88vbCnDQkMSCjYBzcEJDYEEwcOyFeVSGwBOS4ZnXKUKGlGRw2AJSN8LDsMQm7aVSld1S2AdwcTPnw+DDc2ADcQPCpVCRiRHT5glKZpKF8AhP5uXhy9LNi1cEIi8ICNFWKwUqryh1xLSrioNjRybNFoqgsqSwA1eQBnNshyNDyw4LynAYATEYB7ZBBCSz7IYl4aH3hNoQRCFHT1WJBBpfAINasdre6MvbJCQ+OrdQh6foW2IA
+## Ideal case simulation results
+
+<img src="Images/Theoretical_inverting_circuit.gif " width=500 >
+<br>
+http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgpABZsKBTAWjDACg1ywU8QUUa4HuAyFaIAGoATAM4dI5KgKpUwxFOIkBzOQHcQxMSgRjDIXIMht9ZiyDxU7V-Y8iCH5t1GtQ+NKjS8yt4Abr5Ofip8fEpUTEgq0Ag+ZvyC3EEC3gBKBmJgonngNJa+-hRRickATkVpRQViqvBsWkV2tmi+VgBmtEHlqeXYGmBJULAobAD24CCEpf7EvB4w8JBkhCbGZXP0leZsQA
+
+## Measurement
+
+Materials
+* Power supply
+* Gate driving circuit driven by a pre-programmed micro-controller
+* Oscilloscope
+* Current limiting resistor
+* Wires
+* Transistor
+
+The setup is shown below
+```diff
+  MISSING IMAGE
+```
+### MOSFET version
+* Power supply voltage= $45V$
+* Gate driver IC = ACPL-344JT
+* Gate driver IC supply voltage +12/-5V
+* Gate resistance= $8.2\Omega$( Will explain this function later)
+* Current limiting resistor value $22\Omega$
+* SiC MOSFET =c3m0075120k
+* Duty cycle 85%
+* Switching frequency $80 kHz$ 
+
+#### Only $V_{GS}$ 
+<img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 > So pretty much as expected.
+
+Now lets zoom in a bit. Left is the rise voltage and right is the fall voltage.
+
+<p float="left">
+  <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Fall_Zoomed_In.png" width=500 > 
+  <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Fall_Zoomed_In.png" width=500 > 
+</p>
+
+### IGBT version
+
 
 # Boost converter circuit
 
