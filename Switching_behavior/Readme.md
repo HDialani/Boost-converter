@@ -81,7 +81,7 @@ So it is physically impossible to go from $-5V$ to $12.5V$ or vise versa instant
 ```diff
   Why no Miller plateau during rise?
 ```
-#### $V_{GS}$,$V_{DS}$ and $I_{R}$  
+#### $V_{GS}$, $V_{DS}$ and $I_{R}$  
 
 ### IGBT version
 
