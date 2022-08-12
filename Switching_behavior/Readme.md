@@ -22,8 +22,9 @@ http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA
 
 ## Lower conduction losses
 
-Another reason as to why to use a gate driver is that it can boost the 3V3-5V voltage to higher voltage. The benefit becomes more clear when looking at a typical power MOSFET's I-V curve, The image below is from the SCTWA30N120.
-<img src="Images/Example_power_MOSFET_I_V_graph.jpg " width=500 >
+Another reason as to why to use a gate driver is that it can boost the 3V3-5V voltage to higher voltage. The benefit becomes more clear when looking at a typical power MOSFET's I-V curve, The image below is from the SCTWA30N120. 
+<br>
+<img src="Images/Example_power_MOSFET_I_V_graph.jpg " width=250 >
 
 The larger $V_{GS}$ is the larger the slope becomes. Since $R=V/I$ a larger slope results in a smaller resistance. Even thought these resistance are already in the $m\Omega$ range this play a huge role in conduction loss, since I is usually very large. Therefor it is more desirable to have the highest possible $V_{GS}$. With gate drivers their output voltage is dependend on the voltages that are supplied to it. So for example the NCP81080 [datasheet](https://www.onsemi.com/pdf/datasheet/ncp81080-d.pdf) can supply $20V$ to turn the switch "ON" and supply $-5V$ "OFF". The max possible voltage is transistor dependend so check its dataheet to see the max possible voltage both positive and negative.
 
@@ -36,7 +37,7 @@ I will first build a simple inverted circuit and then see what happens.
 
 ## Ideal case simulation results
 
-<img src="Images/Theoretical_inverting_circuit.gif " width=500 >
+<img src="Images/Theoretical_inverting_circuit.gif " width=300 >
 <br>
 http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgpABZsKBTAWjDACg1ywU8QUUa4HuAyFaIAGoATAM4dI5KgKpUwxFOIkBzOQHcQxMSgRjDIXIMht9ZiyDxU7V-Y8iCH5t1GtQ+NKjS8yt4Abr5Ofip8fEpUTEgq0Ag+ZvyC3EEC3gBKBmJgonngNJa+-hRRickATkVpRQViqvBsWkV2tmi+VgBmtEHlqeXYGmBJULAobAD24CCEpf7EvB4w8JBkhCbGZXP0leZsQA
 
@@ -65,14 +66,22 @@ The setup is shown below
 * Switching frequency $80 kHz$ 
 
 #### Only $V_{GS}$ 
-<img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 > So pretty much as expected.
+ So pretty much as expected. <br>
+<img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 >
 
 Now lets zoom in a bit. Left is the rise voltage and right is the fall voltage.
 
 <p float="left">
-  <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Fall_Zoomed_In.png" width=500 > 
+  <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Rise_Zoomed_In.png" width=500 > 
   <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Fall_Zoomed_In.png" width=500 > 
 </p>
+
+So it is physically impossible to go from $-5V$ to $12.5V$ or vise versa instantaniously, as mentioned above there are parasistic capacitors and there is a gate resistor present. So while the capacitor is charging the voltage should look like a typical [RC charge circuit](https://www.electronics-tutorials.ws/rc/rc_1.html). And while it is discarging it should look like a typical  [RC discharging circuit](https://www.electronics-tutorials.ws/rc/rc_2.html). But in reality Miller platue stops the voltage for a time period as can be seen during fall. Some resources regarding Miller Plateau read [1](https://inst.eecs.berkeley.edu/~ee192/sp17/files/MOSFET_as_switch.pdf) and [2](https://electronics.stackexchange.com/questions/66660/why-is-the-gate-charge-curve-miller-plateau-of-mosfets-dependent-on-vds) or watch [3](https://www.youtube.com/watch?v=f1yt0s3gpcE)  
+
+```diff
+  Why no Miller plateau during rise?
+```
+#### $V_{GS}$,$V_{DS}$ and $I_{R}$  
 
 ### IGBT version
 
