@@ -26,7 +26,7 @@ Another reason as to why to use a gate driver is that it can boost the 3V3-5V vo
 <br>
 <img src="Images/Example_power_MOSFET_I_V_graph.jpg " width=250 >
 
-The larger $V_{GS}$ is the larger the slope becomes. Since $R=V/I$ a larger slope results in a smaller resistance. Even thought these resistance are already in the $m\Omega$ range this play a huge role in conduction loss, since I is usually very large. Therefor it is more desirable to have the highest possible $V_{GS}$. With gate drivers their output voltage is dependend on the voltages that are supplied to it. So for example the NCP81080 [datasheet](https://www.onsemi.com/pdf/datasheet/ncp81080-d.pdf) can supply $20V$ to turn the switch "ON" and supply $-5V$ "OFF". The max possible voltage is transistor dependend so check its dataheet to see the max possible voltage both positive and negative.
+The larger $V_{GS}$ is the larger the slope becomes. Since $R=V/I$ a larger slope results in a smaller resistance. Even thought these resistance are already in the $m\Omega$ range this play a huge role in conduction loss, since $I$ is usually very large. Therefor it is more desirable to have the highest possible $V_{GS}$. With gate drivers their output voltage is dependend on the voltages that are supplied to it. So for example the NCP81080 [datasheet](https://www.onsemi.com/pdf/datasheet/ncp81080-d.pdf) can supply $20V$ to turn the switch "ON" and supply $-5V$ "OFF". The max possible voltage is transistor dependend so check its dataheet to see the max possible voltage both positive and negative.
 
 ## Isolation between HV and LV ground
 
