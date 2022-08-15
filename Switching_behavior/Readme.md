@@ -63,7 +63,7 @@ The setup is shown below
 * Gate resistance= $8.2\Omega$( Will explain this function later)
 * Current limiting resistor value $22\Omega$
 * SiC MOSFET =c3m0075120k
-* Duty cycle 85%
+* Duty cycle 70%
 * Switching frequency $80 kHz$ 
 
 #### Only $V_{GS}$ 
@@ -83,9 +83,36 @@ So it is physically impossible to go from $-5V$ to $12.5V$ or vise versa instant
   Why no Miller plateau during rise?
 ```
 #### $V_{GS}$, $V_{DS}$ and $I_{R}$  
+Something seems wrong during the step responce of $V_{DS}$? <br>
+<img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_No_diode_Zoomed_out.png" width=500 >
+
+Zooming in
+<p float="left">
+  <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_No_diode__Rise_Zoomed_in.png" width=500 > 
+  <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_No_diode__Fall_Zoomed_in.png" width=500 > 
+</p>
+
+Why is $V_{DS}$ overshooting? and oscillating a lot? The answer parsitic inductance 🙃. At high frequency both the wire's and resistor's parasitic inductane are noticable. How bad can it be? Well I measured it using an LCR meter. 
 
 ### IGBT version
+* Power supply voltage= $45V$
+* Gate driver IC = ACPL-344JT
+* Gate driver IC supply voltage +12/-5V
+* Gate resistance= $8.2\Omega$( Will explain this function later)
+* Current limiting resistor value $22\Omega$
+* SiC MOSFET =c3m0075120k
+* Duty cycle 85%
+* Switching frequency $15 kHz$ 
 
+#### Only $V_{GS}$ 
+ So pretty much as expected. <br>
+<img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 >
+
+Zooming in is also as expected due to the Miller plateau.
+<p float="left">
+  <img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Rise_Zoomed_In.png" width=500 > 
+  <img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Fall_Zoomed_In.png" width=500 > 
+</p>
 
 # Boost converter circuit
 
