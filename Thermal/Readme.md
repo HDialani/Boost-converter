@@ -16,6 +16,8 @@ The losses can be calculated as $P_{resisitive} [W]=I_{out}^2 [A] \cdot R_{load}
 Before calculuting the theoretical temperature rise of an diode it is important to understand what causes losses in and inductor. There are 2 sources of losses, its resistance during the period when it is conduction $R_{dson}$ and the forward voltage drop $V_{f}$
  ![](Images/Diode_model.jpg)
  
+ This means that there are 2 components contributing to the total diode loss. Since the diode only conducts when the switch is closed this means the total loss can be calculated as $P_{diode}=V_{f}*I_{out}+R_{dson}*I_{out}^2$
+ 
 ## Transistor
 For the transistors and diode they follow the same top level approach. Since these are used in "high power" application a heatsink is needed, else they will fry. shows a cross section of chip on heatsink and below that you can see the how the heat transferes. 
  ![](Images/3D_Model_Thermal_transfer_IC.jpg)
