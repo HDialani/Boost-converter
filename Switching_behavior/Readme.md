@@ -52,9 +52,10 @@ Materials
 * Transistor
 
 The setup is shown below
-```diff
-  MISSING IMAGE
-```
+
+<img src="Images/Inverter_Circuit_MOSFET.jpeg " width=400 >
+
+
 ### MOSFET version
 * Power supply voltage= $45V$
 * Gate driver IC = ACPL-344JT
