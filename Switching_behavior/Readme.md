@@ -97,7 +97,14 @@ So it is physically impossible to go from $-5V$ to $12.5V$ or vise versa instant
 
 #### Fall $V_{gs}$
 
-### Snubber
+### Overshoot minimization
+
+#### Gate resistance
+
+#### Snubber
+
+#### Smaller probe inductance
+
 
 ### Different diodes 
 
