@@ -91,9 +91,17 @@ So it is physically impossible to go from $-5V$ to $12.5V$ or vise versa instant
 
 ## MOSFET
 
-## Snubber MOSFET
+### Different gate resistor
 
-## Different diodes MOSFET
+#### Rise $V_{gs}$
+
+#### Fall $V_{gs}$
+
+### Snubber
+
+### Different diodes 
+
+### Smaller probe inductance
 
 ## IGBT
  
