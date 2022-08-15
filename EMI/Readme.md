@@ -7,4 +7,6 @@ The magical world of noise
 
 # Line Impedance Stabilization Network (LISN)
 
-# X-Cap, Y-Cap and Common mode choke
+# How to decrease noise?
+
+X-Cap, Y-Cap and Common mode choke
