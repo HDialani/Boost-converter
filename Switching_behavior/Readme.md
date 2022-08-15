@@ -90,6 +90,10 @@ So it is physically impossible to go from $-5V$ to $12.5V$ or vise versa instant
 # Boost converter circuit
 
 ## MOSFET
- 
+
+## Snubber MOSFET
+
+## Different diodes MOSFET
+
 ## IGBT
  
