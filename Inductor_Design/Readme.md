@@ -29,7 +29,7 @@ The steps taken to design this inductor are from the different articles in the a
 
 ## Application
  * This is a boost converter so it is a single winding inductor.
- * I will operate in both CCM and DCM mode.
+ * I will operate in both CCM and DCM mode for an IGBT and MOSFET based transistor, each transistor have differerent duty cycle, switching frequency and $V_{DS}$.
 
 ## Step 1  Needed input paramters
 * Inductace value $L$
@@ -39,7 +39,6 @@ The steps taken to design this inductor are from the different articles in the a
 * Operation mode CCM/DCM
 * Allowable power dissipation $P_{core}$
 * Maximum surface temperature of the inductor $T_s$
-
 
 ## Step 2  Assumption parameter
 * $k_w$ is the window area utilization, typical values are $k_w\approx 0.4 ... 0.6$. This factor is needed since the entire winding window can't be fully filled with copper wire. A portion of the area will be used up by the insulating material and airgaps that can't be avoided.
@@ -86,7 +85,6 @@ A too large air gap results in a lot of lost magnetic field and too many turn ca
 
 
 ## Step 9 wire thickness
-
 The wire thickness has an effect on the conduction losses, skin and proximity effect.
 
 The skin dept sets the upper limit for wire thickness. For this $\delta=\sqrt{\frac{1}{\mu_0 \mu_r \pi \sigma_{copper} f_{sw}}}$ is used.<br>
@@ -104,12 +102,17 @@ Larger wires have worse proximity effect losses. The equation is quite scary so 
 * Chosen wire for turns
 * Some materials to construct the needed airgap
 
+
+
 ## Tools
 * Wire cutter
 * LCR meter
 * 
 
 ## End product
+```diff
+  Inductor layout image
+```
 
 # Designed inductor
 
@@ -145,16 +148,15 @@ Larger wires have worse proximity effect losses. The equation is quite scary so 
 For simulation the program femm was used, because it is free and good enough for simple FEM simulation. https://www.femm.info/wiki/HomePage, here are some tutorials, https://www.youtube.com/watch?v=5LvWE1JscO4 , 
 
 ### Actual model
-
 For airgap I had access to spacers of 0.09,0.13 and 0.60 mm. So that needs to be modified. Also some addition turns had to be added or removed.
 
 Parameters      | Designed | Actual    |  
 ---             | ---      | ---       | 
-Core shape      | ETD44   | ETD44     |          
-Number of turns | $38$    | $40$      |     
-Air gap         | $0.2mm$ | $0.22$    |  
-Max flux density|         |           |
-Inductance      | $0.75mH$| $0.755mH$ |  
+Core shape      | ETD44    | ETD44     |          
+Number of turns | $38$     | $40$      |     
+Air gap         | $0.2mm$  | $0.22$    |  
+Max flux density|          |           |
+Inductance      | $0.75mH$ | $0.755mH$ |  
 
 <img src="Images/MOSFET_CCM_inductor.jpeg" width=500 >
 
@@ -182,6 +184,7 @@ Inductance      | $0.75mH$| $0.755mH$ |
 
 ### Simulation
 
+
 ### Actual model
 
 Parameters      | Designed| Actual  |  
@@ -193,7 +196,6 @@ Max flux density|         |         |
 Inductance      | $0.16mH$| $0.16mH$|  
 
 ## IGBT
-
 ### Given parameters for both modes
 * $V_{in}=45V$
 * $V_{out}=300V$
