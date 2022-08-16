@@ -118,7 +118,6 @@ Zooming in is also as expected due to the Miller plateau.
 
 ## MOSFET
 
-### CCM and DCM $I_{L}$
 
 ### Different gate resistor
 
@@ -134,6 +133,7 @@ Zooming in is also as expected due to the Miller plateau.
 
 ### Different diodes 
 
+### CCM and DCM $I_{L}$
 
 ## IGBT
  
