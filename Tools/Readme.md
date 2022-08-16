@@ -16,6 +16,8 @@ Once all the settings are done just click the print button.
 
 ## Setting up the scope to store .csv files on USB stick
 
+## FFT on oscilloscop
+
 # Current probe
 
 I used the Keysight N27282B current probe
@@ -23,3 +25,6 @@ I used the Keysight N27282B current probe
 # LCR-meter
 
 I used the mh08018 LCR-meter from Hameg instruments. 
+
+# Multimeter
+ I used the Fluke 289, purely because that was present.
