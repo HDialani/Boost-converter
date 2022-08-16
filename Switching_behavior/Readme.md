@@ -118,6 +118,8 @@ Zooming in is also as expected due to the Miller plateau.
 
 ## MOSFET
 
+### CCM and DCM $I_{L}$
+
 ### Different gate resistor
 
 #### Rise $V_{gs}$
@@ -126,16 +128,12 @@ Zooming in is also as expected due to the Miller plateau.
 
 ### Overshoot minimization
 
-#### Gate resistance
+### Snubber
 
-#### Snubber
-
-#### Smaller probe inductance
-
+### Smaller probe inductance
 
 ### Different diodes 
 
-### Smaller probe inductance
 
 ## IGBT
  
