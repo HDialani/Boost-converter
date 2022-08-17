@@ -94,25 +94,20 @@ Larger wires have worse proximity effect losses. The equation is quite scary so 
 ## Step 10 inductor temperature
 
 # Constructing an inductor
+<img src="Images/Example_Inductor.jpeg" width=400 >
 
 ## Materials
-* 2 Magnetic cores
-* Bobbin
-* 2 Metal clamps
-* Chosen wire for turns
-* Some materials to construct the needed airgap
-
+1) 2 Metal clamps to lock Bobbin in place
+2) 2 Magnetic cores
+3) Bobbin
+4) Chosen wire for turns
+5) Some materials to construct the needed airgap
 
 
 ## Tools
 * Wire cutter
 * LCR meter
-* 
-
-## End product
-```diff
-  Inductor layout image
-```
+* Caliper 
 
 # Designed inductor
 
@@ -160,7 +155,7 @@ Inductance      | $0.75mH$ | $0.755mH$ |
 
 <img src="Images/MOSFET_CCM_inductor.jpeg" width=500 >
 
-## MOSFET transistor DCM mode
+## MOSFET transistor DCM mode( Need more investigation)
 
 ### Important inductor parameters
 * $L=\frac{D^2 R V_{in}}{2 V_{out} f_{sw} (V_{out}-V_{in})} $, rewrite the duty cycle equation for DCM
