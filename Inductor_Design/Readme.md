@@ -94,7 +94,7 @@ Larger wires have worse proximity effect losses. The equation is quite scary so 
 ## Step 10 inductor temperature
 
 # Constructing an inductor
-<img src="Images/Example_Inductor.jpeg" width=400 >
+<img src="Images/Example_Inductor.jpeg" width=300 >
 
 ## Materials
 1) 2 Metal clamps to lock Bobbin in place
