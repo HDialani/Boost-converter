@@ -21,3 +21,11 @@ $V_{L}(s)=L s I(s)$<br>
 $I(s)=C s V_{C}(s)$
 
 Rewritting everything gives $\frac{V_{C}(s)}{V(s)}=\frac{1}{R C s+L C s^{2}+1}$, since $V_{C}=V_{in}$ it becomes $H(s)=\frac{1}{R C s+L C s^{2}+1}$
+
+Example 
+$R=22 \Omega$ <br>
+$L=11.3 uH$<br>
+$C=58 pF$<br>
+gives the following result. The code can be found at .. 
+<img src="Images/RLC_circuit_Step_Response.jpg" width=700 >.
+
