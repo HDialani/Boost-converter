@@ -47,22 +47,32 @@ Heatsink               | Needs a big piece of metal with fins                   
 Heatsink and forced air| Needs both the above mentioned things                              |
 Water cooling          | Needs water, tubes, pump with powersupply and controller to move water and reservoir to store water|  
 
-# Simulated temperatures
+# MOSFET CCM
 
-# Simulated vs practical 
+## Calculated final temperatures
 
-
-Tools
-*
-*
+## Tools
 * Patience
 * Device under test (DUT)
 
-## MOSFET CCM 
+## Results
 
-### Resistive load
 
-### Diode
+## Breakdown of losses and  final efficiency
 
-### MOSFET
+Looking at the image below it can be calculated that the total systems efficiency is $100\cdot\frac{P_{out}}{P_{in}}=$ 100 $\cdot$ 0.3517 $\cdot$ 150.01 /(1.229 $\cdot$ 45.01)=95.35%<br>
+<img src="Images/MOSFET_CCM_Efficiency.jpeg" width=500 >
 
+# IGBT CCM
+
+## Calculated final temperatures
+
+## Tools
+* Patience
+* Device under test (DUT)
+
+## Results
+
+## Breakdown of losses and  final efficiency
+
+Looking at the image below it can be calculated that the total systems efficiency is  
