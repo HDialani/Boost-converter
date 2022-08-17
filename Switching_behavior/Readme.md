@@ -8,7 +8,6 @@ The micro-controller will send a PWM signal from 0V-3V3 or 0V-5V depending on wh
 
 # Why is the gate driver needed?
 
-
 ## Parasitic capacitor
 In an ideal world transistors would turn on instantly. However in the real world it takes some time till the a transistor is switched from "OFF" to "ON". This is because there a parasitic capacitance between the gate and source of the MOSFET.(This explanation uses MOSFET, but the same can be said about IGBT). This parasitic capacitance causes the transistor to turn on very slowely. Normally these switches take a few $ns$-$us$ so a little delay isn't that bad, however to big problem comes from what happens in between of going from turning "OFF" to "ON". Here "ON" means $V_{DS}$=$0V$. For those that don't know MOSFET's have 3 operating regions: cut-off region, resistive/linear region and saturation region. Read this if you want to understand more [read this](http://electricalarticle.com/power-mosfet-construction-operation-iv-characteristic/) or [watch this](https://www.youtube.com/watch?v=o3M2sOCGCKs). Ps saturation and linear region are often mixed up with beginners. The reason being that for BJT both regions name are swapped 🙃look at this [fun thread](https://electronics.stackexchange.com/questions/498561/in-which-region-should-a-mosfet-be-operated-as-a-switch). 
 
@@ -103,7 +102,7 @@ Why is $V_{DS}$ overshooting? and oscillating a lot? The answer parsitic inducta
 * Duty cycle 85%
 * Switching frequency $15 kHz$ 
 
-#### Only $V_{GS}$ 
+#### Only $V_{BE}$ 
  So pretty much as expected. <br>
 <img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 >
 
@@ -115,10 +114,10 @@ Zooming in is also as expected due to the Miller plateau.
 
 # Boost converter circuit
 
-## MOSFET
 
-### Different gate resistance
+## Different gate resistance
 
+### MOSFET
 #### Gate resistor $8\Omega$
 A few cycles of $V_{DS}$<br>
 <img src="Images/BOOST_MOSFET_CCM_Rgate=8_Ohm_VDS_Only_Full.png" width=500 >
@@ -149,16 +148,29 @@ Now to see how much energy is lost during turn on an turn off.
 ```diff
   TO DO
 ```
+### IGBT
 
-### Snubber
+## Snubber
 
-#### Lossy RC snubber
+### MOSFET
+### IGBT
 
-### Smaller probe inductance
+##  Lossy RC snubber
 
-### Different diodes 
+### MOSFET
+### IGBT
 
-### CCM vs DCM 
+## Smaller probe inductance
 
-## IGBT
- 
+### MOSFET
+### IGBT
+
+## Different diodes 
+
+### MOSFET
+### IGBT
+
+## CCM vs DCM 
+
+### MOSFET
+### IGBT
