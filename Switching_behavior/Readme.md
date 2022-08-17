@@ -117,7 +117,7 @@ Zooming in is also as expected due to the Miller plateau.
 
 ## MOSFET
 
-### Different gate resistor
+### Different gate resistance
 
 #### Gate resistor $8\Omega$
 A few cycles of $V_{DS}$<br>
@@ -149,15 +149,16 @@ Now to see how much energy is lost during turn on an turn off.
 ```diff
   TO DO
 ```
-### Overshoot minimization
 
 ### Snubber
+
+#### Lossy RC snubber
 
 ### Smaller probe inductance
 
 ### Different diodes 
 
-### CCM and DCM $I_{L}$
+### CCM vs DCM 
 
 ## IGBT
  
