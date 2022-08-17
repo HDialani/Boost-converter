@@ -220,7 +220,7 @@ Parameters      | Designed| Actual  |
 ---             | ---     | ---     | 
 Core shape      | ETD54   | ETD54   |          
 Number of turns | $84$    | $72$    |     
-Air gap         | $1.2mm$| $1.22mm$  |  
+Air gap         | $1.2mm$| $1.24mm$  |  
 Max flux density|         |         |
 Inductance      | $1mH$| $1mH$|  
 
