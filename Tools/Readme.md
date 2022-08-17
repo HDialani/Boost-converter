@@ -28,3 +28,6 @@ I used the mh08018 LCR-meter from Hameg instruments.
 
 # Multimeter
  I used the Fluke 289, purely because that was present.
+
+# Micro-controller
+I used the c2000 launchpad xl tms320f28027f from Texas Instruments because that was present.
