@@ -224,6 +224,8 @@ Air gap         | $1.2mm$| $1.24mm$  |
 Max flux density|         |         |
 Inductance      | $1mH$| $1mH$|  
 
+<img src="Images/IGBT_CCM_inductor.jpeg" width=300 >
+
 ## IGBT transistor DCM mode
 ### Important inductor parameters
 * $L= 0.25mH$ 
