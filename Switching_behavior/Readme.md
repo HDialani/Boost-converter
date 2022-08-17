@@ -55,7 +55,6 @@ The setup is shown below
 
 <img src="Images/Inverter_Circuit_MOSFET.jpeg " width=400 >
 
-
 ### MOSFET version
 * Power supply voltage= $45V$
 * Gate driver IC = ACPL-344JT
@@ -118,13 +117,38 @@ Zooming in is also as expected due to the Miller plateau.
 
 ## MOSFET
 
-
 ### Different gate resistor
 
-#### Rise $V_{gs}$
+#### Gate resistor $8\Omega$
+A few cycles of $V_{DS}$<br>
+<img src="Images/BOOST_MOSFET_CCM_Rgate=8_Ohm_VDS_Only_Full.png" width=500 >
 
-#### Fall $V_{gs}$
+Now lets zoom in a bit. Left is the rise voltage and right is the fall voltage of $V_{GS}$.
 
+<p float="left">
+  <img src="Images/BOOST_MOSFET_CCM_Rgate=8_Ohm_VGS_Rise.png" width=500 > 
+  <img src="Images/BOOST_MOSFET_CCM_Rgate=8_Ohm_VGS_Fall.png" width=500 > 
+</p>
+
+Now to see how much energy is lost during turn on an turn off.
+```diff
+  TO DO
+```
+#### Gate resistor $30\Omega$
+A few cycles of $V_{DS}$<br>
+<img src="Images/BOOST_MOSFET_CCM_Rgate=30_Ohm_VDS_Only_Full.png" width=500 >
+
+Now lets zoom in a bit. Left is the rise voltage and right is the fall voltage of $V_{GS}$.
+
+<p float="left">
+  <img src="Images/BOOST_MOSFET_CCM_Rgate=30_Ohm_VGS_Rise.png" width=500 > 
+  <img src="Images/BOOST_MOSFET_CCM_Rgate=30_Ohm_VGS_Fall.png" width=500 > 
+</p>
+
+Now to see how much energy is lost during turn on an turn off.
+```diff
+  TO DO
+```
 ### Overshoot minimization
 
 ### Snubber
