@@ -31,3 +31,7 @@ I used the mh08018 LCR-meter from Hameg instruments.
 
 # Micro-controller
 I used the c2000 launchpad xl tms320f28027f from Texas Instruments because that was present.
+
+## Setting up Blinky via simulink
+https://nl.mathworks.com/videos/getting-started-with-embedded-coder-support-package-for-ti-c2000-processors-1573540550102.html?s_tid=vid_pers_recs
+
