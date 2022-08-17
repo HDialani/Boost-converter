@@ -97,7 +97,8 @@ Why is $V_{DS}$ overshooting? and oscillating a lot? The answer parasitic induct
 <img src="Images/Inverter_circuit_diagram_with_parasitics.jpg" width=500 >
 
 #### Can we simulate this oscillation?
-Yes first I will do a simplified mathmatical version with Python and then switch over to LTspice since it easier to use for circuit analysis and gives a more realistic result.
+Depends on how accurate you want. You could simply it to a RLC circuit, where L and C are the parasitics like I did in .... .Here you have full control in the simulation, but it is hard to make a square wave respone, plus this is a very simplied model, if I were to substitute the C for a MOSFET and C in parallel it can be annoying to derive the transfer. So a simplier solution is to use LTSpice.
+
 
 
 ### IGBT version
