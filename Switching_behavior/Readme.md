@@ -34,6 +34,8 @@ And finally another reason to use a gate driver is to make sure that the LV part
 # Simple inverter circuit
 I will first build a simple inverted circuit and then see what happens.
 
+<img src="Images/Ideal_inverter_circuit_diagram.jpg  " width=300 >
+
 ## Ideal case simulation results
 
 <img src="Images/Theoretical_inverting_circuit.gif " width=300 >
@@ -90,7 +92,13 @@ Zooming in
   <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_No_diode__Fall_Zoomed_in.png" width=500 > 
 </p>
 
-Why is $V_{DS}$ overshooting? and oscillating a lot? The answer parsitic inductance 🙃. At high frequency both the wire's and resistor's parasitic inductane are noticable. How bad can it be? Well I measured it using an LCR meter. 
+Why is $V_{DS}$ overshooting? and oscillating a lot? The answer parasitic inductance and capacitance🙃. Above used in ideal inverter circuit, but in the real world there are parasitics and they become more noticable at higher frequencies. Below shows the inverter circuit with its parasitics. The wire and resistor has some parasitic inductance and the transistor has some parasitic capacitance.
+
+<img src="Images/Inverter_circuit_diagram_with_parasitics.jpg" width=500 >
+
+#### Can we simulate this oscillation?
+Yes first I will do a simplified mathmatical version with Python and then switch over to LTspice since it easier to use for circuit analysis and gives a more realistic result.
+
 
 ### IGBT version
 * Power supply voltage= $45V$
