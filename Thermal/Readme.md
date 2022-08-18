@@ -76,3 +76,5 @@ Looking at the image below it can be calculated that the total systems efficienc
 ## Breakdown of losses and  final efficiency
 
 Looking at the image below it can be calculated that the total systems efficiency is  
+Looking at the image below it can be calculated that the total systems efficiency is $100\cdot\frac{P_{out}}{P_{in}}=$ 100 $\cdot$ 0.6895 $\cdot$ 293.56 /(4.914 $\cdot$ 45.02)=91.44%<br>
+<img src="Images/IGBT_CCM_Efficiency.jpeg" width=500 >
