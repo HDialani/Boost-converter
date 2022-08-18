@@ -122,6 +122,13 @@ Why is $V_{DS}$ overshooting? and oscillating a lot? The answer parasitic induct
 #### Can we simulate this overshoot and  oscillation?
 Depends on how accurate you want. You could simply it to a RLC circuit, where L and C are the parasitics like I did in [RLC Control](https://github.com/HDialani/Boost-converter/blob/main/Controls/Readme.md) .Here you have full control in the simulation, but it is hard to make a square wave respone, plus this is a very simplied model, if I were to substitute the C for a MOSFET and C in parallel it can be annoying to derive the transfer. So a simplier solution is to use LTSpice.
 
+#### RLC circuit in LTSPice for MOSFET model
+<img src="Images/RLC_LTSpice_circuit_Plot.jpg" width=700 >
+<img src="Images/RLC_LTSpice_circuit_diagram.jpg" width=300 >
+
+#### MOSFET inverter circuit with parasitics
+
+
 #### How to fix this overshoot and osillation?
 
 ### IGBT $V_{BE}$, $V_{CE}$ and $I_{R}$  
