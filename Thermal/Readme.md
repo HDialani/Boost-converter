@@ -6,7 +6,7 @@ This will explain what gets hot, how to calculate the temperature rise, simulate
 
 Looking at the model either the inductor(L),transistor(S),capacitor(C), diode(D), the load and/or the wires connecting everything can get hot. 
 
-# How to calculate the temperature rise
+# How to calculate the losses of different components
 
 ## Resistive load
 
@@ -34,6 +34,9 @@ A nice overview of each component and how they effect the temperature of the IC.
 ## Capacitor
 
 ## Wire
+
+# How to calculate temperature rise
+
 
 # Cooling options
 
