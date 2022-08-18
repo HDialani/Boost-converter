@@ -137,8 +137,9 @@ Depends on how accurate you want. You could simply it to a RLC circuit, where L 
 
 Look at the image below.
 
-### IGBT $V_{BE}$, $V_{CE}$ and $I_{R}$  
+### IGBT $V_{BE}$, $V_{CE}$ and $I_{R}$ no anti-parallel diode
 
+<img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_No_diode_Zoomed_out.png" width=500 >
 
 # Boost converter circuit
 
@@ -178,15 +179,12 @@ Now to see how much energy is lost during turn on an turn off.
 ```
 ### IGBT
 
+
 ## Snubber
 
 ### MOSFET
 ### IGBT
 
-##  Lossy RC snubber
-
-### MOSFET
-### IGBT
 
 ## Smaller probe inductance
 
@@ -194,6 +192,11 @@ Now to see how much energy is lost during turn on an turn off.
 ### IGBT
 
 ## Different diodes 
+Which would u pick for the boost converter?
+
+1) apt30dq120bctg (A)
+2) e4d20120d (E)
+3) VS-C5TH3012-M3 (C)
 
 ### MOSFET
 ### IGBT
