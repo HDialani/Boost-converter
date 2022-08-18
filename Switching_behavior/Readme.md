@@ -56,7 +56,7 @@ The setup is shown below
 
 <img src="Images/Inverter_Circuit_MOSFET.jpeg " width=400 >
 
-### MOSFET version
+## MOSFET version
 * Power supply voltage= $45V$
 * Gate driver IC = ACPL-344JT
 * Gate driver IC supply voltage +12/-5V
@@ -66,7 +66,18 @@ The setup is shown below
 * Duty cycle 70%
 * Switching frequency $80 kHz$ 
 
-#### Only $V_{GS}$ 
+## IGBT version
+* Power supply voltage= $45V$
+* Gate driver IC = ACPL-344JT
+* Gate driver IC supply voltage +12/-5V
+* Gate resistance= $8.2\Omega$( Will explain this function later)
+* Current limiting resistor value $22\Omega$
+* SiC MOSFET =c3m0075120k
+* Duty cycle 85%
+* Switching frequency $15 kHz$ 
+
+
+### MOSFET Only $V_{GS}$ 
  So pretty much as expected. <br>
 <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 >
 
@@ -82,7 +93,19 @@ So it is physically impossible to go from $-5V$ to $12.5V$ or vise versa instant
 ```diff
   Why no Miller plateau during rise?
 ```
-#### $V_{GS}$, $V_{DS}$ and $I_{R}$  
+
+
+### IGBT Only $V_{BE}$ 
+ So pretty much as expected. <br>
+<img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 >
+
+Zooming in shows the effect of Miller plateau again.
+<p float="left">
+  <img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Rise_Zoomed_In.png" width=500 > 
+  <img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Fall_Zoomed_In.png" width=500 > 
+</p>
+
+### MOSFET $V_{GS}$, $V_{DS}$ and $I_{R}$  
 Something seems wrong during the step responce of $V_{DS}$? <br>
 <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_No_diode_Zoomed_out.png" width=500 >
 
@@ -96,30 +119,13 @@ Why is $V_{DS}$ overshooting? and oscillating a lot? The answer parasitic induct
 
 <img src="Images/Inverter_circuit_diagram_with_parasitics.jpg" width=500 >
 
-#### Can we simulate this oscillation?
+#### Can we simulate this overshoot and  oscillation?
 Depends on how accurate you want. You could simply it to a RLC circuit, where L and C are the parasitics like I did in [RLC Control](https://github.com/HDialani/Boost-converter/blob/main/Controls/Readme.md) .Here you have full control in the simulation, but it is hard to make a square wave respone, plus this is a very simplied model, if I were to substitute the C for a MOSFET and C in parallel it can be annoying to derive the transfer. So a simplier solution is to use LTSpice.
 
+#### How to fix this overshoot and osillation?
 
+### IGBT $V_{BE}$, $V_{CE}$ and $I_{R}$  
 
-### IGBT version
-* Power supply voltage= $45V$
-* Gate driver IC = ACPL-344JT
-* Gate driver IC supply voltage +12/-5V
-* Gate resistance= $8.2\Omega$( Will explain this function later)
-* Current limiting resistor value $22\Omega$
-* SiC MOSFET =c3m0075120k
-* Duty cycle 85%
-* Switching frequency $15 kHz$ 
-
-#### Only $V_{BE}$ 
- So pretty much as expected. <br>
-<img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 >
-
-Zooming in is also as expected due to the Miller plateau.
-<p float="left">
-  <img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Rise_Zoomed_In.png" width=500 > 
-  <img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Fall_Zoomed_In.png" width=500 > 
-</p>
 
 # Boost converter circuit
 
