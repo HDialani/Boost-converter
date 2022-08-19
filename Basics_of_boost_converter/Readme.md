@@ -25,6 +25,8 @@ http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWK0BMLIHZNgBxgQGy
 ## Off stage
 ![](Images/Boost_converter_OFF_mode.jpg)
 
+# Math and simulations explaining how it is possible that $V_{out}>V_{in}$
+
 # Operation mode of boost converter in DCM
 ![](Images/Boost_converter_DCM.gif)
 http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWKsEA4wHYvoCwCZIBOVSVHEBSCiqhAUwFowwAoAMxANXEL04QBsPPgGY+YaEhiQ8LAErDwOcmGVLyVKjlpRdMBCwDu-IZiF5B6qCwA2i1eQum1m2KRA5ohSAMIjIgj4CYKgYAozckCwAJiZWYlQOnCDRdGwAhgCuNgAuRiAJcU5xUcbF5ZZc1gDmRZWVGHyaLABOHjjcScrcxYnw+d1xhb35hV0dVlEA8u2dajiEzirWAG6c7uXuYLy64vDUUsgGZRv15pZRBIQFBPG3vcjwcIQvr2-v1yFeGGB4IqiLTDoRqPSAQVgEDD2NTbPiLDwgABqAEsAHYsSGzKyDeHkREAe0yeXx4D4GgoYko4FcECo4lELBJzARdMgHT4txg4PAjIKLI8RChYFcjmSIgKLH+pJAADEIIdhVQmCAACJEgCeAB0AM4AYXVAGMbHQWEA
