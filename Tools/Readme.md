@@ -35,3 +35,5 @@ I used the c2000 launchpad xl tms320f28027f from Texas Instruments because that 
 ## Setting up Blinky via simulink
 https://nl.mathworks.com/videos/getting-started-with-embedded-coder-support-package-for-ti-c2000-processors-1573540550102.html?s_tid=vid_pers_recs
 
+# LTSpice
+Watch https://www.youtube.com/c/FesZElectronics to learn how to use LTSpice
