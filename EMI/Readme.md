@@ -11,6 +11,8 @@ EMI stands for electromagnetic interference. Switch mode power supplies(SMPS) ar
 
 # Line Impedance Stabilization Network (LISN)
 
+What is it?
+
 # How to decrease noise?
 
 X-Cap, Y-Cap and Common mode choke
