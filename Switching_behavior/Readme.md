@@ -155,7 +155,7 @@ Look at the image below for how I implemented it
 ### MOSFET
 #### Gate resistor $8\Omega$
 A few cycles of $V_{DS}$<br>
-<img src="Images/BOOST_MOSFET_CCM_Rgate=8_Ohm_VDS_Only_Full.png" width=500 >
+<img src="Images/Boost/BOOST_MOSFET_CCM_Rgate=8_Ohm_VDS_Only_Full.png" width=500 >
 
 Now lets zoom in a bit. Left is the rise voltage and right is the fall voltage of $V_{GS}$.
 
