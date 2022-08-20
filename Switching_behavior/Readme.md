@@ -34,11 +34,11 @@ And finally another reason to use a gate driver is to make sure that the LV part
 # Simple inverter circuit
 I will first build a simple inverted circuit and then see what happens.
 
-<img src="Images/Gate_driver/Ideal_inverter_circuit_diagram.jpg  " width=300 >
+<img src="Images/Inverter/Ideal_inverter_circuit_diagram.jpg  " width=300 >
 
 ## Ideal case simulation results
 
-<img src="Images/Gate_driver/Theoretical_inverting_circuit.gif " width=300 >
+<img src="Images/Inverter/Theoretical_inverting_circuit.gif " width=300 >
 <br>
 http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgpABZsKBTAWjDACg1ywU8QUUa4HuAyFaIAGoATAM4dI5KgKpUwxFOIkBzOQHcQxMSgRjDIXIMht9ZiyDxU7V-Y8iCH5t1GtQ+NKjS8yt4Abr5Ofip8fEpUTEgq0Ag+ZvyC3EEC3gBKBmJgonngNJa+-hRRickATkVpRQViqvBsWkV2tmi+VgBmtEHlqeXYGmBJULAobAD24CCEpf7EvB4w8JBkhCbGZXP0leZsQA
 
@@ -54,7 +54,7 @@ Materials
 
 The setup is shown below
 
-<img src="Images/Inverter_Circuit_MOSFET.jpeg " width=400 >
+<img src="Images/Inverter/Inverter_Circuit_MOSFET.jpeg " width=400 >
 
 ## MOSFET version
 * Power supply voltage= $45V$
@@ -79,13 +79,13 @@ The setup is shown below
 
 ### MOSFET Only $V_{GS}$ 
  So pretty much as expected. <br>
-<img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 >
+<img src="Images/Inverter/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 >
 
 Now lets zoom in a bit. Left is the rise voltage and right is the fall voltage.
 
 <p float="left">
-  <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Rise_Zoomed_In.png" width=500 > 
-  <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Fall_Zoomed_In.png" width=500 > 
+  <img src="Images/Inverter/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Rise_Zoomed_In.png" width=500 > 
+  <img src="Images/Inverter/Inverter_Circuit_MOSFET_Rgate=8.2_Only_Vgs_Fall_Zoomed_In.png" width=500 > 
 </p>
 
 So it is physically impossible to go from $-5V$ to $12.5V$ or vise versa instantaniously, as mentioned above there are parasistic capacitors and there is a gate resistor present. So while the capacitor is charging the voltage should look like a typical [RC charge circuit](https://www.electronics-tutorials.ws/rc/rc_1.html). And while it is discarging it should look like a typical  [RC discharging circuit](https://www.electronics-tutorials.ws/rc/rc_2.html). But in reality Miller platue stops the voltage for a time period as can be seen during fall. Some resources regarding Miller Plateau read [1](https://inst.eecs.berkeley.edu/~ee192/sp17/files/MOSFET_as_switch.pdf) and [2](https://electronics.stackexchange.com/questions/66660/why-is-the-gate-charge-curve-miller-plateau-of-mosfets-dependent-on-vds) or watch [3](https://www.youtube.com/watch?v=f1yt0s3gpcE)  
@@ -97,27 +97,27 @@ So it is physically impossible to go from $-5V$ to $12.5V$ or vise versa instant
 
 ### IGBT Only $V_{BE}$ 
  So pretty much as expected. <br>
-<img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 >
+<img src="Images/Inverter/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Zoomed_Out.png  " width=500 >
 
 Zooming in shows the effect of Miller plateau again.
 <p float="left">
-  <img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Rise_Zoomed_In.png" width=500 > 
-  <img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Fall_Zoomed_In.png" width=500 > 
+  <img src="Images/Inverter/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Rise_Zoomed_In.png" width=500 > 
+  <img src="Images/Inverter/Inverter_Circuit_IGBT_Rgate=8.2_Only_Vgs_Fall_Zoomed_In.png" width=500 > 
 </p>
 
 ### MOSFET $V_{GS}$, $V_{DS}$ and $I_{R}$  
 Something seems wrong during the step responce of $V_{DS}$? <br>
-<img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_No_diode_Zoomed_out.png" width=500 >
+<img src="Images/Inverter/Inverter_Circuit_MOSFET_Rgate=8.2_No_diode_Zoomed_out.png" width=500 >
 
 Zooming in
 <p float="left">
-  <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_No_diode__Rise_Zoomed_in.png" width=500 > 
-  <img src="Images/Inverter_Circuit_MOSFET_Rgate=8.2_No_diode__Fall_Zoomed_in.png" width=500 > 
+  <img src="Images/Inverter/Inverter_Circuit_MOSFET_Rgate=8.2_No_diode__Rise_Zoomed_in.png" width=500 > 
+  <img src="Images/Inverter/Inverter_Circuit_MOSFET_Rgate=8.2_No_diode__Fall_Zoomed_in.png" width=500 > 
 </p>
 
 Why is $V_{DS}$ overshooting? and oscillating a lot? The answer parasitic inductance and capacitance🙃. Above used in ideal inverter circuit, but in the real world there are parasitics and they become more noticable at higher frequencies. Below shows the inverter circuit with its parasitics. The wire and resistor has some parasitic inductance and the transistor has some parasitic capacitance.
 
-<img src="Images/Inverter_circuit_diagram_with_parasitics.jpg" width=500 >
+<img src="Images/Inverter/Inverter_circuit_diagram_with_parasitics.jpg" width=500 >
 
 #### Can we simulate this overshoot and oscillation?
 Yes, but the question is now how accurate and how much work you want to spend on it. For example look at the I could make a Pyhton script like I did for the RLC step respone model. But that if for a very simply model without parasitics plus that was only a step response not even a square wave response. It is not worth it to derive a mathmatical model with parasitics and add a MOSFET/IGBT in this model when a simpler solution exists. The solution is to plot these in LTSpice. For example look at the RLC circuit below. Here all you need to do is add the square wave input setup your RLC circuit with the correct values and plot. No mathmatical model needed. So for the more complecated model I will use LTspice to plot them
@@ -145,7 +145,7 @@ Look at the image below for how I implemented it
 
 ### IGBT $V_{BE}$, $V_{CE}$ and $I_{R}$ no anti-parallel diode
 
-<img src="Images/Inverter_Circuit_IGBT_Rgate=8.2_No_diode_Zoomed_out.png" width=500 >
+<img src="Images/Inverter/Inverter_Circuit_IGBT_Rgate=8.2_No_diode_Zoomed_out.png" width=500 >
 
 # Boost converter circuit
 
@@ -160,8 +160,8 @@ A few cycles of $V_{DS}$<br>
 Now lets zoom in a bit. Left is the rise voltage and right is the fall voltage of $V_{GS}$.
 
 <p float="left">
-  <img src="Images/BOOST_MOSFET_CCM_Rgate=8_Ohm_VGS_Rise.png" width=500 > 
-  <img src="Images/BOOST_MOSFET_CCM_Rgate=8_Ohm_VGS_Fall.png" width=500 > 
+  <img src="Images/Boost/BOOST_MOSFET_CCM_Rgate=8_Ohm_VGS_Rise.png" width=500 > 
+  <img src="Images/Boost/BOOST_MOSFET_CCM_Rgate=8_Ohm_VGS_Fall.png" width=500 > 
 </p>
 
 Now to see how much energy is lost during turn on an turn off.
@@ -170,13 +170,13 @@ Now to see how much energy is lost during turn on an turn off.
 ```
 #### Gate resistor $30\Omega$
 A few cycles of $V_{DS}$<br>
-<img src="Images/BOOST_MOSFET_CCM_Rgate=30_Ohm_VDS_Only_Full.png" width=500 >
+<img src="Images/Boost/BOOST_MOSFET_CCM_Rgate=30_Ohm_VDS_Only_Full.png" width=500 >
 
 Now lets zoom in a bit. Left is the rise voltage and right is the fall voltage of $V_{GS}$.
 
 <p float="left">
-  <img src="Images/BOOST_MOSFET_CCM_Rgate=30_Ohm_VGS_Rise.png" width=500 > 
-  <img src="Images/BOOST_MOSFET_CCM_Rgate=30_Ohm_VGS_Fall.png" width=500 > 
+  <img src="Images/Boost/BOOST_MOSFET_CCM_Rgate=30_Ohm_VGS_Rise.png" width=500 > 
+  <img src="Images/Boost/BOOST_MOSFET_CCM_Rgate=30_Ohm_VGS_Fall.png" width=500 > 
 </p>
 
 Now to see how much energy is lost during turn on an turn off.
