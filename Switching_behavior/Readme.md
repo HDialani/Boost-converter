@@ -34,11 +34,11 @@ And finally another reason to use a gate driver is to make sure that the LV part
 # Simple inverter circuit
 I will first build a simple inverted circuit and then see what happens.
 
-<img src="Images/Ideal_inverter_circuit_diagram.jpg  " width=300 >
+<img src="Images/Gate_driver/Ideal_inverter_circuit_diagram.jpg  " width=300 >
 
 ## Ideal case simulation results
 
-<img src="Images/Theoretical_inverting_circuit.gif " width=300 >
+<img src="Images/Gate_driver/Theoretical_inverting_circuit.gif " width=300 >
 <br>
 http://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgpABZsKBTAWjDACg1ywU8QUUa4HuAyFaIAGoATAM4dI5KgKpUwxFOIkBzOQHcQxMSgRjDIXIMht9ZiyDxU7V-Y8iCH5t1GtQ+NKjS8yt4Abr5Ofip8fEpUTEgq0Ag+ZvyC3EEC3gBKBmJgonngNJa+-hRRickATkVpRQViqvBsWkV2tmi+VgBmtEHlqeXYGmBJULAobAD24CCEpf7EvB4w8JBkhCbGZXP0leZsQA
 
