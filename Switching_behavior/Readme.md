@@ -130,10 +130,10 @@ Depends on how accurate you want. You could simply it to a RLC circuit, where L 
 
 
 #### How to fix this overshoot and osillation?
-* Increase the resistance, the max I can go to is $68\Omega$ when I redue the plot it only slightly improves.
-* Decrease wire distance from the resistor, this doesn't help since most of the parasiti inductance is in the resistor itself(Look at image)
+* Increase the resistance, the max I can go to is $68\Omega$ when I redue the test it slightly improved the results.
+* Decrease wire distance from the resistor, this doesn't help since most of the parasiti inductance is in the resistor itself(Look at image).
 * Lower switching frequency, this does come at the cost of increasing the inductor and capacitors sizes in this circuit and possible increasing losses in the circuit
-* Add an anti-paralle diode, this removed the stored inductive energy when the switch in "OFF". There doen't help efficiency, but requires no redesign and is easy to implement. So I am going with this option.
+* Add an anti-paralle diode, this removed the stored inductive energy when the switch in "OFF". This doen't help efficiency, but requires no redesign, is easy to implement and does remove the overshoot and most of the osillation. So I am going with this option.
 
 Look at the image below.
 
