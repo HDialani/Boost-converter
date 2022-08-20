@@ -36,5 +36,7 @@ D2 N002 N001 MBR20100CT
 .tran 30u
 .include C3M0075120K.lib
 * Parasitics of wire
+* Resistor model with parasitics
+* Some parasitics of traces
 .backanno
 .end
