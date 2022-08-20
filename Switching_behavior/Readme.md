@@ -119,15 +119,18 @@ Why is $V_{DS}$ overshooting? and oscillating a lot? The answer parasitic induct
 
 <img src="Images/Inverter_circuit_diagram_with_parasitics.jpg" width=500 >
 
-#### Can we simulate this overshoot and  oscillation?
-Depends on how accurate you want. You could simply it to a RLC circuit, where L and C are the parasitics like I did in [RLC Control](https://github.com/HDialani/Boost-converter/blob/main/Controls/Readme.md) .Here you have full control in the simulation, but it is hard to make a square wave respone, plus this is a very simplied model, if I were to substitute the C for a MOSFET and C in parallel it can be annoying to derive the transfer. So a simplier solution is to use LTSpice.
+#### Can we simulate this overshoot and oscillation?
+Yes, but the question is now how accurate and how much work you want to spend on it. For example look at the I could make a Pyhton script like I did for the RLC step respone model. But that if for a very simply model without parasitics plus that was only a step response not even a square wave response. It is not worth it to derive a mathmatical model with parasitics and add a MOSFET/IGBT in this model when a simpler solution exists. The solution is to plot these in LTSpice. For example look at the RLC circuit below. Here all you need to do is add the square wave input setup your RLC circuit with the correct values and plot. No mathmatical model needed. So for the more complecated model I will use LTspice to plot them
 
 #### RLC circuit in LTSPice for MOSFET model
 <img src="Images/RLC_LTSpice_circuit_Plot.jpg" width=700 >
 <img src="Images/RLC_LTSpice_circuit_diagram.jpg" width=300 >
 
 #### MOSFET inverter circuit with parasitics
+The first step when plotting a circuit is to place everything you need in the right configuration with the right values/components. The next step it to add the parasitic components in your model. The wires, resistor and MOSFET have parasitic components present. For the wire and resistor I added some parasitcs and gave them an estimated values, these values aren't the actual parasitic values and are not perfectly tuned. I chose values that gave almost the same simulated effect as the actual one. For the MOSFET I just took the manufacturers already made spice model .The LTSpice model is shown below.
 
+<img src="Images/LTSpice_inverter_plot_no_diode_parasitics.png" width=700 >
+<img src="Images/LTSpice_inverter_schematic_no_diode_parasitics.png" width=500 >
 
 #### How to fix this overshoot and osillation?
 * Increase the resistance, the max I can go to is $68\Omega$ when I redue the test it slightly improved the results.
@@ -135,7 +138,10 @@ Depends on how accurate you want. You could simply it to a RLC circuit, where L 
 * Lower switching frequency, this does come at the cost of increasing the inductor and capacitors sizes in this circuit and possible increasing losses in the circuit
 * Add an anti-paralle diode, this removed the stored inductive energy when the switch in "OFF". This doen't help efficiency, but requires no redesign, is easy to implement and does remove the overshoot and most of the osillation. So I am going with this option.
 
-Look at the image below.
+Look at the image below for how I implemented it 
+
+<img src="Images/LTSpice_inverter_plot_with_diode_parasitics.png" width=700 >
+<img src="Images/LTSpice_inverter_schematic_with_diode_parasitics.png" width=500 >
 
 ### IGBT $V_{BE}$, $V_{CE}$ and $I_{R}$ no anti-parallel diode
 
