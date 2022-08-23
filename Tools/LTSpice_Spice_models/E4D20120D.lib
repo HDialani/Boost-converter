@@ -1,0 +1,131 @@
+*********************************************************************************
+*										*
+*	    ,o888888o.    888888888888.   88888888888888 88888888888888		*
+*	   8888     `88.  888888    `88.  888888         888888         	*
+*	,888888       `8. 888888     `88  888888         888888         	*
+*	8888888           888888     ,88  888888         888888         	*
+*	8888888           888888.   ,88'  88888888888888 88888888888888 	*
+*	8888888           888888888888'   888888         888888         	*
+*	8888888           888888`8b       888888         888888         	*
+*	`888888       .8' 888888 `8b.     888888         888888         	*
+*	   8888     ,88'  888888   `8b.   888888         888888         	*
+*	    `8888888P'    888888     `88. 88888888888888 88888888888888		*
+*										*
+*********************************************************************************
+*******************************************************************************
+**	DISCLAIMER
+*******************************************************************************
+**	This model is provided as is, where is, and with no warranty of any kind
+**	either expressed or implied, including but not limited to any implied
+**	warranties of merchantability and fitness for a particular purpose.
+*******************************************************************************
+
+***********************************************************
+****	Wolfspeed SiC Schottky diode E4D20120D Spice Library
+****	Version 1.0 Date: 07-05-2020
+****
+***********************************************************
+****	Revision record
+****	Version 1	Initial Release - Datasheet Rev A, 06-2020
+****
+*********************************************************************************
+.subckt E4D20120D A1 A2 K Case Tj Tc 
+
+.param p11 = -55
+.param p12 = 500
+
+R101 Tr 0	1E6
+E101 Tr 0 	value {limit(V(Tj),p11,p12)}
+
+**************
+*Schottky diode A1
+**************
+L_anode1	A1	AD1	6n 
+RAK1	AD1	K	54E6
+xgAK	K	AD14	A1	CAK_E4D20120
+D1	AD14	K	EPW4-1200-S010A temp=25
+Er 	AD13 	AD14	value {(1.4899n*V(Tr)**3+928.53n*V(Tr)**2+152.58u*V(Tr)+39.801m)*v(net1)}
+Eth	AD12	AD13	value {-9.3905n*V(Tr)**3+2.4645u*V(Tr)**2-1.1978m*V(Tr)+0.22552}
+vdiode1	AD1	AD12	0
+
+Esn1	net1	0	value {I(vdiode1)}
+Rsn1	net1	0	1E6
+
+R11	Case	K	0.1m
+R11p	Case	K	0.1m
+R11_p	Case	K	0.1m
+***********
+*PiN diode A1
+***********
+
+D2	AD4	K	PiN_EPW4-1200-S010A temp=25
+En1	AD3 	AD4	value {Limit(-46m*V(Tj)+17.15,1,25)}
+Er1	AD2	AD3	value {0.034*v(net2)}
+vdiode2	AD1 	AD2	0
+
+Esn2	net2	0	value {I(vdiode2)}
+Rsn2	net2	0	1E6
+
+**************
+*Schottky diode A2
+**************
+L_anode2	A2	AD21	6n 
+RAK2	AD21	K	54E6
+xgAK2	K	AD24	A2	CAK_E4D20120
+D3	AD24	K	EPW4-1200-S010A temp=25
+Er3 	AD23 	AD24	value {(1.4899n*V(Tr)**3+928.53n*V(Tr)**2+152.58u*V(Tr)+39.801m)*v(net3)}
+Eth3	AD22	AD23	value {-9.3905n*V(Tr)**3+2.4645u*V(Tr)**2-1.1978m*V(Tr)+0.22552}
+vdiode3	AD21	AD22	0
+
+Esn3	net3	0	value {I(vdiode3)}
+Rsn3	net3	0	1E6
+
+***********
+*PiN diode A2
+***********
+
+D4	AD44	K	PiN_EPW4-1200-S010A temp=25
+En4	AD43 	AD44	value {Limit(-46m*V(Tj)+17.15,1,25)}
+Er4	AD42	AD43	value {0.034*v(net4)}
+vdiode4	AD21 	AD42	0
+
+Esn4	net4	0	value {I(vdiode4)}
+Rsn4	net4	0	1E6
+**********************************************************
+.model EPW4-1200-S010A d(is=0.88p rs=0 Cjo=0.1p bv=1580 tt=0)
+.model PiN_EPW4-1200-S010A d(is=0.88p rs=0 Cjo=0.1p tt=0)
+
+**********************************************************
+
+Gheat	0	Tj	value {abs(V(AD12,K)*v(net1))+abs(V(AD2,K)*v(net2))+abs(V(AD22,K)*v(net3))+abs(V(AD42,K)*v(net4))}
+
+R0 N1 Tj 35.218m
+R1 N2 N1 76.263m
+R2 N3 N2 0.46726
+R3 Tc N3 0.27007
+
+C0 Tj 0 312.09u
+C1 N1 0 1.3992m
+C2 N2 0 3.589m
+C3 N3 0 30.124m
+
+.ends E4D20120D
+
+.subckt CAK_E4D20120 K AD142 A11
+
+
+.param Cjo = 1106p
+.param Vj  = 0.7
+.param M   = 0.46
+
+G12 K d1 value {
+*+	if(V(K,A11)>0,
++		(Cjo/(1+(limit(v(K,AD142),0,1200)/Vj)**M))*ddt(v(K,AD142));
+*+		,
+*+		0
+*+			)
++			}
+
+R_CDS d1 AD142 1E-4
+
+.ends CAK_E4D20120
