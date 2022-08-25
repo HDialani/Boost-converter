@@ -1,5 +1,11 @@
+"""
+@Author: Hitesh Dialani
+@Date: 25-08-2022
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
+
 MOSFET_CCM=[[22.7,22.8,23.1,23.3,23.5,23.8,24.0,24.2,24.4,24.6,24.7,24.9,25.1,25.3,25.4,25.6,25.7,25.9,26.1,26.2,26.3,26.2,26.2,26.1,26.0,25.9,25.8,25.7,25.6,25.4,25.3,25.3,25.3,25.2,25.1,25.1,25.0,25.0,25.0,24.9,24.9],
             [21.7,22.7,22.8,22.9,23.0,23.2,23.3,23.5,23.7,23.9,24.0,24.2,24.4,24.6,24.8,25.0,25.0,25.2,25.4,25.4,25.6,24.9,24.8,24.8,24.8,24.8,24.6,24.6,24.4,24.3,24.2,24.2,24.2,24.0,24.0,24.0,23.9,23.9,23.9,23.9,23.9]]
 
@@ -29,5 +35,19 @@ plt.xlim([0,np.max(Sampling_time)])
 plt.xlabel('Time in  minutes')
 plt.ylabel('Temperature in $C^o$')
 plt.suptitle('Temperatures for CCM mode IGBT components')
+plt.legend()
+
+IGBT_CCM_Resistor_orientation=[20.5,32.3,44.2,48.5,51.6,58.8,62.7,64.6,70.2,73.7,76.3,80.5,85.1,86.0,89.5,93.8,98.6,99.3,101.3,102.5,106.4,108.8,110.2,112.5,115.3,115.2,118.6,120.4,121.5,122.3,124.0,114.8,113.3,109.9,106.5,103.7,101.3,98.7,95.5,93.6,90.8,89.9,87.8,85.3,85.4,83.0,81.9,80.7,78.6,77.3,75.4,74.2,73.4,71.4,70.3,67.8,66.8,65.4,63.9,63.3,62.4]
+
+x=len(IGBT_CCM_Resistor_orientation)
+Sampling_time=np.linspace(0, 60, x)
+
+plt.figure(3)
+plt.plot(Sampling_time,IGBT_CCM_Resistor_orientation, label='Horizontal passively cooled')
+# plt.plot(Sampling_time,IGBT_CCM[1], label='Temperature of Inductor')
+plt.xlim([0,np.max(Sampling_time)])
+plt.xlabel('Time in  minutes')
+plt.ylabel('Temperature in $C^o$')
+plt.suptitle('Temperature of IGBT Resistor heatsink')
 plt.legend()
 plt.show()
