@@ -1,0 +1,12 @@
+clc; clear; close all;
+
+% User input
+
+
+
+% Fixed parameters
+V_in=45;
+V_diode_forward_drop=1.5;
+
+
+% Calculated values
