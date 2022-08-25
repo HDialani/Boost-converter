@@ -18,5 +18,9 @@ V_diode_forward_drop=1.5;
 V_MOSFET_overvolt_protection=V_MOSFET_overvolt_safety_factor*V_MOSFET_out;
 V_IGBT_overvolt_protection=V_IGBT_overvolt_safety_factor*V_IGBT_out;
 
-D_MOSFET_CCM=(V_MOSFET_out+V_diode_forward_drop-V_in)/(V_MOSFET_out+V_diode_forward_drop)*100;
-D_IGBT_CCM=(V_IGBT_out+V_diode_forward_drop-V_in)/(V_IGBT_out+V_diode_forward_drop)*100;
+D_MOSFET_CCM=(V_MOSFET_out+V_diode_forward_drop-V_in)/(V_MOSFET_out+V_diode_forward_drop);
+D_IGBT_CCM=(V_IGBT_out+V_diode_forward_drop-V_in)/(V_IGBT_out+V_diode_forward_drop);
+
+% Timer stuff
+Timer_period_MOSFET=round(60e6/f_sw_MOSFET);
+Timer_period_IGBT=round(60e6/f_sw_IGBT);

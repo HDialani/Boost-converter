@@ -1,12 +1,25 @@
 clc; clear; close all;
 
 % User input
+V_MOSFET_out=150;
+V_IGBT_out=300;
 
+f_sw_MOSFET=80e3;
+f_sw_IGBT=15e3;
 
+V_MOSFET_overvolt_safety_factor=2;
+V_IGBT_overvolt_safety_factor=2;
 
 % Fixed parameters
 V_in=45;
 V_diode_forward_drop=1.5;
 
+% Calculated values 
+V_MOSFET_overvolt_protection=V_MOSFET_overvolt_safety_factor*V_MOSFET_out;
+V_IGBT_overvolt_protection=V_IGBT_overvolt_safety_factor*V_IGBT_out;
 
-% Calculated values
+D_MOSFET_CCM=(V_MOSFET_out+V_diode_forward_drop-V_in)/(V_MOSFET_out+V_diode_forward_drop)*100;
+D_IGBT_CCM=(V_IGBT_out+V_diode_forward_drop-V_in)/(V_IGBT_out+V_diode_forward_drop)*100;
+
+% Timer stuff
+Timer_period_MOSFET
