@@ -1,8 +1,8 @@
 c2802xBoard_Realtime_Support.obj: C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/tic2000/src/c2802xBoard_Realtime_Support.c
-c2802xBoard_Realtime_Support.obj: C:/Users/hites/Desktop/GITHUB~1/BOOSTC~1/BOOST-~1/Controls/Simulink/Openloop_voltage_control_ert_rtw/MW_target_hardware_resources.h
+c2802xBoard_Realtime_Support.obj: C:/Users/hites/Desktop/GITHUB~1/BOOSTC~1/BOOST-~1/Controls/Simulink/Openloop/Openloop_voltage_control_ert_rtw/MW_target_hardware_resources.h
 c2802xBoard_Realtime_Support.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/shared/SUPPOR~1/tic2000/src/c2000BoardSupport.h
 c2802xBoard_Realtime_Support.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/TIC200~1.INS/TI-CGT~1.LTS/include/stdbool.h
-c2802xBoard_Realtime_Support.obj: C:/Users/hites/Desktop/GITHUB~1/BOOSTC~1/BOOST-~1/Controls/Simulink/Openloop_voltage_control_ert_rtw/rtwtypes.h
+c2802xBoard_Realtime_Support.obj: C:/Users/hites/Desktop/GITHUB~1/BOOSTC~1/BOOST-~1/Controls/Simulink/Openloop/Openloop_voltage_control_ert_rtw/rtwtypes.h
 c2802xBoard_Realtime_Support.obj: C:/ti/CONTRO~1/DEVICE~1/f2802x/v230/F2802X~4/include/F2802x_Device.h
 c2802xBoard_Realtime_Support.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/TIC200~1.INS/TI-CGT~1.LTS/include/assert.h
 c2802xBoard_Realtime_Support.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/TIC200~1.INS/TI-CGT~1.LTS/include/_ti_config.h

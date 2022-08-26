@@ -2,7 +2,7 @@
 ## Makefile generated for component 'Openloop_voltage_control'. 
 ## 
 ## Makefile     : Openloop_voltage_control.mk
-## Generated on : Thu Aug 25 14:46:38 2022
+## Generated on : Fri Aug 26 10:39:07 2022
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/Openloop_voltage_control.out
 ## Product type : executable
 ## 
@@ -21,7 +21,7 @@ MAKEFILE                  = Openloop_voltage_control.mk
 MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2020b
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2020b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
-START_DIR                 = C:/Users/hites/Desktop/GITHUB~1/BOOSTC~1/BOOST-~1/Controls/Simulink
+START_DIR                 = C:/Users/hites/Desktop/GITHUB~1/BOOSTC~1/BOOST-~1/Controls/Simulink/Openloop
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0

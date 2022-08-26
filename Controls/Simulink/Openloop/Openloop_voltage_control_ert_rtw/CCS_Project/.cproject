@@ -28,9 +28,9 @@
 <option id="com.ti.ccstudio.buildDefinitions.C2000_6.4.compilerID.INCLUDE_PATH.1515724014" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.4.compilerID.INCLUDE_PATH" valueType="includePath">
 <listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include">
 </listOptionValue>
-<listOptionValue builtIn="false" value="C:\Users\hites\Desktop\Github_Ideas\Boost converter\Boost-converter\Controls\Simulink">
+<listOptionValue builtIn="false" value="C:\Users\hites\Desktop\Github_Ideas\Boost converter\Boost-converter\Controls\Simulink\Openloop">
 </listOptionValue>
-<listOptionValue builtIn="false" value="C:\Users\hites\Desktop\Github_Ideas\Boost converter\Boost-converter\Controls\Simulink\Openloop_voltage_control_ert_rtw">
+<listOptionValue builtIn="false" value="C:\Users\hites\Desktop\Github_Ideas\Boost converter\Boost-converter\Controls\Simulink\Openloop\Openloop_voltage_control_ert_rtw">
 </listOptionValue>
 <listOptionValue builtIn="false" value="C:\Program Files\MATLAB\R2020b\extern\include">
 </listOptionValue>
@@ -180,9 +180,9 @@
 <option id="com.ti.ccstudio.buildDefinitions.C2000_6.4.compilerID.INCLUDE_PATH.899964030" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.4.compilerID.INCLUDE_PATH" valueType="includePath">
 <listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include">
 </listOptionValue>
-<listOptionValue builtIn="false" value="C:\Users\hites\Desktop\Github_Ideas\Boost converter\Boost-converter\Controls\Simulink">
+<listOptionValue builtIn="false" value="C:\Users\hites\Desktop\Github_Ideas\Boost converter\Boost-converter\Controls\Simulink\Openloop">
 </listOptionValue>
-<listOptionValue builtIn="false" value="C:\Users\hites\Desktop\Github_Ideas\Boost converter\Boost-converter\Controls\Simulink\Openloop_voltage_control_ert_rtw">
+<listOptionValue builtIn="false" value="C:\Users\hites\Desktop\Github_Ideas\Boost converter\Boost-converter\Controls\Simulink\Openloop\Openloop_voltage_control_ert_rtw">
 </listOptionValue>
 <listOptionValue builtIn="false" value="C:\Program Files\MATLAB\R2020b\extern\include">
 </listOptionValue>
