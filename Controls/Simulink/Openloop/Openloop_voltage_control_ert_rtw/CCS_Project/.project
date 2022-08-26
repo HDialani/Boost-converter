@@ -28,6 +28,11 @@
 <location>C:/Users/hites/Desktop/Github_Ideas/Boost converter/Boost-converter/Controls/Simulink/Openloop/Openloop_voltage_control_ert_rtw/MW_c28xx_board.c</location>
 </link>
 <link>
+<name>DSP28xx_SciUtil.c</name>
+<type>1</type>
+<location>C:/Users/hites/Desktop/Github_Ideas/Boost converter/Boost-converter/Controls/Simulink/Openloop/Openloop_voltage_control_ert_rtw/DSP28xx_SciUtil.c</location>
+</link>
+<link>
 <name>MW_c28xx_adc.c</name>
 <type>1</type>
 <location>C:/Users/hites/Desktop/Github_Ideas/Boost converter/Boost-converter/Controls/Simulink/Openloop/Openloop_voltage_control_ert_rtw/MW_c28xx_adc.c</location>

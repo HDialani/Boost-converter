@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.21
+ * Model version                  : 5.27
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Fri Aug 26 13:30:09 2022
+ * C/C++ source code generated on : Fri Aug 26 16:15:00 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -30,6 +30,7 @@
 #include "F2802x_Device.h"
 #include "f2802x_examples.h"
 #include "F2802x_Gpio.h"
+#include "DSP28xx_SciUtil.h"
 #include "IQmathLib.h"
 #endif                           /* Openloop_voltage_control_COMMON_INCLUDES_ */
 
@@ -55,6 +56,8 @@
 #define rtmTaskCounter(rtm, idx)       ((rtm)->Timing.TaskCounters.TID[(idx)])
 #endif
 
+extern void init_SCI(void);
+extern void init_SCI_GPIO(void);
 extern void config_ePWM_GPIO (void);
 
 /* Block signals (default storage) */
@@ -62,11 +65,12 @@ typedef struct {
   uint16_T MOSFET_Enable;              /* '<Root>/ADC_MOSFET_ON' */
   uint16_T Volt_Protection;            /* '<Root>/VoltMeas' */
   uint16_T IGBT_Enable;                /* '<Root>/ADC_IGBT_ON' */
-  boolean_T In;                        /* '<S7>/In' */
-  boolean_T In_g;                      /* '<S6>/In' */
-  boolean_T RedLED;                    /* '<S2>/NOT1' */
-  boolean_T GreenLED;                  /* '<S2>/NOT2' */
-  boolean_T BLUELED;                   /* '<S2>/NOT3' */
+  uint16_T SCIReceive[4];              /* '<S1>/SCI Receive' */
+  boolean_T In;                        /* '<S8>/In' */
+  boolean_T In_g;                      /* '<S7>/In' */
+  boolean_T RedLED;                    /* '<S3>/NOT1' */
+  boolean_T GreenLED;                  /* '<S3>/NOT2' */
+  boolean_T BLUELED;                   /* '<S3>/NOT3' */
   boolean_T RateTransition5;           /* '<Root>/Rate Transition5' */
 } B_Openloop_voltage_control_T;
 
@@ -77,54 +81,71 @@ typedef struct {
 
 /* Zero-crossing (trigger) state */
 typedef struct {
-  ZCSigState SampleandHold2_Trig_ZCE;  /* '<S2>/Sample and Hold2' */
-  ZCSigState SampleandHold1_Trig_ZCE;  /* '<S2>/Sample and Hold1' */
+  ZCSigState SampleandHold2_Trig_ZCE;  /* '<S3>/Sample and Hold2' */
+  ZCSigState SampleandHold1_Trig_ZCE;  /* '<S3>/Sample and Hold1' */
 } PrevZCX_Openloop_voltage_cont_T;
 
 /* Parameters (default storage) */
 struct P_Openloop_voltage_control_T_ {
-  real_T D_IGBT_CCM;                   /* Variable: D_IGBT_CCM
-                                        * Referenced by: '<S4>/Constant2'
+  real_T CLKfrequency1_Value;          /* Expression: 60e6
+                                        * Referenced by: '<S9>/CLK frequency1'
                                         */
-  real_T D_MOSFET_CCM;                 /* Variable: D_MOSFET_CCM
-                                        * Referenced by: '<S4>/Constant1'
+  real_T CLKfrequency_Value;           /* Expression: 60e6
+                                        * Referenced by: '<S6>/CLK frequency'
                                         */
-  real_T Timer_period_IGBT;            /* Variable: Timer_period_IGBT
-                                        * Referenced by:
-                                        *   '<S4>/Gain1'
-                                        *   '<S9>/Constant1'
+  real_T V_f2_Value;                   /* Expression: 1.5
+                                        * Referenced by: '<S6>/V_f2'
                                         */
-  real_T Timer_period_MOSFET;          /* Variable: Timer_period_MOSFET
-                                        * Referenced by:
-                                        *   '<S4>/Gain'
-                                        *   '<S9>/Constant'
+  real_T V_in1_Value;                  /* Expression: 45
+                                        * Referenced by: '<S6>/V_in1'
+                                        */
+  real_T V_f3_Value;                   /* Expression: 1.5
+                                        * Referenced by: '<S6>/V_f3'
+                                        */
+  real_T CLKfrequency_Value_e;         /* Expression: 60e6
+                                        * Referenced by: '<S9>/CLK frequency'
+                                        */
+  real_T V_f_Value;                    /* Expression: 1.5
+                                        * Referenced by: '<S6>/V_f'
+                                        */
+  real_T V_in_Value;                   /* Expression: 45
+                                        * Referenced by: '<S6>/V_in'
+                                        */
+  real_T V_f1_Value;                   /* Expression: 1.5
+                                        * Referenced by: '<S6>/V_f1'
+                                        */
+  uint16_T Gain1_Gain;                 /* Computed Parameter: Gain1_Gain
+                                        * Referenced by: '<S1>/Gain1'
+                                        */
+  uint16_T Gain_Gain;                  /* Computed Parameter: Gain_Gain
+                                        * Referenced by: '<S1>/Gain'
                                         */
   uint16_T Constant3_Value;            /* Computed Parameter: Constant3_Value
-                                        * Referenced by: '<S2>/Constant3'
+                                        * Referenced by: '<S3>/Constant3'
                                         */
   uint16_T Constant14_Value;           /* Computed Parameter: Constant14_Value
-                                        * Referenced by: '<S2>/Constant14'
+                                        * Referenced by: '<S3>/Constant14'
                                         */
   uint16_T Constant13_Value;           /* Computed Parameter: Constant13_Value
-                                        * Referenced by: '<S2>/Constant13'
+                                        * Referenced by: '<S3>/Constant13'
                                         */
   uint16_T Constant8_Value;            /* Computed Parameter: Constant8_Value
-                                        * Referenced by: '<S2>/Constant8'
+                                        * Referenced by: '<S3>/Constant8'
                                         */
   boolean_T _Y0;                       /* Computed Parameter: _Y0
-                                        * Referenced by: '<S6>/ '
-                                        */
-  boolean_T _Y0_a;                     /* Computed Parameter: _Y0_a
                                         * Referenced by: '<S7>/ '
                                         */
-  boolean_T Constant9_Value;           /* Computed Parameter: Constant9_Value
-                                        * Referenced by: '<S2>/Constant9'
+  boolean_T _Y0_a;                     /* Computed Parameter: _Y0_a
+                                        * Referenced by: '<S8>/ '
                                         */
   boolean_T Constant15_Value;          /* Computed Parameter: Constant15_Value
-                                        * Referenced by: '<S2>/Constant15'
+                                        * Referenced by: '<S3>/Constant15'
                                         */
   boolean_T Constant16_Value;          /* Computed Parameter: Constant16_Value
-                                        * Referenced by: '<S2>/Constant16'
+                                        * Referenced by: '<S3>/Constant16'
+                                        */
+  boolean_T Constant9_Value;           /* Computed Parameter: Constant9_Value
+                                        * Referenced by: '<S3>/Constant9'
                                         */
   boolean_T RateTransition5_InitialConditio;
                           /* Computed Parameter: RateTransition5_InitialConditio
@@ -183,37 +204,14 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<S5>/Add' : Unused code path elimination
- * Block '<S5>/Add1' : Unused code path elimination
- * Block '<S5>/CLK frequency' : Unused code path elimination
- * Block '<S5>/Divide' : Unused code path elimination
- * Block '<S5>/Divide1' : Unused code path elimination
- * Block '<S5>/Divide2' : Unused code path elimination
- * Block '<S5>/Divide3' : Unused code path elimination
- * Block '<S5>/IGBT_Vout2' : Unused code path elimination
- * Block '<S5>/IGBT_Vout3' : Unused code path elimination
- * Block '<S5>/MOSFET_Vout' : Unused code path elimination
- * Block '<S5>/MOSFET_Vout1' : Unused code path elimination
- * Block '<S5>/Plus' : Unused code path elimination
- * Block '<S5>/Plus1' : Unused code path elimination
- * Block '<S5>/Product' : Unused code path elimination
- * Block '<S5>/Product1' : Unused code path elimination
- * Block '<S5>/V_f' : Unused code path elimination
- * Block '<S5>/V_f1' : Unused code path elimination
- * Block '<S5>/V_f2' : Unused code path elimination
- * Block '<S5>/V_f3' : Unused code path elimination
- * Block '<S5>/V_in' : Unused code path elimination
- * Block '<S5>/V_in1' : Unused code path elimination
- * Block '<S5>/f_sw_IGBT' : Unused code path elimination
- * Block '<S5>/f_sw_MOSFET' : Unused code path elimination
- * Block '<S8>/CLK frequency' : Unused code path elimination
- * Block '<S8>/CLK frequency1' : Unused code path elimination
- * Block '<S8>/Divide' : Unused code path elimination
- * Block '<S8>/Divide1' : Unused code path elimination
- * Block '<S8>/f_sw_IGBT' : Unused code path elimination
- * Block '<S8>/f_sw_MOSFET' : Unused code path elimination
- * Block '<S1>/Rate Transition' : Eliminated since input and output rates are identical
- * Block '<S1>/Rate Transition6' : Eliminated since input and output rates are identical
+ * Block '<S5>/Constant1' : Unused code path elimination
+ * Block '<S5>/Constant2' : Unused code path elimination
+ * Block '<S5>/Gain' : Unused code path elimination
+ * Block '<S5>/Gain1' : Unused code path elimination
+ * Block '<S10>/Constant' : Unused code path elimination
+ * Block '<S10>/Constant1' : Unused code path elimination
+ * Block '<S2>/Rate Transition' : Eliminated since input and output rates are identical
+ * Block '<S2>/Rate Transition6' : Eliminated since input and output rates are identical
  * Block '<Root>/Rate Transition10' : Eliminated since input and output rates are identical
  * Block '<Root>/Rate Transition3' : Eliminated since input and output rates are identical
  * Block '<Root>/Rate Transition7' : Eliminated since input and output rates are identical
@@ -236,15 +234,16 @@ extern volatile boolean_T runModel;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'Openloop_voltage_control'
- * '<S1>'   : 'Openloop_voltage_control/Duty Cycles'
- * '<S2>'   : 'Openloop_voltage_control/Logic circuit'
- * '<S3>'   : 'Openloop_voltage_control/Timer'
- * '<S4>'   : 'Openloop_voltage_control/Duty Cycles/Using parameter.m'
- * '<S5>'   : 'Openloop_voltage_control/Duty Cycles/using dashboard'
- * '<S6>'   : 'Openloop_voltage_control/Logic circuit/Sample and Hold1'
- * '<S7>'   : 'Openloop_voltage_control/Logic circuit/Sample and Hold2'
- * '<S8>'   : 'Openloop_voltage_control/Timer/Using dashboard'
- * '<S9>'   : 'Openloop_voltage_control/Timer/Using parameter.m'
+ * '<S1>'   : 'Openloop_voltage_control/Dashboard receiver block'
+ * '<S2>'   : 'Openloop_voltage_control/Duty Cycles'
+ * '<S3>'   : 'Openloop_voltage_control/Logic circuit'
+ * '<S4>'   : 'Openloop_voltage_control/Timer'
+ * '<S5>'   : 'Openloop_voltage_control/Duty Cycles/Using parameter.m'
+ * '<S6>'   : 'Openloop_voltage_control/Duty Cycles/using dashboard.slx'
+ * '<S7>'   : 'Openloop_voltage_control/Logic circuit/Sample and Hold1'
+ * '<S8>'   : 'Openloop_voltage_control/Logic circuit/Sample and Hold2'
+ * '<S9>'   : 'Openloop_voltage_control/Timer/Using dashboard.slx'
+ * '<S10>'  : 'Openloop_voltage_control/Timer/Using parameter.m'
  */
 #endif                              /* RTW_HEADER_Openloop_voltage_control_h_ */
 

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.21
+ * Model version                  : 5.27
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Fri Aug 26 13:30:09 2022
+ * C/C++ source code generated on : Fri Aug 26 16:15:00 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -22,74 +22,105 @@
 
 /* Block parameters (default storage) */
 P_Openloop_voltage_control_T Openloop_voltage_control_P = {
-  /* Variable: D_IGBT_CCM
-   * Referenced by: '<S4>/Constant2'
+  /* Expression: 60e6
+   * Referenced by: '<S9>/CLK frequency1'
    */
-  0.85074626865671643,
+  6.0E+7,
 
-  /* Variable: D_MOSFET_CCM
-   * Referenced by: '<S4>/Constant1'
+  /* Expression: 60e6
+   * Referenced by: '<S6>/CLK frequency'
    */
-  0.70297029702970293,
+  6.0E+7,
 
-  /* Variable: Timer_period_IGBT
-   * Referenced by:
-   *   '<S4>/Gain1'
-   *   '<S9>/Constant1'
+  /* Expression: 1.5
+   * Referenced by: '<S6>/V_f2'
    */
-  4000.0,
+  1.5,
 
-  /* Variable: Timer_period_MOSFET
-   * Referenced by:
-   *   '<S4>/Gain'
-   *   '<S9>/Constant'
+  /* Expression: 45
+   * Referenced by: '<S6>/V_in1'
    */
-  750.0,
+  45.0,
+
+  /* Expression: 1.5
+   * Referenced by: '<S6>/V_f3'
+   */
+  1.5,
+
+  /* Expression: 60e6
+   * Referenced by: '<S9>/CLK frequency'
+   */
+  6.0E+7,
+
+  /* Expression: 1.5
+   * Referenced by: '<S6>/V_f'
+   */
+  1.5,
+
+  /* Expression: 45
+   * Referenced by: '<S6>/V_in'
+   */
+  45.0,
+
+  /* Expression: 1.5
+   * Referenced by: '<S6>/V_f1'
+   */
+  1.5,
+
+  /* Computed Parameter: Gain1_Gain
+   * Referenced by: '<S1>/Gain1'
+   */
+  64000U,
+
+  /* Computed Parameter: Gain_Gain
+   * Referenced by: '<S1>/Gain'
+   */
+  64000U,
 
   /* Computed Parameter: Constant3_Value
-   * Referenced by: '<S2>/Constant3'
+   * Referenced by: '<S3>/Constant3'
    */
   500U,
 
   /* Computed Parameter: Constant14_Value
-   * Referenced by: '<S2>/Constant14'
+   * Referenced by: '<S3>/Constant14'
    */
   2500U,
 
   /* Computed Parameter: Constant13_Value
-   * Referenced by: '<S2>/Constant13'
+   * Referenced by: '<S3>/Constant13'
    */
   3350U,
 
   /* Computed Parameter: Constant8_Value
-   * Referenced by: '<S2>/Constant8'
+   * Referenced by: '<S3>/Constant8'
    */
   500U,
 
   /* Computed Parameter: _Y0
-   * Referenced by: '<S6>/ '
-   */
-  0,
-
-  /* Computed Parameter: _Y0_a
    * Referenced by: '<S7>/ '
    */
   0,
 
-  /* Computed Parameter: Constant9_Value
-   * Referenced by: '<S2>/Constant9'
+  /* Computed Parameter: _Y0_a
+   * Referenced by: '<S8>/ '
    */
   0,
 
   /* Computed Parameter: Constant15_Value
-   * Referenced by: '<S2>/Constant15'
+   * Referenced by: '<S3>/Constant15'
    */
   1,
 
   /* Computed Parameter: Constant16_Value
-   * Referenced by: '<S2>/Constant16'
+   * Referenced by: '<S3>/Constant16'
    */
   1,
+
+  /* Computed Parameter: Constant9_Value
+   * Referenced by: '<S3>/Constant9'
+   */
+  0,
 
   /* Computed Parameter: RateTransition5_InitialConditio
    * Referenced by: '<Root>/Rate Transition5'

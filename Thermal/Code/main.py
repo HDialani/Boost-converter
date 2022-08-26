@@ -37,14 +37,16 @@ plt.ylabel('Temperature in $C^o$')
 plt.suptitle('Temperatures for CCM mode IGBT components')
 plt.legend()
 
-IGBT_CCM_Resistor_orientation=[20.5,32.3,44.2,48.5,51.6,58.8,62.7,64.6,70.2,73.7,76.3,80.5,85.1,86.0,89.5,93.8,98.6,99.3,101.3,102.5,106.4,108.8,110.2,112.5,115.3,115.2,118.6,120.4,121.5,122.3,124.0,114.8,113.3,109.9,106.5,103.7,101.3,98.7,95.5,93.6,90.8,89.9,87.8,85.3,85.4,83.0,81.9,80.7,78.6,77.3,75.4,74.2,73.4,71.4,70.3,67.8,66.8,65.4,63.9,63.3,62.4]
+IGBT_CCM_Resistor_orientation=[[20.5,32.3,44.2,48.5,51.6,58.8,62.7,64.6,70.2,73.7,76.3,80.5,85.1,86.0,89.5,93.8,98.6,99.3,101.3,102.5,106.4,108.8,110.2,112.5,115.3,115.2,118.6,120.4,121.5,122.3,124.0,114.8,113.3,109.9,106.5,103.7,101.3,98.7,95.5,93.6,90.8,89.9,87.8,85.3,85.4,83.0,81.9,80.7,78.6,77.3,75.4,74.2,73.4,71.4,70.3,67.8,66.8,65.4,63.9,63.3,62.4],
+                               [21.0,23.3,29.6,35.7,41.4,46.0,50.5,54.0,57.7,60.5,63.2,66.9,69.2,71.6,73.5,75.2,77.7,79.3,80.5,82.4,84.0,85.3,86.5,86.7,88.9,89.3,90.2,91.3,92.6,92.9,94.2,92.9,90.8,87.6,82.9,79.6,76.0,74.2,71.1,68.7,66.7,64.2,62.0,60.4,59.0,56.7,55.8,53.2,51.8,50.8,50.5,48.7,47.4,46.2,44.7,43.9,43.2,43.4,42.2,41.1,40.5]]
 
-x=len(IGBT_CCM_Resistor_orientation)
+x=len(IGBT_CCM_Resistor_orientation[0])
 Sampling_time=np.linspace(0, 60, x)
 
+
 plt.figure(3)
-plt.plot(Sampling_time,IGBT_CCM_Resistor_orientation, label='Horizontal passively cooled')
-# plt.plot(Sampling_time,IGBT_CCM[1], label='Temperature of Inductor')
+plt.plot(Sampling_time,IGBT_CCM_Resistor_orientation[0], label='Horizontal passively cooled')
+plt.plot(Sampling_time,IGBT_CCM_Resistor_orientation[1], label='Vertical passively cooled')
 plt.xlim([0,np.max(Sampling_time)])
 plt.xlabel('Time in  minutes')
 plt.ylabel('Temperature in $C^o$')

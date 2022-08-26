@@ -2,7 +2,7 @@
 ## Makefile generated for component 'Openloop_voltage_control'. 
 ## 
 ## Makefile     : Openloop_voltage_control.mk
-## Generated on : Fri Aug 26 10:39:07 2022
+## Generated on : Fri Aug 26 14:30:56 2022
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/Openloop_voltage_control.out
 ## Product type : executable
 ## 
@@ -209,7 +209,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)/Openloop_voltage_control_ert_rtw/MW_c28xx_board.c $(START_DIR)/Openloop_voltage_control_ert_rtw/MW_c28xx_adc.c $(START_DIR)/Openloop_voltage_control_ert_rtw/MW_c28xx_csl.c $(START_DIR)/Openloop_voltage_control_ert_rtw/MW_c28xx_pwm.c $(START_DIR)/Openloop_voltage_control_ert_rtw/Openloop_voltage_control.c $(START_DIR)/Openloop_voltage_control_ert_rtw/Openloop_voltage_control_data.c $(START_DIR)/Openloop_voltage_control_ert_rtw/rtGetInf.c $(START_DIR)/Openloop_voltage_control_ert_rtw/rtGetNaN.c $(START_DIR)/Openloop_voltage_control_ert_rtw/rt_nonfinite.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/tic2000/src/c2802xBoard_Realtime_Support.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/shared/supportpackages/tic2000/src/MW_c28xGlobalInterrupts.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_cputimers.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_defaultisr.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_headers/source/F2802x_GlobalVariableDefs.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_piectrl.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_pievect.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_sysctrl.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_usdelay.asm C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_codestartbranch.asm C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_adc.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/tic2000/src/profiler_Support.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/shared/supportpackages/tic2000/src/MW_c28xGPIO.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/tic2000/src/c2802xSchedulerTimer0.c
+SRCS = $(START_DIR)/Openloop_voltage_control_ert_rtw/MW_c28xx_board.c $(START_DIR)/Openloop_voltage_control_ert_rtw/DSP28xx_SciUtil.c $(START_DIR)/Openloop_voltage_control_ert_rtw/MW_c28xx_adc.c $(START_DIR)/Openloop_voltage_control_ert_rtw/MW_c28xx_csl.c $(START_DIR)/Openloop_voltage_control_ert_rtw/MW_c28xx_pwm.c $(START_DIR)/Openloop_voltage_control_ert_rtw/Openloop_voltage_control.c $(START_DIR)/Openloop_voltage_control_ert_rtw/Openloop_voltage_control_data.c $(START_DIR)/Openloop_voltage_control_ert_rtw/rtGetInf.c $(START_DIR)/Openloop_voltage_control_ert_rtw/rtGetNaN.c $(START_DIR)/Openloop_voltage_control_ert_rtw/rt_nonfinite.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/tic2000/src/c2802xBoard_Realtime_Support.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/shared/supportpackages/tic2000/src/MW_c28xGlobalInterrupts.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_cputimers.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_defaultisr.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_headers/source/F2802x_GlobalVariableDefs.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_piectrl.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_pievect.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_sysctrl.c C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_usdelay.asm C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_codestartbranch.asm C:/ti/controlSUITE/device_support/f2802x/v230/f2802x_common/source/f2802x_adc.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/tic2000/src/profiler_Support.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/shared/supportpackages/tic2000/src/MW_c28xGPIO.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/tic2000/src/c2802xSchedulerTimer0.c
 
 MAIN_SRC = $(START_DIR)/Openloop_voltage_control_ert_rtw/ert_main.c
 
@@ -219,7 +219,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = MW_c28xx_board.obj MW_c28xx_adc.obj MW_c28xx_csl.obj MW_c28xx_pwm.obj Openloop_voltage_control.obj Openloop_voltage_control_data.obj rtGetInf.obj rtGetNaN.obj rt_nonfinite.obj c2802xBoard_Realtime_Support.obj MW_c28xGlobalInterrupts.obj f2802x_cputimers.obj f2802x_defaultisr.obj F2802x_GlobalVariableDefs.obj f2802x_piectrl.obj f2802x_pievect.obj f2802x_sysctrl.obj f2802x_usdelay.obj f2802x_codestartbranch.obj f2802x_adc.obj profiler_Support.obj MW_c28xGPIO.obj c2802xSchedulerTimer0.obj
+OBJS = MW_c28xx_board.obj DSP28xx_SciUtil.obj MW_c28xx_adc.obj MW_c28xx_csl.obj MW_c28xx_pwm.obj Openloop_voltage_control.obj Openloop_voltage_control_data.obj rtGetInf.obj rtGetNaN.obj rt_nonfinite.obj c2802xBoard_Realtime_Support.obj MW_c28xGlobalInterrupts.obj f2802x_cputimers.obj f2802x_defaultisr.obj F2802x_GlobalVariableDefs.obj f2802x_piectrl.obj f2802x_pievect.obj f2802x_sysctrl.obj f2802x_usdelay.obj f2802x_codestartbranch.obj f2802x_adc.obj profiler_Support.obj MW_c28xGPIO.obj c2802xSchedulerTimer0.obj
 
 MAIN_OBJ = ert_main.obj
 
@@ -485,6 +485,10 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 
 
 MW_c28xx_board.obj : $(START_DIR)/Openloop_voltage_control_ert_rtw/MW_c28xx_board.c
+	$(CC) $(CFLAGS) --output_file="$@" "$<"
+
+
+DSP28xx_SciUtil.obj : $(START_DIR)/Openloop_voltage_control_ert_rtw/DSP28xx_SciUtil.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 

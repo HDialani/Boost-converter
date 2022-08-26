@@ -44,6 +44,7 @@ Openloop_voltage_control_data.obj: C:\ti\CONTRO~1\DEVICE~1\f2802x\v230\F2802X~1\
 Openloop_voltage_control_data.obj: C:\ti\CONTRO~1\DEVICE~1\f2802x\v230\F2802X~1\include\f2802x_epwm_defines.h
 Openloop_voltage_control_data.obj: C:\ti\CONTRO~1\DEVICE~1\f2802x\v230\F2802X~1\include\f2802x_i2c_defines.h
 Openloop_voltage_control_data.obj: C:\ti\CONTRO~1\DEVICE~1\f2802x\v230\F2802X~1\include\f2802x_defaultisr.h
+Openloop_voltage_control_data.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Openloop\Openloop_voltage_control_ert_rtw\DSP28xx_SciUtil.h
 Openloop_voltage_control_data.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/shared/SUPPOR~1/tic2000/inc/IQmathLib.h
 Openloop_voltage_control_data.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/TIC200~1.INS/TI-CGT~1.LTS/include/limits.h
 Openloop_voltage_control_data.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Openloop\Openloop_voltage_control_ert_rtw\Openloop_voltage_control_types.h

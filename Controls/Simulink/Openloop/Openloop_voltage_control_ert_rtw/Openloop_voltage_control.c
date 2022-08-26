@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.21
+ * Model version                  : 5.27
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Fri Aug 26 13:30:09 2022
+ * C/C++ source code generated on : Fri Aug 26 16:15:00 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -72,16 +72,15 @@ static void rate_monotonic_scheduler(void)
 void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
 {
   /* local block i/o variables */
+  real_T rtb_Divide1;
+  real_T rtb_Divide;
   uint16_T rtb_MOSFET_Enable;
   uint16_T rtb_DataTypeConversion;
-  uint16_T rtb_DataTypeConversion2;
-  uint16_T rtb_IGBT_Enable;
-  real_T tmp;
+  real_T rtb_Divide1_tmp;
   boolean_T rtb_LogicalOperator2;
   boolean_T rtb_LogicalOperator2_tmp;
   boolean_T rtb_LogicalOperator4;
-  boolean_T rtb_RelationalOperator1;
-  boolean_T rtb_RelationalOperator3;
+  boolean_T rtb_LogicalOperator5;
 
   {                                    /* Sample time: [0.001s, 0.0s] */
     rate_monotonic_scheduler();
@@ -98,10 +97,10 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
     Openloop_voltage_control_B.MOSFET_Enable = (AdcResult.ADCRESULT0);
   }
 
-  /* RelationalOperator: '<S2>/Relational Operator1' incorporates:
-   *  Constant: '<S2>/Constant3'
+  /* RelationalOperator: '<S3>/Relational Operator1' incorporates:
+   *  Constant: '<S3>/Constant3'
    */
-  rtb_RelationalOperator1 = (Openloop_voltage_control_P.Constant3_Value <=
+  rtb_LogicalOperator5 = (Openloop_voltage_control_P.Constant3_Value <=
     Openloop_voltage_control_B.MOSFET_Enable);
 
   /* S-Function (c2802xadc): '<Root>/VoltMeas' */
@@ -115,21 +114,21 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
     Openloop_voltage_control_B.Volt_Protection = (AdcResult.ADCRESULT8);
   }
 
-  /* Logic: '<S2>/Logical Operator4' incorporates:
-   *  Constant: '<S2>/Constant14'
-   *  RelationalOperator: '<S2>/Relational Operator4'
+  /* Logic: '<S3>/Logical Operator4' incorporates:
+   *  Constant: '<S3>/Constant14'
+   *  RelationalOperator: '<S3>/Relational Operator4'
    */
-  rtb_LogicalOperator4 = ((!rtb_RelationalOperator1) &&
+  rtb_LogicalOperator4 = ((!rtb_LogicalOperator5) &&
     (Openloop_voltage_control_P.Constant14_Value <
      Openloop_voltage_control_B.Volt_Protection));
 
-  /* Outputs for Triggered SubSystem: '<S2>/Sample and Hold1' incorporates:
-   *  TriggerPort: '<S6>/Trigger'
+  /* Outputs for Triggered SubSystem: '<S3>/Sample and Hold1' incorporates:
+   *  TriggerPort: '<S7>/Trigger'
    */
   if (rtb_LogicalOperator4 &&
       (Openloop_voltage_contro_PrevZCX.SampleandHold1_Trig_ZCE != POS_ZCSIG)) {
-    /* Inport: '<S6>/In' incorporates:
-     *  Constant: '<S2>/Constant15'
+    /* Inport: '<S7>/In' incorporates:
+     *  Constant: '<S3>/Constant15'
      */
     Openloop_voltage_control_B.In_g =
       Openloop_voltage_control_P.Constant15_Value;
@@ -137,50 +136,7 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
 
   Openloop_voltage_contro_PrevZCX.SampleandHold1_Trig_ZCE = rtb_LogicalOperator4;
 
-  /* End of Outputs for SubSystem: '<S2>/Sample and Hold1' */
-
-  /* Logic: '<S2>/Logical Operator5' incorporates:
-   *  Constant: '<S2>/Constant9'
-   *  Logic: '<S2>/Logical Operator'
-   */
-  rtb_LogicalOperator4 = (rtb_RelationalOperator1 ||
-    Openloop_voltage_control_P.Constant9_Value ||
-    Openloop_voltage_control_B.In_g);
-
-  /* DataTypeConversion: '<S2>/Data Type Conversion1' */
-  rtb_MOSFET_Enable = rtb_LogicalOperator4;
-
-  /* DataTypeConversion: '<S1>/Data Type Conversion' incorporates:
-   *  Constant: '<S4>/Constant1'
-   *  Gain: '<S4>/Gain'
-   */
-  tmp = floor(Openloop_voltage_control_P.Timer_period_MOSFET *
-              Openloop_voltage_control_P.D_MOSFET_CCM);
-  if (rtIsNaN(tmp) || rtIsInf(tmp)) {
-    tmp = 0.0;
-  } else {
-    tmp = fmod(tmp, 65536.0);
-  }
-
-  /* DataTypeConversion: '<S1>/Data Type Conversion' */
-  rtb_DataTypeConversion = tmp < 0.0 ? (uint16_T)-(int16_T)(uint16_T)-tmp :
-    (uint16_T)tmp;
-
-  /* DataTypeConversion: '<S1>/Data Type Conversion2' incorporates:
-   *  Constant: '<S4>/Constant2'
-   *  Gain: '<S4>/Gain1'
-   */
-  tmp = floor(Openloop_voltage_control_P.Timer_period_IGBT *
-              Openloop_voltage_control_P.D_IGBT_CCM);
-  if (rtIsNaN(tmp) || rtIsInf(tmp)) {
-    tmp = 0.0;
-  } else {
-    tmp = fmod(tmp, 65536.0);
-  }
-
-  /* DataTypeConversion: '<S1>/Data Type Conversion2' */
-  rtb_DataTypeConversion2 = tmp < 0.0 ? (uint16_T)-(int16_T)(uint16_T)-tmp :
-    (uint16_T)tmp;
+  /* End of Outputs for SubSystem: '<S3>/Sample and Hold1' */
 
   /* S-Function (c2802xadc): '<Root>/ADC_IGBT_ON' */
   {
@@ -193,63 +149,68 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
     Openloop_voltage_control_B.IGBT_Enable = (AdcResult.ADCRESULT2);
   }
 
-  /* RelationalOperator: '<S2>/Relational Operator3' incorporates:
-   *  Constant: '<S2>/Constant8'
+  /* RelationalOperator: '<S3>/Relational Operator3' incorporates:
+   *  Constant: '<S3>/Constant8'
    */
-  rtb_RelationalOperator3 = (Openloop_voltage_control_P.Constant8_Value <=
+  rtb_LogicalOperator4 = (Openloop_voltage_control_P.Constant8_Value <=
     Openloop_voltage_control_B.IGBT_Enable);
 
-  /* Logic: '<S2>/Logical Operator2' incorporates:
-   *  Constant: '<S2>/Constant13'
-   *  Logic: '<S2>/Logical Operator7'
-   *  RelationalOperator: '<S2>/Relational Operator5'
+  /* Logic: '<S3>/Logical Operator2' incorporates:
+   *  Constant: '<S3>/Constant13'
+   *  Logic: '<S3>/Logical Operator7'
+   *  RelationalOperator: '<S3>/Relational Operator5'
    */
-  rtb_LogicalOperator2_tmp = !rtb_RelationalOperator3;
+  rtb_LogicalOperator2_tmp = !rtb_LogicalOperator4;
   rtb_LogicalOperator2 = ((Openloop_voltage_control_B.Volt_Protection >
     Openloop_voltage_control_P.Constant13_Value) && rtb_LogicalOperator2_tmp);
 
-  /* Outputs for Triggered SubSystem: '<S2>/Sample and Hold2' incorporates:
-   *  TriggerPort: '<S7>/Trigger'
+  /* Outputs for Triggered SubSystem: '<S3>/Sample and Hold2' incorporates:
+   *  TriggerPort: '<S8>/Trigger'
    */
   if (rtb_LogicalOperator2 &&
       (Openloop_voltage_contro_PrevZCX.SampleandHold2_Trig_ZCE != POS_ZCSIG)) {
-    /* Inport: '<S7>/In' incorporates:
-     *  Constant: '<S2>/Constant16'
+    /* Inport: '<S8>/In' incorporates:
+     *  Constant: '<S3>/Constant16'
      */
     Openloop_voltage_control_B.In = Openloop_voltage_control_P.Constant16_Value;
   }
 
   Openloop_voltage_contro_PrevZCX.SampleandHold2_Trig_ZCE = rtb_LogicalOperator2;
 
-  /* End of Outputs for SubSystem: '<S2>/Sample and Hold2' */
+  /* End of Outputs for SubSystem: '<S3>/Sample and Hold2' */
 
-  /* Logic: '<S2>/Logical Operator3' incorporates:
-   *  Constant: '<S2>/Constant9'
-   *  Logic: '<S2>/Logical Operator1'
-   */
-  rtb_RelationalOperator3 = (Openloop_voltage_control_B.In ||
-    (Openloop_voltage_control_P.Constant9_Value || rtb_RelationalOperator3));
-
-  /* DataTypeConversion: '<S2>/Data Type Conversion4' */
-  rtb_IGBT_Enable = rtb_RelationalOperator3;
-
-  /* Logic: '<S2>/NOT1' incorporates:
-   *  Logic: '<S2>/Logical Operator6'
+  /* Logic: '<S3>/NOT1' incorporates:
+   *  Logic: '<S3>/Logical Operator6'
    */
   Openloop_voltage_control_B.RedLED = ((!Openloop_voltage_control_B.In_g) &&
     (!Openloop_voltage_control_B.In));
 
-  /* Logic: '<S2>/NOT2' incorporates:
-   *  Logic: '<S2>/Logical Operator7'
+  /* Logic: '<S3>/NOT2' incorporates:
+   *  Logic: '<S3>/Logical Operator7'
    */
-  Openloop_voltage_control_B.GreenLED = ((!rtb_RelationalOperator1) ||
+  Openloop_voltage_control_B.GreenLED = ((!rtb_LogicalOperator5) ||
     rtb_LogicalOperator2_tmp);
 
-  /* Logic: '<S2>/NOT3' incorporates:
-   *  Logic: '<S2>/Logical Operator8'
+  /* Logic: '<S3>/Logical Operator5' incorporates:
+   *  Constant: '<S3>/Constant9'
+   *  Logic: '<S3>/Logical Operator'
    */
-  Openloop_voltage_control_B.BLUELED = (rtb_LogicalOperator4 &&
-    rtb_RelationalOperator3);
+  rtb_LogicalOperator5 = (rtb_LogicalOperator5 ||
+    Openloop_voltage_control_P.Constant9_Value ||
+    Openloop_voltage_control_B.In_g);
+
+  /* Logic: '<S3>/Logical Operator3' incorporates:
+   *  Constant: '<S3>/Constant9'
+   *  Logic: '<S3>/Logical Operator1'
+   */
+  rtb_LogicalOperator4 = (Openloop_voltage_control_B.In ||
+    (Openloop_voltage_control_P.Constant9_Value || rtb_LogicalOperator4));
+
+  /* Logic: '<S3>/NOT3' incorporates:
+   *  Logic: '<S3>/Logical Operator8'
+   */
+  Openloop_voltage_control_B.BLUELED = (rtb_LogicalOperator5 &&
+    rtb_LogicalOperator4);
 
   /* S-Function (c280xgpio_do): '<Root>/BlueLED' */
   {
@@ -275,25 +236,168 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
       GpioDataRegs.GPBCLEAR.bit.GPIO34 = 1;
   }
 
-  /* S-Function (c2802xpwm): '<Root>/ePWM1_IGBT' incorporates:
-   *  Constant: '<S9>/Constant1'
-   */
+  /* S-Function (c28xsci_rx): '<S1>/SCI Receive' */
   {
-    EPwm1Regs.TBPRD = (uint16_T)(Openloop_voltage_control_P.Timer_period_IGBT);
+    int i;
+    int errFlg = NOERROR;
+    unsigned int recbuff[4];
+    for (i = 0; i < 4; i++)
+      recbuff[i] = 0;
+
+    /* Getting Data Head */
+    {
+      unsigned int recHead;
+      int cnt = 0;
+      int i = 0;
+      char *expHead = "S";
+      while (i < 1) {
+        scia_rcv(&recHead, 1, SHORTLOOP, 1);
+        if (recHead == expHead[i]) {
+          i++;
+        } else {
+          i = 0;
+        }
+
+        if (cnt++ > 16) {
+          errFlg = TIMEOUT;
+          goto RXERRA;
+        }
+      }
+    }
+
+    /* End of Getting Data Head */
+
+    /* Receiving data */
+    errFlg = scia_rcv(recbuff, 8, LONGLOOP, 2);
+    if (errFlg != NOERROR)
+      goto RXERRA;
+
+    /* Getting Data Tail */
+    {
+      int i;
+      char *expTail = "E";
+      unsigned int recTail[1];
+      scia_rcv(recTail, 1, LONGLOOP, 1);
+      for (i = 0; i< 1; i++) {
+        if (expTail[i] != recTail[i]) {
+          errFlg = DATAERR;
+          goto RXERRA;
+        }
+      }
+    }
+
+    /* End of Getting Data Tail */
+    memcpy( &Openloop_voltage_control_B.SCIReceive[0], recbuff, 4);
+   RXERRA:
+    asm(" NOP");
+  }
+
+  /* Product: '<S9>/Divide1' incorporates:
+   *  Gain: '<S1>/Gain1'
+   *  Product: '<S6>/Divide1'
+   */
+  rtb_Divide1_tmp = (real_T)((uint32_T)Openloop_voltage_control_P.Gain1_Gain *
+    Openloop_voltage_control_B.SCIReceive[3]) * 0.015625;
+
+  /* Product: '<S9>/Divide1' incorporates:
+   *  Constant: '<S9>/CLK frequency1'
+   */
+  rtb_Divide1 = Openloop_voltage_control_P.CLKfrequency1_Value / rtb_Divide1_tmp;
+
+  /* Product: '<S9>/Divide' incorporates:
+   *  Constant: '<S6>/V_f3'
+   *  Sum: '<S6>/Add1'
+   */
+  rtb_Divide = Openloop_voltage_control_P.V_f3_Value + (real_T)
+    Openloop_voltage_control_B.SCIReceive[2];
+
+  /* DataTypeConversion: '<S2>/Data Type Conversion2' incorporates:
+   *  Constant: '<S6>/CLK frequency'
+   *  Constant: '<S6>/V_f2'
+   *  Constant: '<S6>/V_in1'
+   *  Product: '<S6>/Divide1'
+   *  Product: '<S6>/Divide3'
+   *  Product: '<S6>/Product1'
+   *  Sum: '<S6>/Plus1'
+   */
+  rtb_Divide1_tmp = floor((((real_T)Openloop_voltage_control_B.SCIReceive[2] +
+    Openloop_voltage_control_P.V_f2_Value) -
+    Openloop_voltage_control_P.V_in1_Value) / rtb_Divide *
+    (Openloop_voltage_control_P.CLKfrequency_Value / rtb_Divide1_tmp));
+  if (rtIsNaN(rtb_Divide1_tmp) || rtIsInf(rtb_Divide1_tmp)) {
+    rtb_Divide1_tmp = 0.0;
+  } else {
+    rtb_Divide1_tmp = fmod(rtb_Divide1_tmp, 65536.0);
+  }
+
+  /* DataTypeConversion: '<S3>/Data Type Conversion1' incorporates:
+   *  DataTypeConversion: '<S2>/Data Type Conversion2'
+   */
+  rtb_MOSFET_Enable = rtb_Divide1_tmp < 0.0 ? (uint16_T)-(int16_T)(uint16_T)
+    -rtb_Divide1_tmp : (uint16_T)rtb_Divide1_tmp;
+
+  /* DataTypeConversion: '<S2>/Data Type Conversion' incorporates:
+   *  DataTypeConversion: '<S3>/Data Type Conversion4'
+   */
+  rtb_DataTypeConversion = rtb_LogicalOperator4;
+
+  /* S-Function (c2802xpwm): '<Root>/ePWM1_IGBT' */
+  {
+    EPwm1Regs.TBPRD = (uint16_T)(rtb_Divide1);
   }
 
   /*-- Update CMPA value for ePWM1 --*/
   {
-    EPwm1Regs.CMPA.half.CMPA = (uint16_T)(rtb_DataTypeConversion2);
+    EPwm1Regs.CMPA.half.CMPA = (uint16_T)(rtb_MOSFET_Enable);
   }
 
-  EPwm1Regs.AQCSFRC.bit.CSFA = rtb_IGBT_Enable;
+  EPwm1Regs.AQCSFRC.bit.CSFA = rtb_DataTypeConversion;
 
-  /* S-Function (c2802xpwm): '<Root>/ePWM2_MOSFET' incorporates:
-   *  Constant: '<S9>/Constant'
+  /* Product: '<S9>/Divide' incorporates:
+   *  Gain: '<S1>/Gain'
+   *  Product: '<S6>/Divide'
    */
+  rtb_Divide1_tmp = (real_T)((uint32_T)Openloop_voltage_control_P.Gain_Gain *
+    Openloop_voltage_control_B.SCIReceive[1]) * 0.015625;
+
+  /* Product: '<S9>/Divide' incorporates:
+   *  Constant: '<S9>/CLK frequency'
+   */
+  rtb_Divide = Openloop_voltage_control_P.CLKfrequency_Value_e / rtb_Divide1_tmp;
+
+  /* DataTypeConversion: '<S2>/Data Type Conversion' incorporates:
+   *  Constant: '<S6>/CLK frequency'
+   *  Constant: '<S6>/V_f'
+   *  Constant: '<S6>/V_f1'
+   *  Constant: '<S6>/V_in'
+   *  Product: '<S6>/Divide'
+   *  Product: '<S6>/Divide2'
+   *  Product: '<S6>/Product'
+   *  Sum: '<S6>/Add'
+   *  Sum: '<S6>/Plus'
+   */
+  rtb_Divide1_tmp = floor((((real_T)Openloop_voltage_control_B.SCIReceive[0] +
+    Openloop_voltage_control_P.V_f_Value) -
+    Openloop_voltage_control_P.V_in_Value) /
+    (Openloop_voltage_control_P.V_f1_Value + (real_T)
+     Openloop_voltage_control_B.SCIReceive[0]) *
+    (Openloop_voltage_control_P.CLKfrequency_Value / rtb_Divide1_tmp));
+  if (rtIsNaN(rtb_Divide1_tmp) || rtIsInf(rtb_Divide1_tmp)) {
+    rtb_Divide1_tmp = 0.0;
+  } else {
+    rtb_Divide1_tmp = fmod(rtb_Divide1_tmp, 65536.0);
+  }
+
+  /* DataTypeConversion: '<S2>/Data Type Conversion' */
+  rtb_DataTypeConversion = rtb_Divide1_tmp < 0.0 ? (uint16_T)-(int16_T)(uint16_T)
+    -rtb_Divide1_tmp : (uint16_T)rtb_Divide1_tmp;
+
+  /* DataTypeConversion: '<S3>/Data Type Conversion1' */
+  rtb_MOSFET_Enable = rtb_LogicalOperator5;
+
+  /* S-Function (c2802xpwm): '<Root>/ePWM2_MOSFET' */
   {
-    EPwm2Regs.TBPRD = (uint16_T)(Openloop_voltage_control_P.Timer_period_MOSFET);
+    EPwm2Regs.TBPRD = (uint16_T)(rtb_Divide);
   }
 
   /*-- Update CMPA value for ePWM2 --*/
@@ -386,9 +490,17 @@ void Openloop_voltage_control_initialize(void)
   GpioCtrlRegs.GPBDIR.all |= 0x4;
   EDIS;
 
-  /* Start for S-Function (c2802xpwm): '<Root>/ePWM1_IGBT' incorporates:
-   *  Constant: '<S9>/Constant1'
-   */
+  /* Start for S-Function (c28xsci_rx): '<S1>/SCI Receive' */
+
+  /* Initialize Openloop_voltage_control_B.SCIReceive[0] */
+  {
+    Openloop_voltage_control_B.SCIReceive[0] = (uint16_T)0.0;
+    Openloop_voltage_control_B.SCIReceive[1] = (uint16_T)0.0;
+    Openloop_voltage_control_B.SCIReceive[2] = (uint16_T)0.0;
+    Openloop_voltage_control_B.SCIReceive[3] = (uint16_T)0.0;
+  }
+
+  /* Start for S-Function (c2802xpwm): '<Root>/ePWM1_IGBT' */
 
   /*** Initialize ePWM1 modules ***/
   {
@@ -564,9 +676,7 @@ void Openloop_voltage_control_initialize(void)
     EDIS;
   }
 
-  /* Start for S-Function (c2802xpwm): '<Root>/ePWM2_MOSFET' incorporates:
-   *  Constant: '<S9>/Constant'
-   */
+  /* Start for S-Function (c2802xpwm): '<Root>/ePWM2_MOSFET' */
 
   /*** Initialize ePWM2 modules ***/
   {
@@ -759,21 +869,21 @@ void Openloop_voltage_control_initialize(void)
   Openloop_voltage_control_DW.RateTransition5_Buffer0 =
     Openloop_voltage_control_P.RateTransition5_InitialConditio;
 
-  /* SystemInitialize for Triggered SubSystem: '<S2>/Sample and Hold1' */
-  /* SystemInitialize for Outport: '<S6>/ ' incorporates:
-   *  Inport: '<S6>/In'
-   */
-  Openloop_voltage_control_B.In_g = Openloop_voltage_control_P._Y0;
-
-  /* End of SystemInitialize for SubSystem: '<S2>/Sample and Hold1' */
-
-  /* SystemInitialize for Triggered SubSystem: '<S2>/Sample and Hold2' */
+  /* SystemInitialize for Triggered SubSystem: '<S3>/Sample and Hold1' */
   /* SystemInitialize for Outport: '<S7>/ ' incorporates:
    *  Inport: '<S7>/In'
    */
+  Openloop_voltage_control_B.In_g = Openloop_voltage_control_P._Y0;
+
+  /* End of SystemInitialize for SubSystem: '<S3>/Sample and Hold1' */
+
+  /* SystemInitialize for Triggered SubSystem: '<S3>/Sample and Hold2' */
+  /* SystemInitialize for Outport: '<S8>/ ' incorporates:
+   *  Inport: '<S8>/In'
+   */
   Openloop_voltage_control_B.In = Openloop_voltage_control_P._Y0_a;
 
-  /* End of SystemInitialize for SubSystem: '<S2>/Sample and Hold2' */
+  /* End of SystemInitialize for SubSystem: '<S3>/Sample and Hold2' */
 }
 
 /* Model terminate function */

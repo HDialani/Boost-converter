@@ -37,6 +37,8 @@ void init_board ()
   IFR = 0x0000;
   InitPieCtrl();
   InitPieVectTable();
+  init_SCI();
+  init_SCI_GPIO();
   InitCpuTimers();
 
   /* initial ePWM GPIO assignment... */
