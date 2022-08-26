@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.14
+ * Model version                  : 5.21
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Fri Aug 26 10:38:51 2022
+ * C/C++ source code generated on : Fri Aug 26 13:30:09 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -124,11 +124,11 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
      Openloop_voltage_control_B.Volt_Protection));
 
   /* Outputs for Triggered SubSystem: '<S2>/Sample and Hold1' incorporates:
-   *  TriggerPort: '<S3>/Trigger'
+   *  TriggerPort: '<S6>/Trigger'
    */
   if (rtb_LogicalOperator4 &&
       (Openloop_voltage_contro_PrevZCX.SampleandHold1_Trig_ZCE != POS_ZCSIG)) {
-    /* Inport: '<S3>/In' incorporates:
+    /* Inport: '<S6>/In' incorporates:
      *  Constant: '<S2>/Constant15'
      */
     Openloop_voltage_control_B.In_g =
@@ -151,8 +151,8 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
   rtb_MOSFET_Enable = rtb_LogicalOperator4;
 
   /* DataTypeConversion: '<S1>/Data Type Conversion' incorporates:
-   *  Constant: '<S1>/Constant1'
-   *  Gain: '<S1>/Gain'
+   *  Constant: '<S4>/Constant1'
+   *  Gain: '<S4>/Gain'
    */
   tmp = floor(Openloop_voltage_control_P.Timer_period_MOSFET *
               Openloop_voltage_control_P.D_MOSFET_CCM);
@@ -167,10 +167,10 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
     (uint16_T)tmp;
 
   /* DataTypeConversion: '<S1>/Data Type Conversion2' incorporates:
-   *  Constant: '<S1>/Constant2'
-   *  Gain: '<S1>/Gain1'
+   *  Constant: '<S4>/Constant2'
+   *  Gain: '<S4>/Gain1'
    */
-  tmp = floor(6.0E+7 / Openloop_voltage_control_P.f_sw_IGBT *
+  tmp = floor(Openloop_voltage_control_P.Timer_period_IGBT *
               Openloop_voltage_control_P.D_IGBT_CCM);
   if (rtIsNaN(tmp) || rtIsInf(tmp)) {
     tmp = 0.0;
@@ -209,11 +209,11 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
     Openloop_voltage_control_P.Constant13_Value) && rtb_LogicalOperator2_tmp);
 
   /* Outputs for Triggered SubSystem: '<S2>/Sample and Hold2' incorporates:
-   *  TriggerPort: '<S4>/Trigger'
+   *  TriggerPort: '<S7>/Trigger'
    */
   if (rtb_LogicalOperator2 &&
       (Openloop_voltage_contro_PrevZCX.SampleandHold2_Trig_ZCE != POS_ZCSIG)) {
-    /* Inport: '<S4>/In' incorporates:
+    /* Inport: '<S7>/In' incorporates:
      *  Constant: '<S2>/Constant16'
      */
     Openloop_voltage_control_B.In = Openloop_voltage_control_P.Constant16_Value;
@@ -275,7 +275,12 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
       GpioDataRegs.GPBCLEAR.bit.GPIO34 = 1;
   }
 
-  /* S-Function (c2802xpwm): '<Root>/ePWM1_IGBT' */
+  /* S-Function (c2802xpwm): '<Root>/ePWM1_IGBT' incorporates:
+   *  Constant: '<S9>/Constant1'
+   */
+  {
+    EPwm1Regs.TBPRD = (uint16_T)(Openloop_voltage_control_P.Timer_period_IGBT);
+  }
 
   /*-- Update CMPA value for ePWM1 --*/
   {
@@ -284,7 +289,12 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
 
   EPwm1Regs.AQCSFRC.bit.CSFA = rtb_IGBT_Enable;
 
-  /* S-Function (c2802xpwm): '<Root>/ePWM2_MOSFET' */
+  /* S-Function (c2802xpwm): '<Root>/ePWM2_MOSFET' incorporates:
+   *  Constant: '<S9>/Constant'
+   */
+  {
+    EPwm2Regs.TBPRD = (uint16_T)(Openloop_voltage_control_P.Timer_period_MOSFET);
+  }
 
   /*-- Update CMPA value for ePWM2 --*/
   {
@@ -376,7 +386,9 @@ void Openloop_voltage_control_initialize(void)
   GpioCtrlRegs.GPBDIR.all |= 0x4;
   EDIS;
 
-  /* Start for S-Function (c2802xpwm): '<Root>/ePWM1_IGBT' */
+  /* Start for S-Function (c2802xpwm): '<Root>/ePWM1_IGBT' incorporates:
+   *  Constant: '<S9>/Constant1'
+   */
 
   /*** Initialize ePWM1 modules ***/
   {
@@ -395,7 +407,7 @@ void Openloop_voltage_control_initialize(void)
     EPwm1Regs.TBCTL.all = (EPwm1Regs.TBCTL.all & ~0x3FFF) | 0x30;
 
     /*-- Setup Time-Base (TB) Submodule --*/
-    EPwm1Regs.TBPRD = 4000;            // Time Base Period Register
+    EPwm1Regs.TBPRD = 8000;            // Time Base Period Register
 
     /* // Time-Base Phase Register
        EPwm1Regs.TBPHS.half.TBPHS               = 0;         // Phase offset register
@@ -552,7 +564,9 @@ void Openloop_voltage_control_initialize(void)
     EDIS;
   }
 
-  /* Start for S-Function (c2802xpwm): '<Root>/ePWM2_MOSFET' */
+  /* Start for S-Function (c2802xpwm): '<Root>/ePWM2_MOSFET' incorporates:
+   *  Constant: '<S9>/Constant'
+   */
 
   /*** Initialize ePWM2 modules ***/
   {
@@ -571,7 +585,7 @@ void Openloop_voltage_control_initialize(void)
     EPwm2Regs.TBCTL.all = (EPwm2Regs.TBCTL.all & ~0x3FFF) | 0x30;
 
     /*-- Setup Time-Base (TB) Submodule --*/
-    EPwm2Regs.TBPRD = 750;             // Time Base Period Register
+    EPwm2Regs.TBPRD = 1500;            // Time Base Period Register
 
     /* // Time-Base Phase Register
        EPwm2Regs.TBPHS.half.TBPHS               = 0;         // Phase offset register
@@ -746,16 +760,16 @@ void Openloop_voltage_control_initialize(void)
     Openloop_voltage_control_P.RateTransition5_InitialConditio;
 
   /* SystemInitialize for Triggered SubSystem: '<S2>/Sample and Hold1' */
-  /* SystemInitialize for Outport: '<S3>/ ' incorporates:
-   *  Inport: '<S3>/In'
+  /* SystemInitialize for Outport: '<S6>/ ' incorporates:
+   *  Inport: '<S6>/In'
    */
   Openloop_voltage_control_B.In_g = Openloop_voltage_control_P._Y0;
 
   /* End of SystemInitialize for SubSystem: '<S2>/Sample and Hold1' */
 
   /* SystemInitialize for Triggered SubSystem: '<S2>/Sample and Hold2' */
-  /* SystemInitialize for Outport: '<S4>/ ' incorporates:
-   *  Inport: '<S4>/In'
+  /* SystemInitialize for Outport: '<S7>/ ' incorporates:
+   *  Inport: '<S7>/In'
    */
   Openloop_voltage_control_B.In = Openloop_voltage_control_P._Y0_a;
 

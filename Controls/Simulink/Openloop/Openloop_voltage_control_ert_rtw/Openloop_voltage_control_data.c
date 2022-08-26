@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.14
+ * Model version                  : 5.21
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Fri Aug 26 10:38:51 2022
+ * C/C++ source code generated on : Fri Aug 26 13:30:09 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -23,24 +23,28 @@
 /* Block parameters (default storage) */
 P_Openloop_voltage_control_T Openloop_voltage_control_P = {
   /* Variable: D_IGBT_CCM
-   * Referenced by: '<S1>/Constant2'
+   * Referenced by: '<S4>/Constant2'
    */
   0.85074626865671643,
 
   /* Variable: D_MOSFET_CCM
-   * Referenced by: '<S1>/Constant1'
+   * Referenced by: '<S4>/Constant1'
    */
   0.70297029702970293,
 
+  /* Variable: Timer_period_IGBT
+   * Referenced by:
+   *   '<S4>/Gain1'
+   *   '<S9>/Constant1'
+   */
+  4000.0,
+
   /* Variable: Timer_period_MOSFET
-   * Referenced by: '<S1>/Gain'
+   * Referenced by:
+   *   '<S4>/Gain'
+   *   '<S9>/Constant'
    */
   750.0,
-
-  /* Variable: f_sw_IGBT
-   * Referenced by: '<S1>/Gain1'
-   */
-  15000.0,
 
   /* Computed Parameter: Constant3_Value
    * Referenced by: '<S2>/Constant3'
@@ -63,12 +67,12 @@ P_Openloop_voltage_control_T Openloop_voltage_control_P = {
   500U,
 
   /* Computed Parameter: _Y0
-   * Referenced by: '<S3>/ '
+   * Referenced by: '<S6>/ '
    */
   0,
 
   /* Computed Parameter: _Y0_a
-   * Referenced by: '<S4>/ '
+   * Referenced by: '<S7>/ '
    */
   0,
 

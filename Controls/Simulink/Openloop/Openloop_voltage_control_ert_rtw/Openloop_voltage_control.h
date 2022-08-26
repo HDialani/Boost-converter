@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.14
+ * Model version                  : 5.21
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Fri Aug 26 10:38:51 2022
+ * C/C++ source code generated on : Fri Aug 26 13:30:09 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -62,8 +62,8 @@ typedef struct {
   uint16_T MOSFET_Enable;              /* '<Root>/ADC_MOSFET_ON' */
   uint16_T Volt_Protection;            /* '<Root>/VoltMeas' */
   uint16_T IGBT_Enable;                /* '<Root>/ADC_IGBT_ON' */
-  boolean_T In;                        /* '<S4>/In' */
-  boolean_T In_g;                      /* '<S3>/In' */
+  boolean_T In;                        /* '<S7>/In' */
+  boolean_T In_g;                      /* '<S6>/In' */
   boolean_T RedLED;                    /* '<S2>/NOT1' */
   boolean_T GreenLED;                  /* '<S2>/NOT2' */
   boolean_T BLUELED;                   /* '<S2>/NOT3' */
@@ -84,16 +84,20 @@ typedef struct {
 /* Parameters (default storage) */
 struct P_Openloop_voltage_control_T_ {
   real_T D_IGBT_CCM;                   /* Variable: D_IGBT_CCM
-                                        * Referenced by: '<S1>/Constant2'
+                                        * Referenced by: '<S4>/Constant2'
                                         */
   real_T D_MOSFET_CCM;                 /* Variable: D_MOSFET_CCM
-                                        * Referenced by: '<S1>/Constant1'
+                                        * Referenced by: '<S4>/Constant1'
+                                        */
+  real_T Timer_period_IGBT;            /* Variable: Timer_period_IGBT
+                                        * Referenced by:
+                                        *   '<S4>/Gain1'
+                                        *   '<S9>/Constant1'
                                         */
   real_T Timer_period_MOSFET;          /* Variable: Timer_period_MOSFET
-                                        * Referenced by: '<S1>/Gain'
-                                        */
-  real_T f_sw_IGBT;                    /* Variable: f_sw_IGBT
-                                        * Referenced by: '<S1>/Gain1'
+                                        * Referenced by:
+                                        *   '<S4>/Gain'
+                                        *   '<S9>/Constant'
                                         */
   uint16_T Constant3_Value;            /* Computed Parameter: Constant3_Value
                                         * Referenced by: '<S2>/Constant3'
@@ -108,10 +112,10 @@ struct P_Openloop_voltage_control_T_ {
                                         * Referenced by: '<S2>/Constant8'
                                         */
   boolean_T _Y0;                       /* Computed Parameter: _Y0
-                                        * Referenced by: '<S3>/ '
+                                        * Referenced by: '<S6>/ '
                                         */
   boolean_T _Y0_a;                     /* Computed Parameter: _Y0_a
-                                        * Referenced by: '<S4>/ '
+                                        * Referenced by: '<S7>/ '
                                         */
   boolean_T Constant9_Value;           /* Computed Parameter: Constant9_Value
                                         * Referenced by: '<S2>/Constant9'
@@ -179,6 +183,35 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<S5>/Add' : Unused code path elimination
+ * Block '<S5>/Add1' : Unused code path elimination
+ * Block '<S5>/CLK frequency' : Unused code path elimination
+ * Block '<S5>/Divide' : Unused code path elimination
+ * Block '<S5>/Divide1' : Unused code path elimination
+ * Block '<S5>/Divide2' : Unused code path elimination
+ * Block '<S5>/Divide3' : Unused code path elimination
+ * Block '<S5>/IGBT_Vout2' : Unused code path elimination
+ * Block '<S5>/IGBT_Vout3' : Unused code path elimination
+ * Block '<S5>/MOSFET_Vout' : Unused code path elimination
+ * Block '<S5>/MOSFET_Vout1' : Unused code path elimination
+ * Block '<S5>/Plus' : Unused code path elimination
+ * Block '<S5>/Plus1' : Unused code path elimination
+ * Block '<S5>/Product' : Unused code path elimination
+ * Block '<S5>/Product1' : Unused code path elimination
+ * Block '<S5>/V_f' : Unused code path elimination
+ * Block '<S5>/V_f1' : Unused code path elimination
+ * Block '<S5>/V_f2' : Unused code path elimination
+ * Block '<S5>/V_f3' : Unused code path elimination
+ * Block '<S5>/V_in' : Unused code path elimination
+ * Block '<S5>/V_in1' : Unused code path elimination
+ * Block '<S5>/f_sw_IGBT' : Unused code path elimination
+ * Block '<S5>/f_sw_MOSFET' : Unused code path elimination
+ * Block '<S8>/CLK frequency' : Unused code path elimination
+ * Block '<S8>/CLK frequency1' : Unused code path elimination
+ * Block '<S8>/Divide' : Unused code path elimination
+ * Block '<S8>/Divide1' : Unused code path elimination
+ * Block '<S8>/f_sw_IGBT' : Unused code path elimination
+ * Block '<S8>/f_sw_MOSFET' : Unused code path elimination
  * Block '<S1>/Rate Transition' : Eliminated since input and output rates are identical
  * Block '<S1>/Rate Transition6' : Eliminated since input and output rates are identical
  * Block '<Root>/Rate Transition10' : Eliminated since input and output rates are identical
@@ -204,9 +237,14 @@ extern volatile boolean_T runModel;
  *
  * '<Root>' : 'Openloop_voltage_control'
  * '<S1>'   : 'Openloop_voltage_control/Duty Cycles'
- * '<S2>'   : 'Openloop_voltage_control/Subsystem'
- * '<S3>'   : 'Openloop_voltage_control/Subsystem/Sample and Hold1'
- * '<S4>'   : 'Openloop_voltage_control/Subsystem/Sample and Hold2'
+ * '<S2>'   : 'Openloop_voltage_control/Logic circuit'
+ * '<S3>'   : 'Openloop_voltage_control/Timer'
+ * '<S4>'   : 'Openloop_voltage_control/Duty Cycles/Using parameter.m'
+ * '<S5>'   : 'Openloop_voltage_control/Duty Cycles/using dashboard'
+ * '<S6>'   : 'Openloop_voltage_control/Logic circuit/Sample and Hold1'
+ * '<S7>'   : 'Openloop_voltage_control/Logic circuit/Sample and Hold2'
+ * '<S8>'   : 'Openloop_voltage_control/Timer/Using dashboard'
+ * '<S9>'   : 'Openloop_voltage_control/Timer/Using parameter.m'
  */
 #endif                              /* RTW_HEADER_Openloop_voltage_control_h_ */
 
