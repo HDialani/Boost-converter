@@ -44,9 +44,9 @@ MW_c28xx_board.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/TIC200~1.INS
 MW_c28xx_board.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/TIC200~1.INS/TI-CGT~1.LTS/include/machine/_limits.h
 MW_c28xx_board.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/TIC200~1.INS/TI-CGT~1.LTS/include/string.h
 MW_c28xx_board.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Openloop\Openloop_voltage_control_ert_rtw\zero_crossing_types.h
-MW_c28xx_board.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Openloop\Openloop_voltage_control_ert_rtw\DSP28xx_SciUtil.h
 MW_c28xx_board.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/shared/SUPPOR~1/tic2000/inc/IQmathLib.h
 MW_c28xx_board.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/TIC200~1.INS/TI-CGT~1.LTS/include/limits.h
+MW_c28xx_board.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Openloop\Openloop_voltage_control_ert_rtw\DSP28xx_SciUtil.h
 MW_c28xx_board.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Openloop\Openloop_voltage_control_ert_rtw\Openloop_voltage_control_types.h
 MW_c28xx_board.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Openloop\Openloop_voltage_control_ert_rtw\MW_target_hardware_resources.h
 MW_c28xx_board.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/shared/SUPPOR~1/tic2000/src/c2000SchedulerTimer.h
