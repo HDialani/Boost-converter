@@ -2,7 +2,7 @@
 
 Nice resources to learn stuff
 
-#PCB design
+# PCB design
 ## in Kicad
 https://www.youtube.com/watch?v=aVUqaB0IMh4&t=122s
 
