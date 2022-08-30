@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.28
+ * Model version                  : 5.45
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Mon Aug 29 14:11:39 2022
+ * C/C++ source code generated on : Tue Aug 30 11:57:14 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -22,29 +22,60 @@
 
 /* Block parameters (default storage) */
 P_Openloop_voltage_control_T Openloop_voltage_control_P = {
-  /* Variable: D_IGBT_CCM
-   * Referenced by: '<S5>/Constant2'
+  /* Expression: 60e6
+   * Referenced by: '<S10>/CLK frequency1'
    */
-  0.85074626865671643,
+  6.0E+7,
 
-  /* Variable: D_MOSFET_CCM
-   * Referenced by: '<S5>/Constant1'
+  /* Expression: 60e6
+   * Referenced by: '<S6>/CLK frequency'
    */
-  0.70297029702970293,
+  6.0E+7,
 
-  /* Variable: Timer_period_IGBT
-   * Referenced by:
-   *   '<S5>/Gain1'
-   *   '<S10>/Constant1'
+  /* Expression: 1.5
+   * Referenced by: '<S6>/V_f2'
    */
-  4000.0,
+  1.5,
 
-  /* Variable: Timer_period_MOSFET
-   * Referenced by:
-   *   '<S5>/Gain'
-   *   '<S10>/Constant'
+  /* Expression: 45
+   * Referenced by: '<S6>/V_in1'
    */
-  750.0,
+  45.0,
+
+  /* Expression: 1.5
+   * Referenced by: '<S6>/V_f3'
+   */
+  1.5,
+
+  /* Expression: 60e6
+   * Referenced by: '<S10>/CLK frequency'
+   */
+  6.0E+7,
+
+  /* Expression: 1.5
+   * Referenced by: '<S6>/V_f'
+   */
+  1.5,
+
+  /* Expression: 45
+   * Referenced by: '<S6>/V_in'
+   */
+  45.0,
+
+  /* Expression: 1.5
+   * Referenced by: '<S6>/V_f1'
+   */
+  1.5,
+
+  /* Computed Parameter: Gain1_Gain
+   * Referenced by: '<S1>/Gain1'
+   */
+  64000U,
+
+  /* Computed Parameter: Gain_Gain
+   * Referenced by: '<S1>/Gain'
+   */
+  64000U,
 
   /* Computed Parameter: Constant3_Value
    * Referenced by: '<S3>/Constant3'
@@ -67,12 +98,12 @@ P_Openloop_voltage_control_T Openloop_voltage_control_P = {
   500U,
 
   /* Computed Parameter: _Y0
-   * Referenced by: '<S7>/ '
+   * Referenced by: '<S8>/ '
    */
   0,
 
   /* Computed Parameter: _Y0_a
-   * Referenced by: '<S8>/ '
+   * Referenced by: '<S9>/ '
    */
   0,
 

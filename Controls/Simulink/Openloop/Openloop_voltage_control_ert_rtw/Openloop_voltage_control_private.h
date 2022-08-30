@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.28
+ * Model version                  : 5.45
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Mon Aug 29 14:11:39 2022
+ * C/C++ source code generated on : Tue Aug 30 11:57:14 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -71,9 +71,9 @@ preprocessor word size checks.
 
 /* Skipping ulong_long/long_long check: insufficient preprocessor integer range. */
 void InitAdc (void);
-void config_ADC_SOC0 (void);
 void config_ADC_SOC8 (void);
 void config_ADC_SOC2 (void);
+void config_ADC_SOC0 (void);
 extern uint16_T MW_adcInitFlag;
 
 #endif                      /* RTW_HEADER_Openloop_voltage_control_private_h_ */
