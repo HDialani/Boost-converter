@@ -24,3 +24,11 @@ D_IGBT_CCM=(V_IGBT_out+V_diode_forward_drop-V_in)/(V_IGBT_out+V_diode_forward_dr
 % Timer stuff
 Timer_period_MOSFET=round(60e6/f_sw_MOSFET);
 Timer_period_IGBT=round(60e6/f_sw_IGBT);
+
+% PI controllers
+
+Kp_IGBT=0;
+Ki_IGBT=0;
+
+Kp_MOSFET=0;
+Ki_MOSFET=0;
