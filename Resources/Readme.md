@@ -9,6 +9,9 @@ https://www.youtube.com/watch?v=aVUqaB0IMh4&t=122s
 # LTspice simulations
 https://www.youtube.com/c/FesZElectronics
 
+## Adding a new component in your library
+https://www.youtube.com/watch?v=kK_R89bk5s4
+
 # Power electronics theory
 
 ## INTRODUCTION TO POWER ELECTRONICS
