@@ -6,7 +6,7 @@ Nice resources to learn stuff
 ## in Kicad
 https://www.youtube.com/watch?v=aVUqaB0IMh4&t=122s
 
-# LTspice simulations
+# LTSpice simulations
 https://www.youtube.com/c/FesZElectronics
 
 ## Adding a new component in your library
