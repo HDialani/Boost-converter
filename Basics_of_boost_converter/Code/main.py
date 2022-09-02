@@ -1,36 +1,27 @@
-# Author: Hitesh Dialani
-# Last modified: 24-04-22
+"""
+@Author: Hitesh Dialani
+@Date: 03-09-2022
+"""
 
-import numpy as np
 import matplotlib.pyplot as plt
+import Different_plots
+import CCM
+import DCM
 
-def operation_mode(L,F_s,Load):
-   D_length = 100
-   D_0_to_1 = np.linspace(0, 1, D_length)
-   K_crit = D_0_to_1 * (1 - D_0_to_1) ** 2
-
-   K = 2 * L * F_s / Load
-   K = K * np.ones(D_length)
-   fig = plt.figure()
-   plt.plot(D_0_to_1, K_crit, color='r', label='K_crit', )
-   plt.plot(D_0_to_1, K, color='g', label='K')
-   plt.xlabel("Duty cycle")
-   plt.legend()
-   plt.title('If K>K_crit you are in CCM and if K<K_crit you are in DCM ')
-   return fig
-
-
-F_s = float(8.0e04)   # Hz
+F_sw = float(8.0e04)   # Hz
 V_out = int(150)   # V
 V_in = int(45)   # V
 Load = int(400)    # Ohm
 Delta_I_Ratio = float(0.4)
-
-### Continous Conduction Mode  FIX THE IMPORT PROBLEM
-# import CCM
-#
-# CCM.CCMPlots()
-
 L=0.75/1000
-K=operation_mode(0.75/1000,F_s,Load)
+
+### Continous Conduction Mode
+CCM.CCMPlots(V_in,V_out,Load,F_sw,Delta_I_Ratio)
+
+### Discontinous Conduction Mode
+
+### Duty cycle Plots
+# Different_plots.operation_mode(L,F_sw,Load)
+# Different_plots.CCM_V_out_duty_cycle(Load,V_in)
+
 plt.show()

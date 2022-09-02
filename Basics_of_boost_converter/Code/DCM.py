@@ -1,25 +1,30 @@
+"""
+@Author: Hitesh Dialani
+@Date: 03-09-2022
+"""
+
 ### Discontinous Conduction Mode
 import math
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-from main import F_s
+from main import F_sw
 from main import V_out
 from main import V_in
 from main import Load
 from main import Delta_I_Ratio
 
 L=0.1/1000
-D=math.sqrt(((2*V_out**2/Load*L*F_s)*(V_out-V_in)/(V_out*V_in**2)))
+D=math.sqrt(((2*V_out**2/Load*L*F_sw)*(V_out-V_in)/(V_out*V_in**2)))
 
-Delta1=(2*(V_out/Load)*L*F_s)/(V_in*D)
+Delta1=(2*(V_out/Load)*L*F_sw)/(V_in*D)
 
 Delta2=1-D-Delta1
 
 S=1000 # Sampling resoltion
 N=2 #Number of signals
-Ts=1/F_s #s
+Ts=1/F_sw #s
 X= np.arange(0,N*Ts,N*Ts/S)
 
 V_L=[]

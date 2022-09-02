@@ -1,14 +1,14 @@
+"""
+@Author: Hitesh Dialani
+@Date: 03-09-2022
+"""
 ### Continous Conduction Mode
 import numpy as np
 import matplotlib.pyplot as plt
 
-from main import F_s
-from main import V_out
-from main import V_in
-from main import Load
-from main import Delta_I_Ratio
 
-def CCMPlots():
+
+def CCMPlots(V_in,V_out,Load,F_sw,Delta_I_Ratio):
     D = 1 - V_in / V_out
     I_out = V_out / Load  # A
     I_in = V_out * I_out / V_in  # A
@@ -17,7 +17,7 @@ def CCMPlots():
 
     S = 1000  # Sampling resolution
     N = 4  # Number of signals, needs to be an even number
-    Ts = 1 / F_s  # s
+    Ts = 1 / F_sw  # s
     X = np.arange(0, N * Ts, N * Ts / S)
 
     V_sw = []
@@ -73,6 +73,7 @@ def CCMPlots():
             -I_out + I_in + I_ripple - (np.arange(Ts / S, (1 - D) * Ts, N * Ts / S)) * 2 * I_ripple / ((1 - D) * Ts))
         I_c.extend(I_intermediate2)
 
+    fig = plt.figure()
     plt.figure(1)
     plt.subplot(211)
     plt.plot(1e6 * X, V_sw)
@@ -137,4 +138,4 @@ def CCMPlots():
     plt.ylabel('$I_{c}$ [$A$]')
     plt.suptitle('Capacitor')
     plt.show()
-    return None
+    return fig
