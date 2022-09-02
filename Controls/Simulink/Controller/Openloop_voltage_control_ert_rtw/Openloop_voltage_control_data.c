@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.52
+ * Model version                  : 5.54
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Thu Sep  1 14:10:25 2022
+ * C/C++ source code generated on : Thu Sep  1 16:49:16 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -22,28 +22,23 @@
 
 /* Block parameters (default storage) */
 P_Openloop_voltage_control_T Openloop_voltage_control_P = {
+  /* Mask Parameter: DiscretePIDController2_InitialC
+   * Referenced by: '<S91>/Integrator'
+   */
+  { { 0ULL, 0ULL } },
+
+  /* Mask Parameter: DiscretePIDController1_InitialC
+   * Referenced by: '<S43>/Integrator'
+   */
+  { { 0ULL, 0ULL } },
+
   /* Expression: 60e6
    * Referenced by: '<S111>/CLK frequency'
    */
   6.0E+7,
 
-  /* Expression: 1.5
-   * Referenced by: '<S9>/V_f'
-   */
-  1.5,
-
-  /* Expression: 45
-   * Referenced by: '<S9>/V_in'
-   */
-  45.0,
-
-  /* Expression: 1.5
-   * Referenced by: '<S9>/V_f1'
-   */
-  1.5,
-
   /* Expression: 60e6
-   * Referenced by: '<S9>/CLK frequency'
+   * Referenced by: '<S7>/CLK frequency'
    */
   6.0E+7,
 
@@ -52,20 +47,15 @@ P_Openloop_voltage_control_T Openloop_voltage_control_P = {
    */
   6.0E+7,
 
-  /* Expression: 1.5
-   * Referenced by: '<S9>/V_f2'
+  /* Computed Parameter: Opamp_converter_Gain
+   * Referenced by: '<S7>/Opamp_converter'
    */
-  1.5,
+  2852126720U,
 
-  /* Expression: 45
-   * Referenced by: '<S9>/V_in1'
+  /* Computed Parameter: uADC_resolution_Gain
+   * Referenced by: '<S7>/1//ADC_resolution'
    */
-  45.0,
-
-  /* Expression: 1.5
-   * Referenced by: '<S9>/V_f3'
-   */
-  1.5,
+  43691U,
 
   /* Computed Parameter: Gain_Gain
    * Referenced by: '<S1>/Gain'

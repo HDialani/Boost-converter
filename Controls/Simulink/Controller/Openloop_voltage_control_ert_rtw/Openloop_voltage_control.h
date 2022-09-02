@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.52
+ * Model version                  : 5.54
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Thu Sep  1 14:10:25 2022
+ * C/C++ source code generated on : Thu Sep  1 16:49:16 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -35,6 +35,9 @@
 #endif                           /* Openloop_voltage_control_COMMON_INCLUDES_ */
 
 #include "Openloop_voltage_control_types.h"
+
+/* Shared type includes */
+#include "multiword_types.h"
 #include "MW_target_hardware_resources.h"
 #include "rt_nonfinite.h"
 #include "rtGetInf.h"
@@ -74,6 +77,8 @@ typedef struct {
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
+  uint128m_T Integrator_DSTATE;        /* '<S91>/Integrator' */
+  uint128m_T Integrator_DSTATE_i;      /* '<S43>/Integrator' */
   volatile boolean_T RateTransition5_Buffer0;/* '<Root>/Rate Transition5' */
 } DW_Openloop_voltage_control_T;
 
@@ -85,33 +90,29 @@ typedef struct {
 
 /* Parameters (default storage) */
 struct P_Openloop_voltage_control_T_ {
+  uint128m_T DiscretePIDController2_InitialC;
+                              /* Mask Parameter: DiscretePIDController2_InitialC
+                               * Referenced by: '<S91>/Integrator'
+                               */
+  uint128m_T DiscretePIDController1_InitialC;
+                              /* Mask Parameter: DiscretePIDController1_InitialC
+                               * Referenced by: '<S43>/Integrator'
+                               */
   real_T CLKfrequency_Value;           /* Expression: 60e6
                                         * Referenced by: '<S111>/CLK frequency'
                                         */
-  real_T V_f_Value;                    /* Expression: 1.5
-                                        * Referenced by: '<S9>/V_f'
-                                        */
-  real_T V_in_Value;                   /* Expression: 45
-                                        * Referenced by: '<S9>/V_in'
-                                        */
-  real_T V_f1_Value;                   /* Expression: 1.5
-                                        * Referenced by: '<S9>/V_f1'
-                                        */
-  real_T CLKfrequency_Value_e;         /* Expression: 60e6
-                                        * Referenced by: '<S9>/CLK frequency'
+  real_T CLKfrequency_Value_k;         /* Expression: 60e6
+                                        * Referenced by: '<S7>/CLK frequency'
                                         */
   real_T CLKfrequency1_Value;          /* Expression: 60e6
                                         * Referenced by: '<S111>/CLK frequency1'
                                         */
-  real_T V_f2_Value;                   /* Expression: 1.5
-                                        * Referenced by: '<S9>/V_f2'
-                                        */
-  real_T V_in1_Value;                  /* Expression: 45
-                                        * Referenced by: '<S9>/V_in1'
-                                        */
-  real_T V_f3_Value;                   /* Expression: 1.5
-                                        * Referenced by: '<S9>/V_f3'
-                                        */
+  uint32_T Opamp_converter_Gain;     /* Computed Parameter: Opamp_converter_Gain
+                                      * Referenced by: '<S7>/Opamp_converter'
+                                      */
+  uint16_T uADC_resolution_Gain;     /* Computed Parameter: uADC_resolution_Gain
+                                      * Referenced by: '<S7>/1//ADC_resolution'
+                                      */
   uint16_T Gain_Gain;                  /* Computed Parameter: Gain_Gain
                                         * Referenced by: '<S1>/Gain'
                                         */
@@ -202,27 +203,27 @@ extern volatile boolean_T runModel;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<S7>/CLK frequency' : Unused code path elimination
- * Block '<S40>/IProd Out' : Unused code path elimination
- * Block '<S43>/Integrator' : Unused code path elimination
- * Block '<S48>/PProd Out' : Unused code path elimination
- * Block '<S52>/Sum' : Unused code path elimination
- * Block '<S88>/IProd Out' : Unused code path elimination
- * Block '<S91>/Integrator' : Unused code path elimination
- * Block '<S96>/PProd Out' : Unused code path elimination
- * Block '<S100>/Sum' : Unused code path elimination
- * Block '<S7>/Divide' : Unused code path elimination
- * Block '<S7>/Divide1' : Unused code path elimination
- * Block '<S7>/Divide2' : Unused code path elimination
- * Block '<S7>/Divide3' : Unused code path elimination
- * Block '<S7>/Product' : Unused code path elimination
- * Block '<S7>/Product1' : Unused code path elimination
- * Block '<S7>/Sum' : Unused code path elimination
- * Block '<S7>/Sum1' : Unused code path elimination
  * Block '<S8>/Constant1' : Unused code path elimination
  * Block '<S8>/Constant2' : Unused code path elimination
  * Block '<S8>/Gain' : Unused code path elimination
  * Block '<S8>/Gain1' : Unused code path elimination
+ * Block '<S9>/Add' : Unused code path elimination
+ * Block '<S9>/Add1' : Unused code path elimination
+ * Block '<S9>/CLK frequency' : Unused code path elimination
+ * Block '<S9>/Divide' : Unused code path elimination
+ * Block '<S9>/Divide1' : Unused code path elimination
+ * Block '<S9>/Divide2' : Unused code path elimination
+ * Block '<S9>/Divide3' : Unused code path elimination
+ * Block '<S9>/Plus' : Unused code path elimination
+ * Block '<S9>/Plus1' : Unused code path elimination
+ * Block '<S9>/Product' : Unused code path elimination
+ * Block '<S9>/Product1' : Unused code path elimination
+ * Block '<S9>/V_f' : Unused code path elimination
+ * Block '<S9>/V_f1' : Unused code path elimination
+ * Block '<S9>/V_f2' : Unused code path elimination
+ * Block '<S9>/V_f3' : Unused code path elimination
+ * Block '<S9>/V_in' : Unused code path elimination
+ * Block '<S9>/V_in1' : Unused code path elimination
  * Block '<S112>/Constant' : Unused code path elimination
  * Block '<S112>/Constant1' : Unused code path elimination
  * Block '<S2>/Rate Transition' : Eliminated since input and output rates are identical

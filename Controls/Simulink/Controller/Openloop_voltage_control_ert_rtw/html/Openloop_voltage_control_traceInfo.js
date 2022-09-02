@@ -521,6 +521,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["Openloop_voltage_control:466"] = {rtwname: "<S7>/IGBT_Voltage_Kp"};
 	this.rtwnameHashMap["<S7>/IGBT_Voltage_Ki"] = {sid: "Openloop_voltage_control:467"};
 	this.sidHashMap["Openloop_voltage_control:467"] = {rtwname: "<S7>/IGBT_Voltage_Ki"};
+	this.rtwnameHashMap["<S7>/1//ADC_resolution"] = {sid: "Openloop_voltage_control:469"};
+	this.sidHashMap["Openloop_voltage_control:469"] = {rtwname: "<S7>/1//ADC_resolution"};
 	this.rtwnameHashMap["<S7>/CLK frequency"] = {sid: "Openloop_voltage_control:434"};
 	this.sidHashMap["Openloop_voltage_control:434"] = {rtwname: "<S7>/CLK frequency"};
 	this.rtwnameHashMap["<S7>/Discrete PID Controller1"] = {sid: "Openloop_voltage_control:398"};
@@ -535,6 +537,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["Openloop_voltage_control:435"] = {rtwname: "<S7>/Divide2"};
 	this.rtwnameHashMap["<S7>/Divide3"] = {sid: "Openloop_voltage_control:436"};
 	this.sidHashMap["Openloop_voltage_control:436"] = {rtwname: "<S7>/Divide3"};
+	this.rtwnameHashMap["<S7>/Opamp_converter"] = {sid: "Openloop_voltage_control:471"};
+	this.sidHashMap["Openloop_voltage_control:471"] = {rtwname: "<S7>/Opamp_converter"};
 	this.rtwnameHashMap["<S7>/Product"] = {sid: "Openloop_voltage_control:437"};
 	this.sidHashMap["Openloop_voltage_control:437"] = {rtwname: "<S7>/Product"};
 	this.rtwnameHashMap["<S7>/Product1"] = {sid: "Openloop_voltage_control:438"};
