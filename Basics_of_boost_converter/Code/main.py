@@ -16,9 +16,11 @@ Delta_I_Ratio = float(0.4)
 L=0.75/1000
 
 ### Continous Conduction Mode
-CCM.CCMPlots(V_in,V_out,Load,F_sw,Delta_I_Ratio)
+# CCM.CCMPlots(V_in,V_out,Load,F_sw,Delta_I_Ratio)
 
 ### Discontinous Conduction Mode
+I_ripple_DCM = 2.5
+DCM.DCMPlots(V_in,V_out,Load,F_sw,I_ripple_DCM)
 
 ### Duty cycle Plots
 # Different_plots.operation_mode(L,F_sw,Load)
