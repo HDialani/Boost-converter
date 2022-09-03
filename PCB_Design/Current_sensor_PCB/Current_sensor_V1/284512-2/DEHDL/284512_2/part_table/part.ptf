@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART '284512_2'
+CLASS = IO
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "ARROW_PART_NUMBER", "ARROW_PRICE/STOCK", "MOUSER_TESTING_PART_NUMBER", "MOUSER_TESTING_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "TE Connectivity", "284512-2" (!) = "", "SHDRRA2W82P0X350_1X2_900X920X745P", "Header, Shrouded - Right Angle PTH Box", "571-284512-2", "https://www.mouser.co.uk/ProductDetail/TE-Connectivity/284512-2?qs=woBvfblj%2FzyGym3MfMx1sA%3D%3D", "284512-2", "https://www.arrow.com/en/products/284512-2/te-connectivity?region=nac", "", "", "Termi-Block Header 2 way pcb r/a TE Connectivity Buchanan Series, 3.5mm Pitch 2 Way 1 Row Right Angle PCB Terminal Block, Through Hole", "https://componentsearchengine.com/Datasheets/1/284512-2.pdf", "7.45 mm"
+END_PART
+
+END.
