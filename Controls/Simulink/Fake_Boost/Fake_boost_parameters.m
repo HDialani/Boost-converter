@@ -15,5 +15,5 @@ V_IGBT_out=300;
 D_IGBT=(V_IGBT_out+V_f-V_DC)/(V_IGBT_out+V_f)*100;
 
 
-Kp1=0.6;
-Ki1=4;
+Kp1=0.8;
+Ki1=5;

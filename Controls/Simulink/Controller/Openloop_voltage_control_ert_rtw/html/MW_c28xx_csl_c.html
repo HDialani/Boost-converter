@@ -91,7 +91,7 @@
 <tr name="40" id="40">
 <td><a id="l40" class='ln'>40</a></td><td>  <a id="40c3" class="tk">SciaRegs</a>.<a id="40c12" class="tk">SCICTL1</a>.<a id="40c20" class="tk">bit</a>.<a id="40c24" class="tk">SWRESET</a> = 1;    <span class="ct">/*Software reset*/</span></td></tr>
 <tr name="41" id="41">
-<td><a id="l41" class='ln'>41</a></td><td>  <a id="41c3" class="tk">SciaRegs</a>.<a id="41c12" class="tk">SCICTL1</a>.<a id="41c20" class="tk">bit</a>.<a id="41c24" class="tk">TXENA</a> = 0;      <span class="ct">/* SCI transmitter enable*/</span></td></tr>
+<td><a id="l41" class='ln'>41</a></td><td>  <a id="41c3" class="tk">SciaRegs</a>.<a id="41c12" class="tk">SCICTL1</a>.<a id="41c20" class="tk">bit</a>.<a id="41c24" class="tk">TXENA</a> = 1;      <span class="ct">/* SCI transmitter enable*/</span></td></tr>
 <tr name="42" id="42">
 <td><a id="l42" class='ln'>42</a></td><td>  <a id="42c3" class="tk">SciaRegs</a>.<a id="42c12" class="tk">SCICTL1</a>.<a id="42c20" class="tk">bit</a>.<a id="42c24" class="tk">RXENA</a> = 1;      <span class="ct">/* SCI receiver enable*/</span></td></tr>
 <tr name="43" id="43">
@@ -135,27 +135,31 @@
 <tr name="62" id="62">
 <td><a id="l62" class='ln'>62</a></td><td>  <a id="62c3" class="tk">GpioCtrlRegs</a>.<a id="62c16" class="tk">GPAMUX2</a>.<a id="62c24" class="tk">bit</a>.<a id="62c28" class="tk">GPIO28</a> = 1; <span class="ct">/*Configure GPIO28 as SCIRXDA*/</span></td></tr>
 <tr name="63" id="63">
-<td><a id="l63" class='ln'>63</a></td><td>  <a id="63c3" class="tk">EDIS</a>;</td></tr>
+<td><a id="l63" class='ln'>63</a></td><td>  <a id="63c3" class="tk">GpioCtrlRegs</a>.<a id="63c16" class="tk">GPAPUD</a>.<a id="63c23" class="tk">bit</a>.<a id="63c27" class="tk">GPIO29</a> = 0;  <span class="ct">/*Enable pull-up for GPIO29*/</span></td></tr>
 <tr name="64" id="64">
-<td><a id="l64" class='ln'>64</a></td><td><span class="br">}</span></td></tr>
+<td><a id="l64" class='ln'>64</a></td><td>  <a id="64c3" class="tk">GpioCtrlRegs</a>.<a id="64c16" class="tk">GPAMUX2</a>.<a id="64c24" class="tk">bit</a>.<a id="64c28" class="tk">GPIO29</a> = 1; <span class="ct">/*Configure GPIO29 as SCITXDA*/</span></td></tr>
 <tr name="65" id="65">
-<td><a id="l65" class='ln'>65</a></td><td></td></tr>
+<td><a id="l65" class='ln'>65</a></td><td>  <a id="65c3" class="tk">EDIS</a>;</td></tr>
 <tr name="66" id="66">
-<td><a id="l66" class='ln'>66</a></td><td><span class="kw">void</span> <a id="66c6" class="tk">configureGPIOExtInterrupt</a> (<span class="kw">void</span>)</td></tr>
+<td><a id="l66" class='ln'>66</a></td><td><span class="br">}</span></td></tr>
 <tr name="67" id="67">
-<td><a id="l67" class='ln'>67</a></td><td><span class="br">{</span></td></tr>
+<td><a id="l67" class='ln'>67</a></td><td></td></tr>
 <tr name="68" id="68">
-<td><a id="l68" class='ln'>68</a></td><td><span class="br">}</span></td></tr>
+<td><a id="l68" class='ln'>68</a></td><td><span class="kw">void</span> <a id="68c6" class="tk">configureGPIOExtInterrupt</a> (<span class="kw">void</span>)</td></tr>
 <tr name="69" id="69">
-<td><a id="l69" class='ln'>69</a></td><td></td></tr>
+<td><a id="l69" class='ln'>69</a></td><td><span class="br">{</span></td></tr>
 <tr name="70" id="70">
-<td><a id="l70" class='ln'>70</a></td><td><span class="kw">void</span> <a id="70c6" class="tk">enableExtInterrupt</a> (<span class="kw">void</span>)</td></tr>
+<td><a id="l70" class='ln'>70</a></td><td><span class="br">}</span></td></tr>
 <tr name="71" id="71">
-<td><a id="l71" class='ln'>71</a></td><td><span class="br">{</span></td></tr>
+<td><a id="l71" class='ln'>71</a></td><td></td></tr>
 <tr name="72" id="72">
-<td><a id="l72" class='ln'>72</a></td><td><span class="br">}</span></td></tr>
+<td><a id="l72" class='ln'>72</a></td><td><span class="kw">void</span> <a id="72c6" class="tk">enableExtInterrupt</a> (<span class="kw">void</span>)</td></tr>
 <tr name="73" id="73">
-<td><a id="l73" class='ln'>73</a></td><td></td></tr>
+<td><a id="l73" class='ln'>73</a></td><td><span class="br">{</span></td></tr>
+<tr name="74" id="74">
+<td><a id="l74" class='ln'>74</a></td><td><span class="br">}</span></td></tr>
+<tr name="75" id="75">
+<td><a id="l75" class='ln'>75</a></td><td></td></tr>
 </table>
 </pre>
 </body>

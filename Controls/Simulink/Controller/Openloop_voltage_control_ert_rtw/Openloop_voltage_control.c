@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.54
+ * Model version                  : 5.64
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Thu Sep  1 16:49:16 2022
+ * C/C++ source code generated on : Mon Sep  5 11:54:25 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -63,6 +63,114 @@ void uMultiWord2MultiWord(const uint64_T u1[], int16_T n1, uint64_T y[], int16_T
   if (n > n1) {
     for (i = nm; i < n; i++) {
       y[i] = 0ULL;
+    }
+  }
+}
+
+void uMultiWordShr(const uint64_T u1[], int16_T n1, uint16_T n2, uint64_T y[],
+                   int16_T n)
+{
+  uint64_T u1i;
+  uint64_T yi;
+  int16_T i;
+  int16_T i1;
+  int16_T nb;
+  int16_T nc;
+  uint16_T nr;
+  nb = (int16_T)(n2 >> 6U);
+  i = 0;
+  if (nb < n1) {
+    nc = n + nb;
+    if (nc > n1) {
+      nc = n1;
+    }
+
+    nr = n2 - ((uint16_T)nb << 6U);
+    if (nr > 0U) {
+      u1i = u1[nb];
+      for (i1 = nb + 1; i1 < nc; i1++) {
+        yi = u1i >> nr;
+        u1i = u1[i1];
+        y[i] = u1i << (64U - nr) | yi;
+        i++;
+      }
+
+      yi = u1i >> nr;
+      if (nc < n1) {
+        yi |= u1[nc] << (64U - nr);
+      }
+
+      y[i] = yi;
+      i++;
+    } else {
+      for (i1 = nb; i1 < nc; i1++) {
+        y[i] = u1[i1];
+        i++;
+      }
+    }
+  }
+
+  while (i < n) {
+    y[i] = 0ULL;
+    i++;
+  }
+}
+
+void uMultiWordMul(const uint64_T u1[], int16_T n1, const uint64_T u2[], int16_T
+                   n2, uint64_T y[], int16_T n)
+{
+  uint64_T a0;
+  uint64_T a1;
+  uint64_T b1;
+  uint64_T cb;
+  uint64_T u1i;
+  uint64_T w01;
+  uint64_T w10;
+  uint64_T yk;
+  int16_T i;
+  int16_T j;
+  int16_T k;
+  int16_T ni;
+
+  /* Initialize output to zero */
+  for (k = 0; k < n; k++) {
+    y[k] = 0ULL;
+  }
+
+  for (i = 0; i < n1; i++) {
+    cb = 0ULL;
+    u1i = u1[i];
+    a1 = u1i >> 32U;
+    a0 = u1i & 4294967295ULL;
+    ni = n - i;
+    ni = n2 <= ni ? n2 : ni;
+    k = i;
+    for (j = 0; j < ni; j++) {
+      u1i = u2[j];
+      b1 = u1i >> 32U;
+      u1i &= 4294967295ULL;
+      w10 = a1 * u1i;
+      w01 = a0 * b1;
+      yk = y[k] + cb;
+      cb = (uint64_T)(yk < cb);
+      u1i *= a0;
+      yk += u1i;
+      cb += (yk < u1i);
+      u1i = w10 << 32U;
+      yk += u1i;
+      cb += (yk < u1i);
+      u1i = w01 << 32U;
+      yk += u1i;
+      cb += (yk < u1i);
+      y[k] = yk;
+      cb += w10 >> 32U;
+      cb += w01 >> 32U;
+      cb += a1 * b1;
+      k++;
+    }
+
+    if (k < n) {
+      y[k] = cb;
     }
   }
 }
@@ -134,114 +242,6 @@ void MultiWordAdd(const uint64_T u1[], const uint64_T u2[], uint64_T y[],
   }
 }
 
-void uMultiWordMul(const uint64_T u1[], int16_T n1, const uint64_T u2[], int16_T
-                   n2, uint64_T y[], int16_T n)
-{
-  uint64_T a0;
-  uint64_T a1;
-  uint64_T b1;
-  uint64_T cb;
-  uint64_T u1i;
-  uint64_T w01;
-  uint64_T w10;
-  uint64_T yk;
-  int16_T i;
-  int16_T j;
-  int16_T k;
-  int16_T ni;
-
-  /* Initialize output to zero */
-  for (k = 0; k < n; k++) {
-    y[k] = 0ULL;
-  }
-
-  for (i = 0; i < n1; i++) {
-    cb = 0ULL;
-    u1i = u1[i];
-    a1 = u1i >> 32U;
-    a0 = u1i & 4294967295ULL;
-    ni = n - i;
-    ni = n2 <= ni ? n2 : ni;
-    k = i;
-    for (j = 0; j < ni; j++) {
-      u1i = u2[j];
-      b1 = u1i >> 32U;
-      u1i &= 4294967295ULL;
-      w10 = a1 * u1i;
-      w01 = a0 * b1;
-      yk = y[k] + cb;
-      cb = (uint64_T)(yk < cb);
-      u1i *= a0;
-      yk += u1i;
-      cb += (yk < u1i);
-      u1i = w10 << 32U;
-      yk += u1i;
-      cb += (yk < u1i);
-      u1i = w01 << 32U;
-      yk += u1i;
-      cb += (yk < u1i);
-      y[k] = yk;
-      cb += w10 >> 32U;
-      cb += w01 >> 32U;
-      cb += a1 * b1;
-      k++;
-    }
-
-    if (k < n) {
-      y[k] = cb;
-    }
-  }
-}
-
-void uMultiWordShr(const uint64_T u1[], int16_T n1, uint16_T n2, uint64_T y[],
-                   int16_T n)
-{
-  uint64_T u1i;
-  uint64_T yi;
-  int16_T i;
-  int16_T i1;
-  int16_T nb;
-  int16_T nc;
-  uint16_T nr;
-  nb = (int16_T)(n2 >> 6U);
-  i = 0;
-  if (nb < n1) {
-    nc = n + nb;
-    if (nc > n1) {
-      nc = n1;
-    }
-
-    nr = n2 - ((uint16_T)nb << 6U);
-    if (nr > 0U) {
-      u1i = u1[nb];
-      for (i1 = nb + 1; i1 < nc; i1++) {
-        yi = u1i >> nr;
-        u1i = u1[i1];
-        y[i] = u1i << (64U - nr) | yi;
-        i++;
-      }
-
-      yi = u1i >> nr;
-      if (nc < n1) {
-        yi |= u1[nc] << (64U - nr);
-      }
-
-      y[i] = yi;
-      i++;
-    } else {
-      for (i1 = nb; i1 < nc; i1++) {
-        y[i] = u1[i1];
-        i++;
-      }
-    }
-  }
-
-  while (i < n) {
-    y[i] = 0ULL;
-    i++;
-  }
-}
-
 void MultiWordUnsignedWrap(const uint64_T u1[], int16_T n1, uint16_T n2,
   uint64_T y[])
 {
@@ -291,33 +291,34 @@ static void rate_monotonic_scheduler(void)
 void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
 {
   /* local block i/o variables */
-  real_T rtb_Product1;
   real_T rtb_Divide1_g;
+  real_T rtb_Divide_m;
   uint16_T rtb_IGBT_Enable;
+  uint16_T rtb_DataTypeConversion;
+  uint16_T rtb_MOSFET_Enable;
   uint16_T rtb_DataTypeConversion2;
-  static const uint128m_T tmp_a = { { 1152921504606847ULL, 0ULL }/* chunks */
+  static const uint128m_T tmp_9 = { { 1152921504606847ULL, 0ULL }/* chunks */
   };
 
   uint128m_T tmp;
   uint128m_T tmp_2;
   uint128m_T tmp_3;
   uint128m_T tmp_4;
-  uint128m_T tmp_8;
-  uint128m_T tmp_9;
+  uint128m_T tmp_5;
   uint192m_T tmp_0;
   uint192m_T tmp_1;
-  uint192m_T tmp_6;
   uint192m_T tmp_7;
-  real_T rtb_Product1_tmp;
-  uint64_T rtb_Divide;
-  uint64_T rtb_Divide1;
-  uint64_T tmp_5;
+  uint192m_T tmp_8;
+  real_T rtb_Switch1;
+  uint64_T rtb_Opamp_converter;
+  uint64_T rtb_Sum1;
+  uint64_T tmp_6;
   int16_T rtb_y1;
   int16_T rtb_y2;
   boolean_T rtb_LogicalOperator2;
+  boolean_T rtb_LogicalOperator2_tmp;
   boolean_T rtb_LogicalOperator4;
   boolean_T rtb_LogicalOperator4_tmp;
-  boolean_T rtb_RelationalOperator1;
   boolean_T rtb_RelationalOperator3;
 
   {                                    /* Sample time: [0.001s, 0.0s] */
@@ -340,8 +341,8 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
   {
     int i;
     int errFlg = NOERROR;
-    unsigned int recbuff[9];
-    for (i = 0; i < 9; i++)
+    unsigned int recbuff[10];
+    for (i = 0; i < 10; i++)
       recbuff[i] = 0;
 
     /* Getting Data Head */
@@ -368,7 +369,7 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
     /* End of Getting Data Head */
 
     /* Receiving data */
-    errFlg = scia_rcv(recbuff, 18, LONGLOOP, 2);
+    errFlg = scia_rcv(recbuff, 20, LONGLOOP, 2);
     if (errFlg != NOERROR)
       goto RXERRA;
 
@@ -387,24 +388,10 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
     }
 
     /* End of Getting Data Tail */
-    memcpy( &Openloop_voltage_control_B.SCIReceive[0], recbuff, 9);
+    memcpy( &Openloop_voltage_control_B.SCIReceive[0], recbuff, 10);
    RXERRA:
     asm(" NOP");
   }
-
-  /* Product: '<S111>/Divide' incorporates:
-   *  Gain: '<S1>/Gain'
-   *  Product: '<S7>/Divide2'
-   */
-  rtb_Product1_tmp = (real_T)((uint32_T)Openloop_voltage_control_P.Gain_Gain *
-    Openloop_voltage_control_B.SCIReceive[2]) * 0.015625;
-
-  /* Product: '<S7>/Product1' incorporates:
-   *  Constant: '<S111>/CLK frequency'
-   *  Product: '<S111>/Divide'
-   */
-  rtb_Product1 = Openloop_voltage_control_P.CLKfrequency_Value /
-    rtb_Product1_tmp;
 
   /* S-Function (c2802xadc): '<S3>/VoltMeas' */
   {
@@ -419,63 +406,95 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
 
   /* Gain: '<S7>/Opamp_converter' incorporates:
    *  Gain: '<S7>/1//ADC_resolution'
-   *  Product: '<S7>/Divide'
    */
-  rtb_Divide = (uint64_T)((uint32_T)
+  rtb_Opamp_converter = (uint64_T)((uint32_T)
     Openloop_voltage_control_P.uADC_resolution_Gain *
     Openloop_voltage_control_B.Volt_Protection) *
     Openloop_voltage_control_P.Opamp_converter_Gain;
 
-  /* Product: '<S7>/Divide1' incorporates:
-   *  Product: '<S7>/Divide'
-   *  Sum: '<S7>/Sum'
+  /* DataTypeConversion: '<S2>/Data Type Conversion2' incorporates:
+   *  DataTypeConversion: '<S7>/unit converter1'
+   *  Gain: '<S7>/Opamp_converter'
    */
-  rtb_Divide1 = Openloop_voltage_control_B.SCIReceive[1] == 0ULL ? MAX_uint64_T :
-    (((uint64_T)Openloop_voltage_control_B.SCIReceive[1] << 29U) - rtb_Divide) /
-    Openloop_voltage_control_B.SCIReceive[1];
+  rtb_DataTypeConversion2 = (uint16_T)rtb_Opamp_converter;
 
-  /* Product: '<S96>/PProd Out' incorporates:
-   *  Product: '<S7>/Divide1'
-   */
-  tmp_5 = Openloop_voltage_control_B.SCIReceive[5];
-  uMultiWordMul(&rtb_Divide1, 1, &tmp_5, 1, &tmp_4.chunks[0U], 2);
-
-  /* Sum: '<S100>/Sum' incorporates:
-   *  DiscreteIntegrator: '<S91>/Integrator'
-   */
-  uMultiWordShl(&tmp_4.chunks[0U], 2, 9U, &tmp_3.chunks[0U], 2);
-  tmp_8 = Openloop_voltage_control_DW.Integrator_DSTATE;
-  tmp_9 = tmp_a;
-  uMultiWordMul(&tmp_8.chunks[0U], 2, &tmp_a.chunks[0U], 2, &tmp_7.chunks[0U], 3);
-  uMultiWordShr(&tmp_7.chunks[0U], 3, 51U, &tmp_6.chunks[0U], 3);
-  uMultiWord2MultiWord(&tmp_6.chunks[0U], 3, &tmp_4.chunks[0U], 2);
-  MultiWordAdd(&tmp_3.chunks[0U], &tmp_4.chunks[0U], &tmp_2.chunks[0U], 2);
-  uMultiWord2MultiWord(&tmp_2.chunks[0U], 2, &tmp_1.chunks[0U], 3);
-  uMultiWordShl(&tmp_1.chunks[0U], 3, 39U, &tmp_0.chunks[0U], 3);
-  uMultiWord2MultiWord(&tmp_0.chunks[0U], 3, &tmp.chunks[0U], 2);
+  /* SignalConversion generated from: '<S7>/SCI Transmit' */
+  Openloop_voltage_control_B.TmpSignalConversionAtSCITransmi[0] =
+    rtb_DataTypeConversion2;
+  Openloop_voltage_control_B.TmpSignalConversionAtSCITransmi[1] =
+    Openloop_voltage_control_B.SCIReceive[3];
 
   /* Product: '<S111>/Divide1' incorporates:
-   *  Constant: '<S7>/CLK frequency'
-   *  Product: '<S7>/Divide2'
-   *  Product: '<S7>/Product'
+   *  Gain: '<S1>/Gain1'
+   *  Product: '<S7>/Divide3'
+   *  Product: '<S9>/Divide1'
+   *  Switch: '<S2>/Switch'
    */
-  rtb_Divide1_g = Openloop_voltage_control_P.CLKfrequency_Value_k /
-    rtb_Product1_tmp * (uMultiWord2Double(&tmp.chunks[0U], 2, 0) *
-                        6.6174449004242214E-24);
+  rtb_Switch1 = (real_T)((uint32_T)Openloop_voltage_control_P.Gain1_Gain *
+    Openloop_voltage_control_B.SCIReceive[4]) * 0.015625;
 
-  /* DataTypeConversion: '<S2>/Data Type Conversion' */
-  rtb_Product1_tmp = floor(rtb_Divide1_g);
-  if (rtIsNaN(rtb_Product1_tmp) || rtIsInf(rtb_Product1_tmp)) {
-    rtb_Product1_tmp = 0.0;
+  /* Product: '<S111>/Divide1' incorporates:
+   *  Constant: '<S111>/CLK frequency1'
+   */
+  rtb_Divide1_g = Openloop_voltage_control_P.CLKfrequency1_Value / rtb_Switch1;
+
+  /* Sum: '<S7>/Sum1' incorporates:
+   *  Gain: '<S7>/Opamp_converter'
+   */
+  rtb_Sum1 = ((uint64_T)Openloop_voltage_control_B.SCIReceive[3] << 48U) -
+    (rtb_Opamp_converter >> 2U);
+
+  /* Switch: '<S2>/Switch' */
+  if (Openloop_voltage_control_B.SCIReceive[9] >
+      Openloop_voltage_control_P.Switch_Threshold) {
+    /* Product: '<S111>/Divide' incorporates:
+     *  Constant: '<S9>/CLK frequency'
+     *  Constant: '<S9>/V_f2'
+     *  Constant: '<S9>/V_f3'
+     *  Constant: '<S9>/V_in1'
+     *  Product: '<S9>/Divide1'
+     *  Product: '<S9>/Divide3'
+     *  Product: '<S9>/Product1'
+     *  Sum: '<S9>/Add1'
+     *  Sum: '<S9>/Plus1'
+     */
+    rtb_Divide_m = (((real_T)Openloop_voltage_control_B.SCIReceive[3] +
+                     Openloop_voltage_control_P.V_f2_Value) -
+                    Openloop_voltage_control_P.V_in1_Value) /
+      (Openloop_voltage_control_P.V_f3_Value + (real_T)
+       Openloop_voltage_control_B.SCIReceive[3]) *
+      (Openloop_voltage_control_P.CLKfrequency_Value / rtb_Switch1);
   } else {
-    rtb_Product1_tmp = fmod(rtb_Product1_tmp, 65536.0);
+    /* Sum: '<S52>/Sum' incorporates:
+     *  DiscreteIntegrator: '<S43>/Integrator'
+     */
+    tmp_2 = Openloop_voltage_control_DW.Integrator_DSTATE;
+    tmp_3 = tmp_9;
+    uMultiWordMul(&tmp_2.chunks[0U], 2, &tmp_9.chunks[0U], 2, &tmp_1.chunks[0U],
+                  3);
+    uMultiWordShr(&tmp_1.chunks[0U], 3, 12U, &tmp_0.chunks[0U], 3);
+    uMultiWord2MultiWord(&tmp_0.chunks[0U], 3, &tmp.chunks[0U], 2);
+
+    /* Product: '<S111>/Divide' incorporates:
+     *  Constant: '<S7>/CLK frequency'
+     *  Product: '<S7>/Divide3'
+     *  Product: '<S7>/Product1'
+     */
+    rtb_Divide_m = Openloop_voltage_control_P.CLKfrequency_Value_k / rtb_Switch1
+      * (uMultiWord2Double(&tmp.chunks[0U], 2, 0) * 1.2621774483536189E-29);
   }
 
-  /* DataTypeConversion: '<S4>/Data Type Conversion4' incorporates:
-   *  DataTypeConversion: '<S2>/Data Type Conversion'
-   */
-  rtb_IGBT_Enable = rtb_Product1_tmp < 0.0 ? (uint16_T)-(int16_T)(uint16_T)
-    -rtb_Product1_tmp : (uint16_T)rtb_Product1_tmp;
+  /* DataTypeConversion: '<S2>/Data Type Conversion2' */
+  rtb_Switch1 = floor(rtb_Divide_m);
+  if (rtIsNaN(rtb_Switch1) || rtIsInf(rtb_Switch1)) {
+    rtb_Switch1 = 0.0;
+  } else {
+    rtb_Switch1 = fmod(rtb_Switch1, 65536.0);
+  }
+
+  /* DataTypeConversion: '<S2>/Data Type Conversion2' */
+  rtb_DataTypeConversion2 = rtb_Switch1 < 0.0 ? (uint16_T)-(int16_T)(uint16_T)
+    -rtb_Switch1 : (uint16_T)rtb_Switch1;
 
   /* MATLAB Function: '<S4>/MATLAB Function' */
   switch (Openloop_voltage_control_B.SCIReceive[0]) {
@@ -502,63 +521,6 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
 
   /* End of MATLAB Function: '<S4>/MATLAB Function' */
 
-  /* RelationalOperator: '<S4>/Relational Operator1' incorporates:
-   *  Constant: '<S4>/Constant3'
-   */
-  rtb_RelationalOperator1 = (Openloop_voltage_control_P.Constant3_Value <=
-    (uint16_T)rtb_y1);
-
-  /* Logic: '<S4>/Logical Operator4' incorporates:
-   *  Constant: '<S4>/Constant14'
-   *  Logic: '<S4>/Logical Operator7'
-   *  RelationalOperator: '<S4>/Relational Operator4'
-   */
-  rtb_LogicalOperator4_tmp = !rtb_RelationalOperator1;
-  rtb_LogicalOperator4 = (rtb_LogicalOperator4_tmp &&
-    (Openloop_voltage_control_P.Constant14_Value <
-     Openloop_voltage_control_B.Volt_Protection));
-
-  /* Outputs for Triggered SubSystem: '<S4>/Sample and Hold1' incorporates:
-   *  TriggerPort: '<S109>/Trigger'
-   */
-  if (rtb_LogicalOperator4 &&
-      (Openloop_voltage_contro_PrevZCX.SampleandHold1_Trig_ZCE != POS_ZCSIG)) {
-    /* Inport: '<S109>/In' incorporates:
-     *  Constant: '<S4>/Constant15'
-     */
-    Openloop_voltage_control_B.In_g =
-      Openloop_voltage_control_P.Constant15_Value;
-  }
-
-  Openloop_voltage_contro_PrevZCX.SampleandHold1_Trig_ZCE = rtb_LogicalOperator4;
-
-  /* End of Outputs for SubSystem: '<S4>/Sample and Hold1' */
-
-  /* Logic: '<S4>/Logical Operator5' incorporates:
-   *  Constant: '<S4>/Constant9'
-   *  Logic: '<S4>/Logical Operator'
-   */
-  rtb_LogicalOperator4 = (rtb_RelationalOperator1 ||
-    Openloop_voltage_control_P.Constant9_Value ||
-    Openloop_voltage_control_B.In_g);
-
-  /* DataTypeConversion: '<S2>/Data Type Conversion2' incorporates:
-   *  DataTypeConversion: '<S4>/Data Type Conversion1'
-   */
-  rtb_DataTypeConversion2 = rtb_LogicalOperator4;
-
-  /* S-Function (c2802xpwm): '<S5>/ePWM2_MOSFET' */
-  {
-    EPwm2Regs.TBPRD = (uint16_T)(rtb_Product1);
-  }
-
-  /*-- Update CMPA value for ePWM2 --*/
-  {
-    EPwm2Regs.CMPA.half.CMPA = (uint16_T)(rtb_IGBT_Enable);
-  }
-
-  EPwm2Regs.AQCSFRC.bit.CSFA = rtb_DataTypeConversion2;
-
   /* RelationalOperator: '<S4>/Relational Operator3' incorporates:
    *  Constant: '<S4>/Constant8'
    */
@@ -570,9 +532,9 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
    *  Logic: '<S4>/Logical Operator7'
    *  RelationalOperator: '<S4>/Relational Operator5'
    */
-  rtb_RelationalOperator1 = !rtb_RelationalOperator3;
+  rtb_LogicalOperator2_tmp = !rtb_RelationalOperator3;
   rtb_LogicalOperator2 = ((Openloop_voltage_control_B.Volt_Protection >
-    Openloop_voltage_control_P.Constant13_Value) && rtb_RelationalOperator1);
+    Openloop_voltage_control_P.Constant13_Value) && rtb_LogicalOperator2_tmp);
 
   /* Outputs for Triggered SubSystem: '<S4>/Sample and Hold2' incorporates:
    *  TriggerPort: '<S110>/Trigger'
@@ -593,44 +555,178 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
    *  Constant: '<S4>/Constant9'
    *  Logic: '<S4>/Logical Operator1'
    */
-  rtb_RelationalOperator3 = (Openloop_voltage_control_B.In ||
+  rtb_LogicalOperator2 = (Openloop_voltage_control_B.In ||
     (Openloop_voltage_control_P.Constant9_Value || rtb_RelationalOperator3));
 
-  /* Logic: '<S4>/NOT1' incorporates:
-   *  Logic: '<S4>/Logical Operator8'
-   *  Logic: '<S4>/NOT3'
+  /* DataTypeConversion: '<S4>/Data Type Conversion4' */
+  rtb_IGBT_Enable = rtb_LogicalOperator2;
+
+  /* RelationalOperator: '<S4>/Relational Operator1' incorporates:
+   *  Constant: '<S4>/Constant3'
    */
-  Openloop_voltage_control_B.RedLED = (rtb_LogicalOperator4 &&
-    rtb_RelationalOperator3);
+  rtb_RelationalOperator3 = (Openloop_voltage_control_P.Constant3_Value <=
+    (uint16_T)rtb_y1);
 
-  /* S-Function (c280xgpio_do): '<S5>/BlueLED' */
-  {
-    if (Openloop_voltage_control_B.RedLED)
-      GpioDataRegs.GPASET.bit.GPIO12 = 1;
-    else
-      GpioDataRegs.GPACLEAR.bit.GPIO12 = 1;
-  }
-
-  /* Logic: '<S4>/NOT1' incorporates:
+  /* Logic: '<S4>/Logical Operator4' incorporates:
+   *  Constant: '<S4>/Constant14'
    *  Logic: '<S4>/Logical Operator7'
-   *  Logic: '<S4>/NOT2'
+   *  RelationalOperator: '<S4>/Relational Operator4'
    */
-  Openloop_voltage_control_B.RedLED = (rtb_LogicalOperator4_tmp ||
-    rtb_RelationalOperator1);
+  rtb_LogicalOperator4_tmp = !rtb_RelationalOperator3;
+  rtb_LogicalOperator4 = (rtb_LogicalOperator4_tmp &&
+    (Openloop_voltage_control_P.Constant14_Value <
+     Openloop_voltage_control_B.Volt_Protection));
 
-  /* S-Function (c280xgpio_do): '<S5>/GreenLED' */
-  {
-    if (Openloop_voltage_control_B.RedLED)
-      GpioDataRegs.GPASET.bit.GPIO19 = 1;
-    else
-      GpioDataRegs.GPACLEAR.bit.GPIO19 = 1;
+  /* Outputs for Triggered SubSystem: '<S4>/Sample and Hold1' incorporates:
+   *  TriggerPort: '<S109>/Trigger'
+   */
+  if (rtb_LogicalOperator4 &&
+      (Openloop_voltage_contro_PrevZCX.SampleandHold1_Trig_ZCE != POS_ZCSIG)) {
+    /* Inport: '<S109>/In' incorporates:
+     *  Constant: '<S4>/Constant15'
+     */
+    Openloop_voltage_control_B.In_g =
+      Openloop_voltage_control_P.Constant15_Value;
   }
+
+  Openloop_voltage_contro_PrevZCX.SampleandHold1_Trig_ZCE = rtb_LogicalOperator4;
+
+  /* End of Outputs for SubSystem: '<S4>/Sample and Hold1' */
 
   /* Logic: '<S4>/NOT1' incorporates:
    *  Logic: '<S4>/Logical Operator6'
    */
   Openloop_voltage_control_B.RedLED = ((!Openloop_voltage_control_B.In_g) &&
     (!Openloop_voltage_control_B.In));
+
+  /* Logic: '<S4>/NOT2' incorporates:
+   *  Logic: '<S4>/Logical Operator7'
+   */
+  Openloop_voltage_control_B.GreenLED = (rtb_LogicalOperator4_tmp ||
+    rtb_LogicalOperator2_tmp);
+
+  /* Logic: '<S4>/Logical Operator5' incorporates:
+   *  Constant: '<S4>/Constant9'
+   *  Logic: '<S4>/Logical Operator'
+   */
+  rtb_RelationalOperator3 = (rtb_RelationalOperator3 ||
+    Openloop_voltage_control_P.Constant9_Value ||
+    Openloop_voltage_control_B.In_g);
+
+  /* Logic: '<S4>/NOT3' incorporates:
+   *  Logic: '<S4>/Logical Operator8'
+   */
+  Openloop_voltage_control_B.BLUELED = (rtb_RelationalOperator3 &&
+    rtb_LogicalOperator2);
+
+  /* Product: '<S111>/Divide' incorporates:
+   *  Gain: '<S1>/Gain'
+   *  Product: '<S7>/Divide2'
+   *  Product: '<S9>/Divide'
+   *  Switch: '<S2>/Switch1'
+   */
+  rtb_Switch1 = (real_T)((uint32_T)Openloop_voltage_control_P.Gain_Gain *
+    Openloop_voltage_control_B.SCIReceive[2]) * 0.015625;
+
+  /* Product: '<S111>/Divide' incorporates:
+   *  Constant: '<S111>/CLK frequency'
+   */
+  rtb_Divide_m = Openloop_voltage_control_P.CLKfrequency_Value_e / rtb_Switch1;
+
+  /* Product: '<S7>/Divide1' incorporates:
+   *  Gain: '<S7>/Opamp_converter'
+   *  Sum: '<S7>/Sum'
+   */
+  rtb_Opamp_converter = Openloop_voltage_control_B.SCIReceive[1] == 0ULL ?
+    MAX_uint64_T : (((uint64_T)Openloop_voltage_control_B.SCIReceive[1] << 48U)
+                    - (rtb_Opamp_converter >> 2U)) /
+    Openloop_voltage_control_B.SCIReceive[1];
+
+  /* Switch: '<S2>/Switch1' incorporates:
+   *  Constant: '<S7>/CLK frequency'
+   *  Constant: '<S9>/CLK frequency'
+   *  Constant: '<S9>/V_f'
+   *  Constant: '<S9>/V_f1'
+   *  Constant: '<S9>/V_in'
+   *  Product: '<S7>/Divide2'
+   *  Product: '<S7>/Product'
+   *  Product: '<S9>/Divide'
+   *  Product: '<S9>/Divide2'
+   *  Product: '<S9>/Product'
+   *  Sum: '<S9>/Add'
+   *  Sum: '<S9>/Plus'
+   */
+  if (Openloop_voltage_control_B.SCIReceive[9] >
+      Openloop_voltage_control_P.Switch1_Threshold) {
+    rtb_Switch1 = (((real_T)Openloop_voltage_control_B.SCIReceive[1] +
+                    Openloop_voltage_control_P.V_f_Value) -
+                   Openloop_voltage_control_P.V_in_Value) /
+      (Openloop_voltage_control_P.V_f1_Value + (real_T)
+       Openloop_voltage_control_B.SCIReceive[1]) *
+      (Openloop_voltage_control_P.CLKfrequency_Value / rtb_Switch1);
+  } else {
+    /* Product: '<S96>/PProd Out' incorporates:
+     *  Product: '<S7>/Divide1'
+     */
+    tmp_6 = Openloop_voltage_control_B.SCIReceive[5];
+    uMultiWordMul(&rtb_Opamp_converter, 1, &tmp_6, 1, &tmp_5.chunks[0U], 2);
+
+    /* Sum: '<S100>/Sum' */
+    uMultiWordShl(&tmp_5.chunks[0U], 2, 9U, &tmp_4.chunks[0U], 2);
+    uMultiWordMul(&Openloop_voltage_control_DW.Integrator_DSTATE_k.chunks[0U], 2,
+                  &tmp_9.chunks[0U], 2, &tmp_8.chunks[0U], 3);
+    uMultiWordShr(&tmp_8.chunks[0U], 3, 51U, &tmp_7.chunks[0U], 3);
+    uMultiWord2MultiWord(&tmp_7.chunks[0U], 3, &tmp_5.chunks[0U], 2);
+    MultiWordAdd(&tmp_4.chunks[0U], &tmp_5.chunks[0U], &tmp_3.chunks[0U], 2);
+    uMultiWord2MultiWord(&tmp_3.chunks[0U], 2, &tmp_1.chunks[0U], 3);
+    uMultiWordShl(&tmp_1.chunks[0U], 3, 39U, &tmp_0.chunks[0U], 3);
+    uMultiWord2MultiWord(&tmp_0.chunks[0U], 3, &tmp_2.chunks[0U], 2);
+    rtb_Switch1 = Openloop_voltage_control_P.CLKfrequency_Value_k / rtb_Switch1 *
+      (uMultiWord2Double(&tmp_2.chunks[0U], 2, 0) * 1.2621774483536189E-29);
+  }
+
+  /* DataTypeConversion: '<S2>/Data Type Conversion' */
+  rtb_Switch1 = floor(rtb_Switch1);
+  if (rtIsNaN(rtb_Switch1) || rtIsInf(rtb_Switch1)) {
+    rtb_Switch1 = 0.0;
+  } else {
+    rtb_Switch1 = fmod(rtb_Switch1, 65536.0);
+  }
+
+  /* DataTypeConversion: '<S2>/Data Type Conversion' */
+  rtb_DataTypeConversion = rtb_Switch1 < 0.0 ? (uint16_T)-(int16_T)(uint16_T)
+    -rtb_Switch1 : (uint16_T)rtb_Switch1;
+
+  /* DataTypeConversion: '<S4>/Data Type Conversion1' */
+  rtb_MOSFET_Enable = rtb_RelationalOperator3;
+
+  /* S-Function (c2802xpwm): '<S5>/ePWM2_MOSFET' */
+  {
+    EPwm2Regs.TBPRD = (uint16_T)(rtb_Divide_m);
+  }
+
+  /*-- Update CMPA value for ePWM2 --*/
+  {
+    EPwm2Regs.CMPA.half.CMPA = (uint16_T)(rtb_DataTypeConversion);
+  }
+
+  EPwm2Regs.AQCSFRC.bit.CSFA = rtb_MOSFET_Enable;
+
+  /* S-Function (c280xgpio_do): '<S5>/BlueLED' */
+  {
+    if (Openloop_voltage_control_B.BLUELED)
+      GpioDataRegs.GPASET.bit.GPIO12 = 1;
+    else
+      GpioDataRegs.GPACLEAR.bit.GPIO12 = 1;
+  }
+
+  /* S-Function (c280xgpio_do): '<S5>/GreenLED' */
+  {
+    if (Openloop_voltage_control_B.GreenLED)
+      GpioDataRegs.GPASET.bit.GPIO19 = 1;
+    else
+      GpioDataRegs.GPACLEAR.bit.GPIO19 = 1;
+  }
 
   /* S-Function (c280xgpio_do): '<S5>/RedLED' */
   {
@@ -639,57 +735,6 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
     else
       GpioDataRegs.GPBCLEAR.bit.GPIO34 = 1;
   }
-
-  /* Product: '<S111>/Divide1' incorporates:
-   *  Gain: '<S1>/Gain1'
-   *  Product: '<S7>/Divide3'
-   */
-  rtb_Product1_tmp = (real_T)((uint32_T)Openloop_voltage_control_P.Gain1_Gain *
-    Openloop_voltage_control_B.SCIReceive[4]) * 0.015625;
-
-  /* Product: '<S111>/Divide1' incorporates:
-   *  Constant: '<S111>/CLK frequency1'
-   */
-  rtb_Divide1_g = Openloop_voltage_control_P.CLKfrequency1_Value /
-    rtb_Product1_tmp;
-
-  /* Product: '<S7>/Divide' incorporates:
-   *  Sum: '<S7>/Sum1'
-   */
-  rtb_Divide = Openloop_voltage_control_B.SCIReceive[3] == 0ULL ? MAX_uint64_T :
-    (((uint64_T)Openloop_voltage_control_B.SCIReceive[3] << 29U) - rtb_Divide) /
-    Openloop_voltage_control_B.SCIReceive[3];
-
-  /* Sum: '<S52>/Sum' incorporates:
-   *  DiscreteIntegrator: '<S43>/Integrator'
-   */
-  tmp_3 = Openloop_voltage_control_DW.Integrator_DSTATE_i;
-  uMultiWordMul(&tmp_3.chunks[0U], 2, &tmp_a.chunks[0U], 2, &tmp_1.chunks[0U], 3);
-  uMultiWordShr(&tmp_1.chunks[0U], 3, 31U, &tmp_0.chunks[0U], 3);
-  uMultiWord2MultiWord(&tmp_0.chunks[0U], 3, &tmp_2.chunks[0U], 2);
-
-  /* Product: '<S7>/Product1' incorporates:
-   *  Constant: '<S7>/CLK frequency'
-   *  Product: '<S7>/Divide3'
-   */
-  rtb_Product1 = Openloop_voltage_control_P.CLKfrequency_Value_k /
-    rtb_Product1_tmp * (uMultiWord2Double(&tmp_2.chunks[0U], 2, 0) *
-                        3.4694469519536142E-18);
-
-  /* DataTypeConversion: '<S2>/Data Type Conversion2' */
-  rtb_Product1_tmp = floor(rtb_Product1);
-  if (rtIsNaN(rtb_Product1_tmp) || rtIsInf(rtb_Product1_tmp)) {
-    rtb_Product1_tmp = 0.0;
-  } else {
-    rtb_Product1_tmp = fmod(rtb_Product1_tmp, 65536.0);
-  }
-
-  /* DataTypeConversion: '<S2>/Data Type Conversion2' */
-  rtb_DataTypeConversion2 = rtb_Product1_tmp < 0.0 ? (uint16_T)-(int16_T)
-    (uint16_T)-rtb_Product1_tmp : (uint16_T)rtb_Product1_tmp;
-
-  /* DataTypeConversion: '<S4>/Data Type Conversion4' */
-  rtb_IGBT_Enable = rtb_RelationalOperator3;
 
   /* S-Function (c2802xpwm): '<S5>/ePWM1_IGBT' */
   {
@@ -702,6 +747,25 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
   }
 
   EPwm1Regs.AQCSFRC.bit.CSFA = rtb_IGBT_Enable;
+
+  /* S-Function (c28xsci_tx): '<S7>/SCI Transmit' */
+  {
+    /* Send additional data header */
+    {
+      char *String = "S";
+      scia_xmit(String, 1, 1);
+    }
+
+    scia_xmit((char*)
+              &Openloop_voltage_control_B.TmpSignalConversionAtSCITransmi[0], 4,
+              2);
+
+    /* Send additional data terminator */
+    {
+      char *String = "E";
+      scia_xmit(String, 1, 1);
+    }
+  }
 
   /* S-Function (c2802xadc): '<S3>/ADC_MOSFET_ON' */
   {
@@ -725,37 +789,44 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
     Openloop_voltage_control_B.IGBT_Enable = (AdcResult.ADCRESULT2);
   }
 
-  /* Update for DiscreteIntegrator: '<S91>/Integrator' */
+  /* Update for DiscreteIntegrator: '<S43>/Integrator' */
   tmp_4 = Openloop_voltage_control_DW.Integrator_DSTATE;
+
+  /* Product: '<S40>/IProd Out' incorporates:
+   *  Sum: '<S7>/Sum1'
+   */
+  tmp_6 = Openloop_voltage_control_B.SCIReceive[7];
+  uMultiWordMul(&rtb_Sum1, 1, &tmp_6, 1, &tmp_5.chunks[0U], 2);
+
+  /* Update for DiscreteIntegrator: '<S43>/Integrator' incorporates:
+   *  Sum: '<S100>/Sum'
+   *  Switch: '<S2>/Switch1'
+   */
+  MultiWordAdd(&tmp_4.chunks[0U], &tmp_5.chunks[0U], &tmp_3.chunks[0U], 2);
+  MultiWordUnsignedWrap(&tmp_3.chunks[0U], 2, 48U, &tmp_4.chunks[0U]);
+  Openloop_voltage_control_DW.Integrator_DSTATE = tmp_4;
+
+  /* Update for DiscreteIntegrator: '<S91>/Integrator' */
+  tmp_5 = Openloop_voltage_control_DW.Integrator_DSTATE_k;
 
   /* Product: '<S88>/IProd Out' incorporates:
    *  Product: '<S7>/Divide1'
    */
-  tmp_5 = Openloop_voltage_control_B.SCIReceive[6];
-  uMultiWordMul(&rtb_Divide1, 1, &tmp_5, 1, &tmp_8.chunks[0U], 2);
+  tmp_6 = Openloop_voltage_control_B.SCIReceive[6];
+  uMultiWordMul(&rtb_Opamp_converter, 1, &tmp_6, 1,
+                &Openloop_voltage_control_DW.Integrator_DSTATE_k.chunks[0U], 2);
 
-  /* Update for DiscreteIntegrator: '<S91>/Integrator' incorporates:
-   *  Sum: '<S100>/Sum'
+  /* Update for DiscreteIntegrator: '<S91>/Integrator' */
+  MultiWordAdd(&tmp_5.chunks[0U],
+               &Openloop_voltage_control_DW.Integrator_DSTATE_k.chunks[0U],
+               &tmp_3.chunks[0U], 2);
+  MultiWordUnsignedWrap(&tmp_3.chunks[0U], 2, 48U, &tmp_5.chunks[0U]);
+
+  /* Update for Sum: '<S100>/Sum' incorporates:
+   *  DiscreteIntegrator: '<S91>/Integrator'
+   *  Switch: '<S2>/Switch1'
    */
-  MultiWordAdd(&tmp_4.chunks[0U], &tmp_8.chunks[0U], &tmp_3.chunks[0U], 2);
-  MultiWordUnsignedWrap(&tmp_3.chunks[0U], 2, 48U, &tmp_4.chunks[0U]);
-  Openloop_voltage_control_DW.Integrator_DSTATE = tmp_4;
-
-  /* Update for DiscreteIntegrator: '<S43>/Integrator' */
-  tmp_8 = Openloop_voltage_control_DW.Integrator_DSTATE_i;
-
-  /* Product: '<S40>/IProd Out' incorporates:
-   *  Product: '<S7>/Divide'
-   */
-  tmp_5 = Openloop_voltage_control_B.SCIReceive[7];
-  uMultiWordMul(&rtb_Divide, 1, &tmp_5, 1, &tmp_9.chunks[0U], 2);
-
-  /* Update for DiscreteIntegrator: '<S43>/Integrator' incorporates:
-   *  Sum: '<S100>/Sum'
-   */
-  MultiWordAdd(&tmp_8.chunks[0U], &tmp_9.chunks[0U], &tmp_3.chunks[0U], 2);
-  MultiWordUnsignedWrap(&tmp_3.chunks[0U], 2, 48U, &tmp_8.chunks[0U]);
-  Openloop_voltage_control_DW.Integrator_DSTATE_i = tmp_8;
+  Openloop_voltage_control_DW.Integrator_DSTATE_k = tmp_5;
 }
 
 /* Model step function for TID1 */
@@ -805,6 +876,7 @@ void Openloop_voltage_control_initialize(void)
     Openloop_voltage_control_B.SCIReceive[6] = (uint16_T)0.0;
     Openloop_voltage_control_B.SCIReceive[7] = (uint16_T)0.0;
     Openloop_voltage_control_B.SCIReceive[8] = (uint16_T)0.0;
+    Openloop_voltage_control_B.SCIReceive[9] = (uint16_T)0.0;
   }
 
   /* Start for S-Function (c2802xadc): '<S3>/VoltMeas' */
@@ -1212,13 +1284,15 @@ void Openloop_voltage_control_initialize(void)
   Openloop_voltage_control_DW.RateTransition5_Buffer0 =
     Openloop_voltage_control_P.RateTransition5_InitialConditio;
 
-  /* InitializeConditions for DiscreteIntegrator: '<S91>/Integrator' */
-  Openloop_voltage_control_DW.Integrator_DSTATE =
-    Openloop_voltage_control_P.DiscretePIDController2_InitialC;
-
   /* InitializeConditions for DiscreteIntegrator: '<S43>/Integrator' */
-  Openloop_voltage_control_DW.Integrator_DSTATE_i =
+  Openloop_voltage_control_DW.Integrator_DSTATE =
     Openloop_voltage_control_P.DiscretePIDController1_InitialC;
+
+  /* InitializeConditions for Sum: '<S100>/Sum' incorporates:
+   *  DiscreteIntegrator: '<S91>/Integrator'
+   */
+  Openloop_voltage_control_DW.Integrator_DSTATE_k =
+    Openloop_voltage_control_P.DiscretePIDController2_InitialC;
 
   /* SystemInitialize for Triggered SubSystem: '<S4>/Sample and Hold1' */
   /* SystemInitialize for Outport: '<S109>/ ' incorporates:

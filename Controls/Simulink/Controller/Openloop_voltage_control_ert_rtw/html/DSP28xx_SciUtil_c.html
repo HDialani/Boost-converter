@@ -29,11 +29,11 @@
 <tr name="9" id="9">
 <td><a id="l9" class='ln'>9</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="10" id="10">
-<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 5.54</span></td></tr>
+<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 5.64</span></td></tr>
 <tr name="11" id="11">
 <td><a id="l11" class='ln'>11</a></td><td><span class="ct"> * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020</span></td></tr>
 <tr name="12" id="12">
-<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Thu Sep  1 16:49:16 2022</span></td></tr>
+<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Mon Sep  5 11:54:25 2022</span></td></tr>
 <tr name="13" id="13">
 <td><a id="l13" class='ln'>13</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="14" id="14">
@@ -235,17 +235,71 @@
 <tr name="112" id="112">
 <td><a id="l112" class='ln'>112</a></td><td></td></tr>
 <tr name="113" id="113">
-<td><a id="l113" class='ln'>113</a></td><td><span class="ct">/*</span></td></tr>
+<td><a id="l113" class='ln'>113</a></td><td><span class="ct">/* Transmit character(s) from the SCIa*/</span></td></tr>
 <tr name="114" id="114">
-<td><a id="l114" class='ln'>114</a></td><td><span class="ct"> * File trailer for generated code.</span></td></tr>
+<td><a id="l114" class='ln'>114</a></td><td><span class="kw">void</span> <a id="114c6" class="tk">scia_xmit</a>(<span class="kw">char</span><a id="114c20" class="tk">*</a> <a id="114c22" class="tk">pmsg</a>, <span class="kw">int</span> <a id="114c32" class="tk">msglen</a>, <span class="kw">int</span> <a id="114c44" class="tk">typeLen</a>)</td></tr>
 <tr name="115" id="115">
-<td><a id="l115" class='ln'>115</a></td><td><span class="ct"> *</span></td></tr>
+<td><a id="l115" class='ln'>115</a></td><td><span class="br">{</span></td></tr>
 <tr name="116" id="116">
-<td><a id="l116" class='ln'>116</a></td><td><span class="ct"> * [EOF]</span></td></tr>
+<td><a id="l116" class='ln'>116</a></td><td>  <span class="kw">int</span> <a id="116c7" class="tk">i</a>,<a id="116c9" class="tk">j</a>,<a id="116c11" class="tk">k</a>;</td></tr>
 <tr name="117" id="117">
-<td><a id="l117" class='ln'>117</a></td><td><span class="ct"> */</span></td></tr>
+<td><a id="l117" class='ln'>117</a></td><td>  <span class="kw">if</span> (<a id="117c7" class="tk">typeLen</a><a id="117c14" class="tk">==</a>1) <span class="br">{</span></td></tr>
 <tr name="118" id="118">
-<td><a id="l118" class='ln'>118</a></td><td></td></tr>
+<td><a id="l118" class='ln'>118</a></td><td>    <span class="kw">for</span> (<a id="118c10" class="tk">i</a> = 0; <a id="118c17" class="tk">i</a> <a id="118c19" class="tk">&lt;</a> <a id="118c21" class="tk">msglen</a>; <a id="118c29" class="tk">i</a><a id="118c30" class="tk">++</a>) <span class="br">{</span></td></tr>
+<tr name="119" id="119">
+<td><a id="l119" class='ln'>119</a></td><td>      <span class="kw">while</span> (<a id="119c14" class="tk">SciaRegs</a>.<a id="119c23" class="tk">SCIFFTX</a>.<a id="119c31" class="tk">bit</a>.<a id="119c35" class="tk">TXFFST</a> <a id="119c42" class="tk">==</a> 4) <span class="br">{</span></td></tr>
+<tr name="120" id="120">
+<td><a id="l120" class='ln'>120</a></td><td>      <span class="br">}</span>                                <span class="ct">/* The buffer is full;*/</span></td></tr>
+<tr name="121" id="121">
+<td><a id="l121" class='ln'>121</a></td><td></td></tr>
+<tr name="122" id="122">
+<td><a id="l122" class='ln'>122</a></td><td>      <a id="122c7" class="tk">SciaRegs</a>.<a id="122c16" class="tk">SCITXBUF</a>= <a id="122c26" class="tk">pmsg</a>[<a id="122c31" class="tk">i</a>];</td></tr>
+<tr name="123" id="123">
+<td><a id="l123" class='ln'>123</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="124" id="124">
+<td><a id="l124" class='ln'>124</a></td><td></td></tr>
+<tr name="125" id="125">
+<td><a id="l125" class='ln'>125</a></td><td>    <span class="ct">//while(SciaRegs.SCIFFTX.bit.TXFFST != 0){}</span></td></tr>
+<tr name="126" id="126">
+<td><a id="l126" class='ln'>126</a></td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="127" id="127">
+<td><a id="l127" class='ln'>127</a></td><td>    <span class="kw">for</span> (<a id="127c10" class="tk">i</a> = 0; <a id="127c17" class="tk">i</a> <a id="127c19" class="tk">&lt;</a> (<a id="127c22" class="tk">msglen</a><a id="127c28" class="tk">/</a>2); <a id="127c33" class="tk">i</a><a id="127c34" class="tk">++</a>) <span class="br">{</span></td></tr>
+<tr name="128" id="128">
+<td><a id="l128" class='ln'>128</a></td><td>      <span class="kw">for</span> (<a id="128c12" class="tk">j</a> = 0; <a id="128c19" class="tk">j</a><a id="128c20" class="tk">&lt;=</a>1; <a id="128c25" class="tk">j</a><a id="128c26" class="tk">++</a>) <span class="br">{</span></td></tr>
+<tr name="129" id="129">
+<td><a id="l129" class='ln'>129</a></td><td>        <span class="kw">while</span> (<a id="129c16" class="tk">SciaRegs</a>.<a id="129c25" class="tk">SCIFFTX</a>.<a id="129c33" class="tk">bit</a>.<a id="129c37" class="tk">TXFFST</a> <a id="129c44" class="tk">==</a> 4) <span class="br">{</span></td></tr>
+<tr name="130" id="130">
+<td><a id="l130" class='ln'>130</a></td><td>        <span class="br">}</span>                              <span class="ct">/* The buffer is full;*/</span></td></tr>
+<tr name="131" id="131">
+<td><a id="l131" class='ln'>131</a></td><td></td></tr>
+<tr name="132" id="132">
+<td><a id="l132" class='ln'>132</a></td><td>        <a id="132c9" class="tk">SciaRegs</a>.<a id="132c18" class="tk">SCITXBUF</a>= <a id="132c28" class="tk">pmsg</a>[<a id="132c33" class="tk">i</a>]<a id="132c35" class="tk">&gt;&gt;</a>(8<a id="132c39" class="tk">*</a><a id="132c40" class="tk">j</a>);</td></tr>
+<tr name="133" id="133">
+<td><a id="l133" class='ln'>133</a></td><td>      <span class="br">}</span></td></tr>
+<tr name="134" id="134">
+<td><a id="l134" class='ln'>134</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="135" id="135">
+<td><a id="l135" class='ln'>135</a></td><td></td></tr>
+<tr name="136" id="136">
+<td><a id="l136" class='ln'>136</a></td><td>    <span class="ct">//while(SciaRegs.SCIFFTX.bit.TXFFST != 0){}</span></td></tr>
+<tr name="137" id="137">
+<td><a id="l137" class='ln'>137</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="138" id="138">
+<td><a id="l138" class='ln'>138</a></td><td><span class="br">}</span></td></tr>
+<tr name="139" id="139">
+<td><a id="l139" class='ln'>139</a></td><td></td></tr>
+<tr name="140" id="140">
+<td><a id="l140" class='ln'>140</a></td><td><span class="ct">/*</span></td></tr>
+<tr name="141" id="141">
+<td><a id="l141" class='ln'>141</a></td><td><span class="ct"> * File trailer for generated code.</span></td></tr>
+<tr name="142" id="142">
+<td><a id="l142" class='ln'>142</a></td><td><span class="ct"> *</span></td></tr>
+<tr name="143" id="143">
+<td><a id="l143" class='ln'>143</a></td><td><span class="ct"> * [EOF]</span></td></tr>
+<tr name="144" id="144">
+<td><a id="l144" class='ln'>144</a></td><td><span class="ct"> */</span></td></tr>
+<tr name="145" id="145">
+<td><a id="l145" class='ln'>145</a></td><td></td></tr>
 </table>
 </pre>
 </body>

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.54
+ * Model version                  : 5.64
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Thu Sep  1 16:49:16 2022
+ * C/C++ source code generated on : Mon Sep  5 11:54:25 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -22,18 +22,53 @@
 
 /* Block parameters (default storage) */
 P_Openloop_voltage_control_T Openloop_voltage_control_P = {
-  /* Mask Parameter: DiscretePIDController2_InitialC
-   * Referenced by: '<S91>/Integrator'
-   */
-  { { 0ULL, 0ULL } },
-
   /* Mask Parameter: DiscretePIDController1_InitialC
    * Referenced by: '<S43>/Integrator'
    */
   { { 0ULL, 0ULL } },
 
+  /* Mask Parameter: DiscretePIDController2_InitialC
+   * Referenced by: '<S91>/Integrator'
+   */
+  { { 0ULL, 0ULL } },
+
+  /* Expression: 1.5
+   * Referenced by: '<S9>/V_f1'
+   */
+  1.5,
+
+  /* Expression: 45
+   * Referenced by: '<S9>/V_in'
+   */
+  45.0,
+
+  /* Expression: 1.5
+   * Referenced by: '<S9>/V_f'
+   */
+  1.5,
+
+  /* Expression: 1.5
+   * Referenced by: '<S9>/V_f3'
+   */
+  1.5,
+
+  /* Expression: 45
+   * Referenced by: '<S9>/V_in1'
+   */
+  45.0,
+
+  /* Expression: 1.5
+   * Referenced by: '<S9>/V_f2'
+   */
+  1.5,
+
   /* Expression: 60e6
-   * Referenced by: '<S111>/CLK frequency'
+   * Referenced by: '<S111>/CLK frequency1'
+   */
+  6.0E+7,
+
+  /* Expression: 60e6
+   * Referenced by: '<S9>/CLK frequency'
    */
   6.0E+7,
 
@@ -43,7 +78,7 @@ P_Openloop_voltage_control_T Openloop_voltage_control_P = {
   6.0E+7,
 
   /* Expression: 60e6
-   * Referenced by: '<S111>/CLK frequency1'
+   * Referenced by: '<S111>/CLK frequency'
    */
   6.0E+7,
 
@@ -55,17 +90,32 @@ P_Openloop_voltage_control_T Openloop_voltage_control_P = {
   /* Computed Parameter: uADC_resolution_Gain
    * Referenced by: '<S7>/1//ADC_resolution'
    */
-  43691U,
+  49152U,
+
+  /* Computed Parameter: Gain1_Gain
+   * Referenced by: '<S1>/Gain1'
+   */
+  64000U,
 
   /* Computed Parameter: Gain_Gain
    * Referenced by: '<S1>/Gain'
    */
   64000U,
 
-  /* Computed Parameter: Gain1_Gain
-   * Referenced by: '<S1>/Gain1'
+  /* Computed Parameter: Switch_Threshold
+   * Referenced by: '<S2>/Switch'
    */
-  64000U,
+  0U,
+
+  /* Computed Parameter: Constant13_Value
+   * Referenced by: '<S4>/Constant13'
+   */
+  3350U,
+
+  /* Computed Parameter: Constant8_Value
+   * Referenced by: '<S4>/Constant8'
+   */
+  500U,
 
   /* Computed Parameter: Constant3_Value
    * Referenced by: '<S4>/Constant3'
@@ -77,15 +127,10 @@ P_Openloop_voltage_control_T Openloop_voltage_control_P = {
    */
   2500U,
 
-  /* Computed Parameter: Constant13_Value
-   * Referenced by: '<S4>/Constant13'
+  /* Computed Parameter: Switch1_Threshold
+   * Referenced by: '<S2>/Switch1'
    */
-  3350U,
-
-  /* Computed Parameter: Constant8_Value
-   * Referenced by: '<S4>/Constant8'
-   */
-  500U,
+  0U,
 
   /* Computed Parameter: _Y0
    * Referenced by: '<S109>/ '
@@ -102,6 +147,11 @@ P_Openloop_voltage_control_T Openloop_voltage_control_P = {
    */
   0,
 
+  /* Computed Parameter: Constant16_Value
+   * Referenced by: '<S4>/Constant16'
+   */
+  1,
+
   /* Computed Parameter: Constant9_Value
    * Referenced by: '<S4>/Constant9'
    */
@@ -109,11 +159,6 @@ P_Openloop_voltage_control_T Openloop_voltage_control_P = {
 
   /* Computed Parameter: Constant15_Value
    * Referenced by: '<S4>/Constant15'
-   */
-  1,
-
-  /* Computed Parameter: Constant16_Value
-   * Referenced by: '<S4>/Constant16'
    */
   1,
 

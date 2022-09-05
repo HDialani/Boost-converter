@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.54
+ * Model version                  : 5.64
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Thu Sep  1 16:49:16 2022
+ * C/C++ source code generated on : Mon Sep  5 11:54:25 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -108,6 +108,33 @@ int byteswap_L8cmp(unsigned int* outdata, char* recdata, int inportWidth, int
   }
 
   return 0;
+}
+
+/* Transmit character(s) from the SCIa*/
+void scia_xmit(char* pmsg, int msglen, int typeLen)
+{
+  int i,j,k;
+  if (typeLen==1) {
+    for (i = 0; i < msglen; i++) {
+      while (SciaRegs.SCIFFTX.bit.TXFFST == 4) {
+      }                                /* The buffer is full;*/
+
+      SciaRegs.SCITXBUF= pmsg[i];
+    }
+
+    //while(SciaRegs.SCIFFTX.bit.TXFFST != 0){}
+  } else {
+    for (i = 0; i < (msglen/2); i++) {
+      for (j = 0; j<=1; j++) {
+        while (SciaRegs.SCIFFTX.bit.TXFFST == 4) {
+        }                              /* The buffer is full;*/
+
+        SciaRegs.SCITXBUF= pmsg[i]>>(8*j);
+      }
+    }
+
+    //while(SciaRegs.SCIFFTX.bit.TXFFST != 0){}
+  }
 }
 
 /*

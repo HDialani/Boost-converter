@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.54
+ * Model version                  : 5.64
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Thu Sep  1 16:49:16 2022
+ * C/C++ source code generated on : Mon Sep  5 11:54:25 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -65,20 +65,23 @@ extern void config_ePWM_GPIO (void);
 
 /* Block signals (default storage) */
 typedef struct {
-  uint16_T SCIReceive[9];              /* '<S1>/SCI Receive' */
+  uint16_T SCIReceive[10];             /* '<S1>/SCI Receive' */
   uint16_T Volt_Protection;            /* '<S3>/VoltMeas' */
   uint16_T MOSFET_Enable;              /* '<S3>/ADC_MOSFET_ON' */
   uint16_T IGBT_Enable;                /* '<S3>/ADC_IGBT_ON' */
+  uint16_T TmpSignalConversionAtSCITransmi[2];
   boolean_T In;                        /* '<S110>/In' */
   boolean_T In_g;                      /* '<S109>/In' */
   boolean_T RateTransition5;           /* '<Root>/Rate Transition5' */
   boolean_T RedLED;                    /* '<S4>/NOT1' */
+  boolean_T GreenLED;                  /* '<S4>/NOT2' */
+  boolean_T BLUELED;                   /* '<S4>/NOT3' */
 } B_Openloop_voltage_control_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  uint128m_T Integrator_DSTATE;        /* '<S91>/Integrator' */
-  uint128m_T Integrator_DSTATE_i;      /* '<S43>/Integrator' */
+  uint128m_T Integrator_DSTATE;        /* '<S43>/Integrator' */
+  uint128m_T Integrator_DSTATE_k;      /* '<S91>/Integrator' */
   volatile boolean_T RateTransition5_Buffer0;/* '<Root>/Rate Transition5' */
 } DW_Openloop_voltage_control_T;
 
@@ -90,22 +93,43 @@ typedef struct {
 
 /* Parameters (default storage) */
 struct P_Openloop_voltage_control_T_ {
-  uint128m_T DiscretePIDController2_InitialC;
-                              /* Mask Parameter: DiscretePIDController2_InitialC
-                               * Referenced by: '<S91>/Integrator'
-                               */
   uint128m_T DiscretePIDController1_InitialC;
                               /* Mask Parameter: DiscretePIDController1_InitialC
                                * Referenced by: '<S43>/Integrator'
                                */
+  uint128m_T DiscretePIDController2_InitialC;
+                              /* Mask Parameter: DiscretePIDController2_InitialC
+                               * Referenced by: '<S91>/Integrator'
+                               */
+  real_T V_f1_Value;                   /* Expression: 1.5
+                                        * Referenced by: '<S9>/V_f1'
+                                        */
+  real_T V_in_Value;                   /* Expression: 45
+                                        * Referenced by: '<S9>/V_in'
+                                        */
+  real_T V_f_Value;                    /* Expression: 1.5
+                                        * Referenced by: '<S9>/V_f'
+                                        */
+  real_T V_f3_Value;                   /* Expression: 1.5
+                                        * Referenced by: '<S9>/V_f3'
+                                        */
+  real_T V_in1_Value;                  /* Expression: 45
+                                        * Referenced by: '<S9>/V_in1'
+                                        */
+  real_T V_f2_Value;                   /* Expression: 1.5
+                                        * Referenced by: '<S9>/V_f2'
+                                        */
+  real_T CLKfrequency1_Value;          /* Expression: 60e6
+                                        * Referenced by: '<S111>/CLK frequency1'
+                                        */
   real_T CLKfrequency_Value;           /* Expression: 60e6
-                                        * Referenced by: '<S111>/CLK frequency'
+                                        * Referenced by: '<S9>/CLK frequency'
                                         */
   real_T CLKfrequency_Value_k;         /* Expression: 60e6
                                         * Referenced by: '<S7>/CLK frequency'
                                         */
-  real_T CLKfrequency1_Value;          /* Expression: 60e6
-                                        * Referenced by: '<S111>/CLK frequency1'
+  real_T CLKfrequency_Value_e;         /* Expression: 60e6
+                                        * Referenced by: '<S111>/CLK frequency'
                                         */
   uint32_T Opamp_converter_Gain;     /* Computed Parameter: Opamp_converter_Gain
                                       * Referenced by: '<S7>/Opamp_converter'
@@ -113,11 +137,20 @@ struct P_Openloop_voltage_control_T_ {
   uint16_T uADC_resolution_Gain;     /* Computed Parameter: uADC_resolution_Gain
                                       * Referenced by: '<S7>/1//ADC_resolution'
                                       */
+  uint16_T Gain1_Gain;                 /* Computed Parameter: Gain1_Gain
+                                        * Referenced by: '<S1>/Gain1'
+                                        */
   uint16_T Gain_Gain;                  /* Computed Parameter: Gain_Gain
                                         * Referenced by: '<S1>/Gain'
                                         */
-  uint16_T Gain1_Gain;                 /* Computed Parameter: Gain1_Gain
-                                        * Referenced by: '<S1>/Gain1'
+  uint16_T Switch_Threshold;           /* Computed Parameter: Switch_Threshold
+                                        * Referenced by: '<S2>/Switch'
+                                        */
+  uint16_T Constant13_Value;           /* Computed Parameter: Constant13_Value
+                                        * Referenced by: '<S4>/Constant13'
+                                        */
+  uint16_T Constant8_Value;            /* Computed Parameter: Constant8_Value
+                                        * Referenced by: '<S4>/Constant8'
                                         */
   uint16_T Constant3_Value;            /* Computed Parameter: Constant3_Value
                                         * Referenced by: '<S4>/Constant3'
@@ -125,11 +158,8 @@ struct P_Openloop_voltage_control_T_ {
   uint16_T Constant14_Value;           /* Computed Parameter: Constant14_Value
                                         * Referenced by: '<S4>/Constant14'
                                         */
-  uint16_T Constant13_Value;           /* Computed Parameter: Constant13_Value
-                                        * Referenced by: '<S4>/Constant13'
-                                        */
-  uint16_T Constant8_Value;            /* Computed Parameter: Constant8_Value
-                                        * Referenced by: '<S4>/Constant8'
+  uint16_T Switch1_Threshold;          /* Computed Parameter: Switch1_Threshold
+                                        * Referenced by: '<S2>/Switch1'
                                         */
   boolean_T _Y0;                       /* Computed Parameter: _Y0
                                         * Referenced by: '<S109>/ '
@@ -141,14 +171,14 @@ struct P_Openloop_voltage_control_T_ {
                           /* Computed Parameter: RateTransition5_InitialConditio
                            * Referenced by: '<Root>/Rate Transition5'
                            */
+  boolean_T Constant16_Value;          /* Computed Parameter: Constant16_Value
+                                        * Referenced by: '<S4>/Constant16'
+                                        */
   boolean_T Constant9_Value;           /* Computed Parameter: Constant9_Value
                                         * Referenced by: '<S4>/Constant9'
                                         */
   boolean_T Constant15_Value;          /* Computed Parameter: Constant15_Value
                                         * Referenced by: '<S4>/Constant15'
-                                        */
-  boolean_T Constant16_Value;          /* Computed Parameter: Constant16_Value
-                                        * Referenced by: '<S4>/Constant16'
                                         */
   boolean_T Constant6_Value;           /* Computed Parameter: Constant6_Value
                                         * Referenced by: '<Root>/Constant6'
@@ -207,25 +237,9 @@ extern volatile boolean_T runModel;
  * Block '<S8>/Constant2' : Unused code path elimination
  * Block '<S8>/Gain' : Unused code path elimination
  * Block '<S8>/Gain1' : Unused code path elimination
- * Block '<S9>/Add' : Unused code path elimination
- * Block '<S9>/Add1' : Unused code path elimination
- * Block '<S9>/CLK frequency' : Unused code path elimination
- * Block '<S9>/Divide' : Unused code path elimination
- * Block '<S9>/Divide1' : Unused code path elimination
- * Block '<S9>/Divide2' : Unused code path elimination
- * Block '<S9>/Divide3' : Unused code path elimination
- * Block '<S9>/Plus' : Unused code path elimination
- * Block '<S9>/Plus1' : Unused code path elimination
- * Block '<S9>/Product' : Unused code path elimination
- * Block '<S9>/Product1' : Unused code path elimination
- * Block '<S9>/V_f' : Unused code path elimination
- * Block '<S9>/V_f1' : Unused code path elimination
- * Block '<S9>/V_f2' : Unused code path elimination
- * Block '<S9>/V_f3' : Unused code path elimination
- * Block '<S9>/V_in' : Unused code path elimination
- * Block '<S9>/V_in1' : Unused code path elimination
  * Block '<S112>/Constant' : Unused code path elimination
  * Block '<S112>/Constant1' : Unused code path elimination
+ * Block '<S7>/unit converter2' : Eliminate redundant data type conversion
  * Block '<S2>/Rate Transition' : Eliminated since input and output rates are identical
  * Block '<S2>/Rate Transition6' : Eliminated since input and output rates are identical
  * Block '<S5>/Rate Transition10' : Eliminated since input and output rates are identical

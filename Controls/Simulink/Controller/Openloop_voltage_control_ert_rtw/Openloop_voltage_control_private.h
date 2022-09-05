@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.54
+ * Model version                  : 5.64
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Thu Sep  1 16:49:16 2022
+ * C/C++ source code generated on : Mon Sep  5 11:54:25 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -79,14 +79,14 @@ extern uint16_T MW_adcInitFlag;
 extern real_T uMultiWord2Double(const uint64_T u1[], int16_T n1, int16_T e1);
 extern void uMultiWord2MultiWord(const uint64_T u1[], int16_T n1, uint64_T y[],
   int16_T n);
+extern void uMultiWordShr(const uint64_T u1[], int16_T n1, uint16_T n2, uint64_T
+  y[], int16_T n);
+extern void uMultiWordMul(const uint64_T u1[], int16_T n1, const uint64_T u2[],
+  int16_T n2, uint64_T y[], int16_T n);
 extern void uMultiWordShl(const uint64_T u1[], int16_T n1, uint16_T n2, uint64_T
   y[], int16_T n);
 extern void MultiWordAdd(const uint64_T u1[], const uint64_T u2[], uint64_T y[],
   int16_T n);
-extern void uMultiWordMul(const uint64_T u1[], int16_T n1, const uint64_T u2[],
-  int16_T n2, uint64_T y[], int16_T n);
-extern void uMultiWordShr(const uint64_T u1[], int16_T n1, uint16_T n2, uint64_T
-  y[], int16_T n);
 extern void MultiWordUnsignedWrap(const uint64_T u1[], int16_T n1, uint16_T n2,
   uint64_T y[]);
 

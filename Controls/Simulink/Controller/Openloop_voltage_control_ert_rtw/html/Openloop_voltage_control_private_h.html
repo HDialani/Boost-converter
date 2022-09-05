@@ -29,11 +29,11 @@
 <tr name="9" id="9">
 <td><a id="l9" class='ln'>9</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="10" id="10">
-<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 5.54</span></td></tr>
+<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 5.64</span></td></tr>
 <tr name="11" id="11">
 <td><a id="l11" class='ln'>11</a></td><td><span class="ct"> * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020</span></td></tr>
 <tr name="12" id="12">
-<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Thu Sep  1 16:49:16 2022</span></td></tr>
+<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Mon Sep  5 11:54:25 2022</span></td></tr>
 <tr name="13" id="13">
 <td><a id="l13" class='ln'>13</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="14" id="14">
@@ -173,21 +173,21 @@
 <tr name="81" id="81">
 <td><a id="l81" class='ln'>81</a></td><td>  <a id="81c3" class="tk">int16_T</a> <a id="81c11" class="tk">n</a>);</td></tr>
 <tr name="82" id="82">
-<td><a id="l82" class='ln'>82</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="82c13" class="tk">uMultiWordShl</a>(<span class="kw">const</span> <a id="82c33" class="tk">uint64_T</a> <a id="82c42" class="tk">u1</a>[], <a id="82c48" class="tk">int16_T</a> <a id="82c56" class="tk">n1</a>, <a id="82c60" class="tk">uint16_T</a> <a id="82c69" class="tk">n2</a>, <a id="82c73" class="tk">uint64_T</a></td></tr>
+<td><a id="l82" class='ln'>82</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="82c13" class="tk">uMultiWordShr</a>(<span class="kw">const</span> <a id="82c33" class="tk">uint64_T</a> <a id="82c42" class="tk">u1</a>[], <a id="82c48" class="tk">int16_T</a> <a id="82c56" class="tk">n1</a>, <a id="82c60" class="tk">uint16_T</a> <a id="82c69" class="tk">n2</a>, <a id="82c73" class="tk">uint64_T</a></td></tr>
 <tr name="83" id="83">
 <td><a id="l83" class='ln'>83</a></td><td>  <a id="83c3" class="tk">y</a>[], <a id="83c8" class="tk">int16_T</a> <a id="83c16" class="tk">n</a>);</td></tr>
 <tr name="84" id="84">
-<td><a id="l84" class='ln'>84</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="84c13" class="tk">MultiWordAdd</a>(<span class="kw">const</span> <a id="84c32" class="tk">uint64_T</a> <a id="84c41" class="tk">u1</a>[], <span class="kw">const</span> <a id="84c53" class="tk">uint64_T</a> <a id="84c62" class="tk">u2</a>[], <a id="84c68" class="tk">uint64_T</a> <a id="84c77" class="tk">y</a>[],</td></tr>
+<td><a id="l84" class='ln'>84</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="84c13" class="tk">uMultiWordMul</a>(<span class="kw">const</span> <a id="84c33" class="tk">uint64_T</a> <a id="84c42" class="tk">u1</a>[], <a id="84c48" class="tk">int16_T</a> <a id="84c56" class="tk">n1</a>, <span class="kw">const</span> <a id="84c66" class="tk">uint64_T</a> <a id="84c75" class="tk">u2</a>[],</td></tr>
 <tr name="85" id="85">
-<td><a id="l85" class='ln'>85</a></td><td>  <a id="85c3" class="tk">int16_T</a> <a id="85c11" class="tk">n</a>);</td></tr>
+<td><a id="l85" class='ln'>85</a></td><td>  <a id="85c3" class="tk">int16_T</a> <a id="85c11" class="tk">n2</a>, <a id="85c15" class="tk">uint64_T</a> <a id="85c24" class="tk">y</a>[], <a id="85c29" class="tk">int16_T</a> <a id="85c37" class="tk">n</a>);</td></tr>
 <tr name="86" id="86">
-<td><a id="l86" class='ln'>86</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="86c13" class="tk">uMultiWordMul</a>(<span class="kw">const</span> <a id="86c33" class="tk">uint64_T</a> <a id="86c42" class="tk">u1</a>[], <a id="86c48" class="tk">int16_T</a> <a id="86c56" class="tk">n1</a>, <span class="kw">const</span> <a id="86c66" class="tk">uint64_T</a> <a id="86c75" class="tk">u2</a>[],</td></tr>
+<td><a id="l86" class='ln'>86</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="86c13" class="tk">uMultiWordShl</a>(<span class="kw">const</span> <a id="86c33" class="tk">uint64_T</a> <a id="86c42" class="tk">u1</a>[], <a id="86c48" class="tk">int16_T</a> <a id="86c56" class="tk">n1</a>, <a id="86c60" class="tk">uint16_T</a> <a id="86c69" class="tk">n2</a>, <a id="86c73" class="tk">uint64_T</a></td></tr>
 <tr name="87" id="87">
-<td><a id="l87" class='ln'>87</a></td><td>  <a id="87c3" class="tk">int16_T</a> <a id="87c11" class="tk">n2</a>, <a id="87c15" class="tk">uint64_T</a> <a id="87c24" class="tk">y</a>[], <a id="87c29" class="tk">int16_T</a> <a id="87c37" class="tk">n</a>);</td></tr>
+<td><a id="l87" class='ln'>87</a></td><td>  <a id="87c3" class="tk">y</a>[], <a id="87c8" class="tk">int16_T</a> <a id="87c16" class="tk">n</a>);</td></tr>
 <tr name="88" id="88">
-<td><a id="l88" class='ln'>88</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="88c13" class="tk">uMultiWordShr</a>(<span class="kw">const</span> <a id="88c33" class="tk">uint64_T</a> <a id="88c42" class="tk">u1</a>[], <a id="88c48" class="tk">int16_T</a> <a id="88c56" class="tk">n1</a>, <a id="88c60" class="tk">uint16_T</a> <a id="88c69" class="tk">n2</a>, <a id="88c73" class="tk">uint64_T</a></td></tr>
+<td><a id="l88" class='ln'>88</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="88c13" class="tk">MultiWordAdd</a>(<span class="kw">const</span> <a id="88c32" class="tk">uint64_T</a> <a id="88c41" class="tk">u1</a>[], <span class="kw">const</span> <a id="88c53" class="tk">uint64_T</a> <a id="88c62" class="tk">u2</a>[], <a id="88c68" class="tk">uint64_T</a> <a id="88c77" class="tk">y</a>[],</td></tr>
 <tr name="89" id="89">
-<td><a id="l89" class='ln'>89</a></td><td>  <a id="89c3" class="tk">y</a>[], <a id="89c8" class="tk">int16_T</a> <a id="89c16" class="tk">n</a>);</td></tr>
+<td><a id="l89" class='ln'>89</a></td><td>  <a id="89c3" class="tk">int16_T</a> <a id="89c11" class="tk">n</a>);</td></tr>
 <tr name="90" id="90">
 <td><a id="l90" class='ln'>90</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="90c13" class="tk">MultiWordUnsignedWrap</a>(<span class="kw">const</span> <a id="90c41" class="tk">uint64_T</a> <a id="90c50" class="tk">u1</a>[], <a id="90c56" class="tk">int16_T</a> <a id="90c64" class="tk">n1</a>, <a id="90c68" class="tk">uint16_T</a> <a id="90c77" class="tk">n2</a>,</td></tr>
 <tr name="91" id="91">
