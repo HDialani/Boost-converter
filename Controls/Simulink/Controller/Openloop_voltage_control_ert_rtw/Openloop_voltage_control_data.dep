@@ -48,9 +48,9 @@ Openloop_voltage_control_data.obj: C:\ti\CONTRO~1\DEVICE~1\f2802x\v230\F2802X~1\
 Openloop_voltage_control_data.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/shared/SUPPOR~1/tic2000/inc/IQmathLib.h
 Openloop_voltage_control_data.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/TIC200~1.INS/TI-CGT~1.LTS/include/limits.h
 Openloop_voltage_control_data.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Controller\Openloop_voltage_control_ert_rtw\Openloop_voltage_control_types.h
-Openloop_voltage_control_data.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Controller\Openloop_voltage_control_ert_rtw\multiword_types.h
 Openloop_voltage_control_data.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Controller\Openloop_voltage_control_ert_rtw\MW_target_hardware_resources.h
 Openloop_voltage_control_data.obj: C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/shared/SUPPOR~1/tic2000/src/c2000SchedulerTimer.h
+Openloop_voltage_control_data.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Controller\Openloop_voltage_control_ert_rtw\rtGetNaN.h
 Openloop_voltage_control_data.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Controller\Openloop_voltage_control_ert_rtw\rt_nonfinite.h
 Openloop_voltage_control_data.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Controller\Openloop_voltage_control_ert_rtw\rtGetInf.h
 Openloop_voltage_control_data.obj: C:\Users\hites\Desktop\Github_Ideas\Boost\\ converter\Boost-converter\Controls\Simulink\Controller\Openloop_voltage_control_ert_rtw\Openloop_voltage_control_private.h

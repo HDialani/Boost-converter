@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.64
+ * Model version                  : 5.87
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Mon Sep  5 11:54:25 2022
+ * C/C++ source code generated on : Mon Sep  5 15:45:21 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -20,7 +20,6 @@
 #ifndef RTW_HEADER_Openloop_voltage_control_private_h_
 #define RTW_HEADER_Openloop_voltage_control_private_h_
 #include "rtwtypes.h"
-#include "multiword_types.h"
 #include "zero_crossing_types.h"
 #ifndef UCHAR_MAX
 #include <limits.h>
@@ -76,19 +75,6 @@ void config_ADC_SOC8 (void);
 void config_ADC_SOC0 (void);
 void config_ADC_SOC2 (void);
 extern uint16_T MW_adcInitFlag;
-extern real_T uMultiWord2Double(const uint64_T u1[], int16_T n1, int16_T e1);
-extern void uMultiWord2MultiWord(const uint64_T u1[], int16_T n1, uint64_T y[],
-  int16_T n);
-extern void uMultiWordShr(const uint64_T u1[], int16_T n1, uint16_T n2, uint64_T
-  y[], int16_T n);
-extern void uMultiWordMul(const uint64_T u1[], int16_T n1, const uint64_T u2[],
-  int16_T n2, uint64_T y[], int16_T n);
-extern void uMultiWordShl(const uint64_T u1[], int16_T n1, uint16_T n2, uint64_T
-  y[], int16_T n);
-extern void MultiWordAdd(const uint64_T u1[], const uint64_T u2[], uint64_T y[],
-  int16_T n);
-extern void MultiWordUnsignedWrap(const uint64_T u1[], int16_T n1, uint16_T n2,
-  uint64_T y[]);
 
 #endif                      /* RTW_HEADER_Openloop_voltage_control_private_h_ */
 

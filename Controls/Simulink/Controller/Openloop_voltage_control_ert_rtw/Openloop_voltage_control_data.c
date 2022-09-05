@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.64
+ * Model version                  : 5.87
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Mon Sep  5 11:54:25 2022
+ * C/C++ source code generated on : Mon Sep  5 15:45:21 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -23,14 +23,28 @@
 /* Block parameters (default storage) */
 P_Openloop_voltage_control_T Openloop_voltage_control_P = {
   /* Mask Parameter: DiscretePIDController1_InitialC
-   * Referenced by: '<S43>/Integrator'
+   * Referenced by: '<S45>/Integrator'
    */
-  { { 0ULL, 0ULL } },
+  0.0,
 
   /* Mask Parameter: DiscretePIDController2_InitialC
-   * Referenced by: '<S91>/Integrator'
+   * Referenced by: '<S93>/Integrator'
    */
-  { { 0ULL, 0ULL } },
+  0.0,
+
+  /* Mask Parameter: DiscretePIDController1_LowerSat
+   * Referenced by:
+   *   '<S52>/Saturation'
+   *   '<S38>/DeadZone'
+   */
+  -5.0,
+
+  /* Mask Parameter: DiscretePIDController1_UpperSat
+   * Referenced by:
+   *   '<S52>/Saturation'
+   *   '<S38>/DeadZone'
+   */
+  150.0,
 
   /* Expression: 1.5
    * Referenced by: '<S9>/V_f1'
@@ -62,8 +76,43 @@ P_Openloop_voltage_control_T Openloop_voltage_control_P = {
    */
   1.5,
 
+  /* Expression: 0
+   * Referenced by: '<S36>/Constant1'
+   */
+  0.0,
+
+  /* Expression: 3/4096
+   * Referenced by: '<S7>/1//ADC_resolution'
+   */
+  0.000732421875,
+
+  /* Expression: 170
+   * Referenced by: '<S7>/Opamp_converter'
+   */
+  170.0,
+
+  /* Computed Parameter: Integrator_gainval
+   * Referenced by: '<S45>/Integrator'
+   */
+  0.001,
+
+  /* Expression: 1/150
+   * Referenced by: '<S7>/Gain'
+   */
+  0.0066666666666666671,
+
+  /* Expression: 100
+   * Referenced by: '<S7>/Gain1'
+   */
+  100.0,
+
   /* Expression: 60e6
-   * Referenced by: '<S111>/CLK frequency1'
+   * Referenced by: '<S7>/CLK frequency'
+   */
+  6.0E+7,
+
+  /* Expression: 60e6
+   * Referenced by: '<S113>/CLK frequency1'
    */
   6.0E+7,
 
@@ -73,31 +122,26 @@ P_Openloop_voltage_control_T Openloop_voltage_control_P = {
   6.0E+7,
 
   /* Expression: 60e6
-   * Referenced by: '<S7>/CLK frequency'
+   * Referenced by: '<S113>/CLK frequency'
    */
   6.0E+7,
 
-  /* Expression: 60e6
-   * Referenced by: '<S111>/CLK frequency'
+  /* Computed Parameter: Integrator_gainval_f
+   * Referenced by: '<S93>/Integrator'
    */
-  6.0E+7,
+  0.001,
 
-  /* Computed Parameter: Opamp_converter_Gain
-   * Referenced by: '<S7>/Opamp_converter'
+  /* Expression: 0
+   * Referenced by: '<S36>/ZeroGain'
    */
-  2852126720U,
+  0.0,
 
-  /* Computed Parameter: uADC_resolution_Gain
-   * Referenced by: '<S7>/1//ADC_resolution'
-   */
-  49152U,
-
-  /* Computed Parameter: Gain1_Gain
+  /* Computed Parameter: Gain1_Gain_f
    * Referenced by: '<S1>/Gain1'
    */
   64000U,
 
-  /* Computed Parameter: Gain_Gain
+  /* Computed Parameter: Gain_Gain_f
    * Referenced by: '<S1>/Gain'
    */
   64000U,
@@ -133,12 +177,12 @@ P_Openloop_voltage_control_T Openloop_voltage_control_P = {
   0U,
 
   /* Computed Parameter: _Y0
-   * Referenced by: '<S109>/ '
+   * Referenced by: '<S111>/ '
    */
   0,
 
   /* Computed Parameter: _Y0_a
-   * Referenced by: '<S110>/ '
+   * Referenced by: '<S112>/ '
    */
   0,
 

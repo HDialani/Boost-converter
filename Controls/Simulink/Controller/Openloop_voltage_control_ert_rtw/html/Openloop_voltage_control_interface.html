@@ -369,16 +369,10 @@ Dimension
 Openloop_voltage_control_P.DiscretePIDController1_InitialC
 </td>
 <td width="19%" align="left" valign="top">
-uint128m_T
+real_T
 </td>
 <td width="9%" align="left" valign="top">
-<span title="
-          DataTypeMode: Fixed-point: slope and bias scaling
-            Signedness: Unsigned
-            WordLength: 80
-                 Slope: 3.552713678800501e-18
-                  Bias: 0
-">ufix80_S3p552713678800501en18</span>
+&#160;
 </td>
 <td width="9%" align="right" valign="top">
 1
@@ -393,16 +387,46 @@ uint128m_T
 Openloop_voltage_control_P.DiscretePIDController2_InitialC
 </td>
 <td width="19%" align="left" valign="top">
-uint128m_T
+real_T
 </td>
 <td width="9%" align="left" valign="top">
-<span title="
-          DataTypeMode: Fixed-point: slope and bias scaling
-            Signedness: Unsigned
-            WordLength: 80
-                 Slope: 3.552713678800501e-18
-                  Bias: 0
-">ufix80_S3p552713678800501en18</span>
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:398')" name="code2model" class="code2model">&lt;S7&gt;/Discrete PID Controller1</a>
+</td>
+<td width="23%" align="left" valign="top">
+Openloop_voltage_control_P.DiscretePIDController1_LowerSat
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:398')" name="code2model" class="code2model">&lt;S7&gt;/Discrete PID Controller1</a>
+</td>
+<td width="23%" align="left" valign="top">
+Openloop_voltage_control_P.DiscretePIDController1_UpperSat
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
 </td>
 <td width="9%" align="right" valign="top">
 1
@@ -519,10 +543,10 @@ real_T
 </tr>
 <tr class="even">
 <td width="38%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Openloop_voltage_control:306')" name="code2model" class="code2model">&lt;S111&gt;/CLK frequency1</a>
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:398:655')" name="code2model" class="code2model">&lt;S36&gt;/Constant1</a>
 </td>
 <td width="23%" align="left" valign="top">
-Openloop_voltage_control_P.CLKfrequency1_Value
+Openloop_voltage_control_P.Constant1_Value
 </td>
 <td width="19%" align="left" valign="top">
 real_T
@@ -537,46 +561,10 @@ real_T
 </tr>
 <tr class="odd">
 <td width="38%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Openloop_voltage_control:241')" name="code2model" class="code2model">&lt;S9&gt;/CLK frequency</a>
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:469')" name="code2model" class="code2model">&lt;S7&gt;/1//ADC_resolution</a>
 </td>
 <td width="23%" align="left" valign="top">
-Openloop_voltage_control_P.CLKfrequency_Value
-</td>
-<td width="19%" align="left" valign="top">
-real_T
-</td>
-<td width="9%" align="left" valign="top">
-&#160;
-</td>
-<td width="9%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="even">
-<td width="38%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Openloop_voltage_control:434')" name="code2model" class="code2model">&lt;S7&gt;/CLK frequency</a>
-</td>
-<td width="23%" align="left" valign="top">
-Openloop_voltage_control_P.CLKfrequency_Value_k
-</td>
-<td width="19%" align="left" valign="top">
-real_T
-</td>
-<td width="9%" align="left" valign="top">
-&#160;
-</td>
-<td width="9%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="odd">
-<td width="38%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Openloop_voltage_control:280')" name="code2model" class="code2model">&lt;S111&gt;/CLK frequency</a>
-</td>
-<td width="23%" align="left" valign="top">
-Openloop_voltage_control_P.CLKfrequency_Value_e
+Openloop_voltage_control_P.uADC_resolution_Gain
 </td>
 <td width="19%" align="left" valign="top">
 real_T
@@ -597,14 +585,10 @@ real_T
 Openloop_voltage_control_P.Opamp_converter_Gain
 </td>
 <td width="19%" align="left" valign="top">
-uint32_T
+real_T
 </td>
 <td width="9%" align="left" valign="top">
-<span title="  DataTypeMode: Fixed-point: binary point scaling
-    Signedness: Unsigned
-    WordLength: 32
-FractionLength: 24
-">ufix32_En24</span>
+&#160;
 </td>
 <td width="9%" align="right" valign="top">
 1
@@ -613,20 +597,160 @@ FractionLength: 24
 </tr>
 <tr class="odd">
 <td width="38%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Openloop_voltage_control:469')" name="code2model" class="code2model">&lt;S7&gt;/1//ADC_resolution</a>
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:398:843')" name="code2model" class="code2model">&lt;S45&gt;/Integrator</a>
 </td>
 <td width="23%" align="left" valign="top">
-Openloop_voltage_control_P.uADC_resolution_Gain
+Openloop_voltage_control_P.Integrator_gainval
 </td>
 <td width="19%" align="left" valign="top">
-uint16_T
+real_T
 </td>
 <td width="9%" align="left" valign="top">
-<span title="  DataTypeMode: Fixed-point: binary point scaling
-    Signedness: Unsigned
-    WordLength: 16
-FractionLength: 26
-">ufix16_En26</span>
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:516')" name="code2model" class="code2model">&lt;S7&gt;/Gain</a>
+</td>
+<td width="23%" align="left" valign="top">
+Openloop_voltage_control_P.Gain_Gain
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:517')" name="code2model" class="code2model">&lt;S7&gt;/Gain1</a>
+</td>
+<td width="23%" align="left" valign="top">
+Openloop_voltage_control_P.Gain1_Gain
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:434')" name="code2model" class="code2model">&lt;S7&gt;/CLK frequency</a>
+</td>
+<td width="23%" align="left" valign="top">
+Openloop_voltage_control_P.CLKfrequency_Value
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:306')" name="code2model" class="code2model">&lt;S113&gt;/CLK frequency1</a>
+</td>
+<td width="23%" align="left" valign="top">
+Openloop_voltage_control_P.CLKfrequency1_Value
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:241')" name="code2model" class="code2model">&lt;S9&gt;/CLK frequency</a>
+</td>
+<td width="23%" align="left" valign="top">
+Openloop_voltage_control_P.CLKfrequency_Value_e
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:280')" name="code2model" class="code2model">&lt;S113&gt;/CLK frequency</a>
+</td>
+<td width="23%" align="left" valign="top">
+Openloop_voltage_control_P.CLKfrequency_Value_ei
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:399:843')" name="code2model" class="code2model">&lt;S93&gt;/Integrator</a>
+</td>
+<td width="23%" align="left" valign="top">
+Openloop_voltage_control_P.Integrator_gainval_f
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:398:671')" name="code2model" class="code2model">&lt;S36&gt;/ZeroGain</a>
+</td>
+<td width="23%" align="left" valign="top">
+Openloop_voltage_control_P.ZeroGain_Gain
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
 </td>
 <td width="9%" align="right" valign="top">
 1
@@ -638,7 +762,7 @@ FractionLength: 26
 <a href="matlab:coder.internal.code2model('Openloop_voltage_control:328')" name="code2model" class="code2model">&lt;S1&gt;/Gain1</a>
 </td>
 <td width="23%" align="left" valign="top">
-Openloop_voltage_control_P.Gain1_Gain
+Openloop_voltage_control_P.Gain1_Gain_f
 </td>
 <td width="19%" align="left" valign="top">
 uint16_T
@@ -660,7 +784,7 @@ FractionLength: 6
 <a href="matlab:coder.internal.code2model('Openloop_voltage_control:325')" name="code2model" class="code2model">&lt;S1&gt;/Gain</a>
 </td>
 <td width="23%" align="left" valign="top">
-Openloop_voltage_control_P.Gain_Gain
+Openloop_voltage_control_P.Gain_Gain_f
 </td>
 <td width="19%" align="left" valign="top">
 uint16_T
@@ -787,7 +911,7 @@ uint16_T
 </tr>
 <tr class="even">
 <td width="38%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Openloop_voltage_control:138:3')" name="code2model" class="code2model">&lt;S109&gt;/ </a>
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:138:3')" name="code2model" class="code2model">&lt;S111&gt;/ </a>
 </td>
 <td width="23%" align="left" valign="top">
 Openloop_voltage_control_P._Y0
@@ -805,7 +929,7 @@ boolean_T
 </tr>
 <tr class="odd">
 <td width="38%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Openloop_voltage_control:140:3')" name="code2model" class="code2model">&lt;S110&gt;/ </a>
+<a href="matlab:coder.internal.code2model('Openloop_voltage_control:140:3')" name="code2model" class="code2model">&lt;S112&gt;/ </a>
 </td>
 <td width="23%" align="left" valign="top">
 Openloop_voltage_control_P._Y0_a
