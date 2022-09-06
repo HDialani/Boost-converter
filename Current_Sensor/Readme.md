@@ -1,18 +1,4 @@
-# Readme
-Current sensors so many options, but which one is the right one? I was forced to learned systems engineering so I guess I might aswell us it.
+# Read me
 
-There are multiple types, but I only had access to Resistive shunt,Hall sensor,Rogowski Coil and Current transducer. So many option but which one is best?
-## Options
+This folder [LTspice](LTspice) has the LTspice code for this part. The Jupyter notebook [Current_sensors.ipynb](Current_sensors.ipynb) goes into detail regarding theory, simulations and result I found. The folder [Images](Images) are just images used for the Jupyter notebook explaination.
 
-### Resistive shunt used OAR3 - R020FI
-Pretty straighforward the voltage being applied is know, so the current can be calculated. The typical value for a shunt is in the mOhm's, this way the voltage drop over the shunt is insignificant. 
-
-Pro's
-* Measure AC and DC
-* Linear I=V/R
-* Cost €1.08
-
-Con's
-* Current needs to flow through it, so it needs to be designed into the PCB
-* No isolation, can accidently make contact with high current when probing
-* Very noisy signal.
