@@ -1,4 +1,4 @@
-# Readme
+# Read me
 This folder [Code](Code) has the entire Python code for this part.The Jupyter notebook [Thermal.ipynb](Thermal.ipynb) goes into detail regarding theory, simulations and result I found. The folder [Images](Images) are just images used for the Jupyter notebook explaination.
 
 
