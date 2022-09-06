@@ -5,7 +5,7 @@ I had access to a boost converter, so why not abuse it. The basic of boost conve
 - [:heavy_check_mark:] Basics_of_boost_converter
 - [ ] Components_Selection
 - [ ] Controls
-- [ ] Current_Sensor
+- [:heavy_check_mark: ] Current_Sensor
 - [ ] EMI
 - [ ] Inductor_Design
 - [ ] PCB_Design
