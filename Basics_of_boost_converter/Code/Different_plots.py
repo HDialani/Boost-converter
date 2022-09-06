@@ -47,3 +47,29 @@ def operation_mode(L,F_sw,Load):
    plt.title('If K>K_crit you are in CCM and if K<K_crit you are in DCM ')
    return fig
 
+def Duty_cycle_all_operation(V_in,V_out):
+    Duty_cycle_CCM = (V_out - V_in) / V_out
+    D_length = 1000
+    D = np.linspace(0, 1, D_length)
+
+    I_Out_Boundry = 27/4*D*(1 - D)**2
+
+    I_Out_Boundry_maximum = np.max(I_Out_Boundry)
+    I_out = I_Out_Boundry_maximum * np.linspace(0, 1, 1000)
+    Duty_cycle_DCM = np.sqrt(4 / 27 * (V_out / V_in) * (V_out / V_in - 1) * I_out / I_Out_Boundry_maximum)
+
+    index_of_operation = np.where((Duty_cycle_DCM >= Duty_cycle_CCM))
+
+    Duty_cycle = Duty_cycle_DCM[0:index_of_operation[0][0]]
+    Duty_cycle_CCM = Duty_cycle_CCM * np.ones(len(D) - index_of_operation[0][0])
+    Duty_cycle = np.append(Duty_cycle, Duty_cycle_CCM)
+
+    fig = plt.figure()
+    plt.plot(I_Out_Boundry, D, color='r', label='I_out boundry current')
+    plt.plot(I_out / I_Out_Boundry_maximum, Duty_cycle, color='m', label='$V_{in}/V_{out}=0.3$')
+    plt.fill_between(I_Out_Boundry, D, color='C0', alpha=0.3)
+    plt.xlabel("$I_{out}/I_{\mathrm{out}_{-} \mathrm{Boundry}_{-} \mathrm{max}}$")
+    plt.ylabel("Duty cycle")
+    plt.title('$V_{out}$ is constant')
+    plt.legend()
+    return fig

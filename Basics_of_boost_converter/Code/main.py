@@ -19,11 +19,13 @@ L=0.75/1000
 # CCM.CCMPlots(V_in,V_out,Load,F_sw,Delta_I_Ratio)
 
 ### Discontinous Conduction Mode
-I_ripple_DCM = 2.5
-DCM.DCMPlots(V_in,V_out,Load,F_sw,I_ripple_DCM)
+# I_ripple_DCM = 2.5
+# DCM.DCMPlots(V_in,V_out,Load,F_sw,I_ripple_DCM)
 
 ### Duty cycle Plots
 # Different_plots.operation_mode(L,F_sw,Load)
 # Different_plots.CCM_V_out_duty_cycle(Load,V_in)
+Different_plots.Duty_cycle_all_operation(V_in,V_out)
+
 
 plt.show()
