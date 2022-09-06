@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Openloop_voltage_control'.
  *
- * Model version                  : 5.87
+ * Model version                  : 5.94
  * Simulink Coder version         : 9.4 (R2020b) 29-Jul-2020
- * C/C++ source code generated on : Mon Sep  5 15:45:21 2022
+ * C/C++ source code generated on : Tue Sep  6 12:02:25 2022
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -72,17 +72,18 @@ static void rate_monotonic_scheduler(void)
 void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
 {
   /* local block i/o variables */
-  real_T rtb_Divide1_g;
   real_T rtb_SignPreIntegrator;
+  real_T rtb_IProdOut_g;
   uint16_T rtb_MOSFET_Enable;
   uint16_T rtb_DataTypeConversion;
   uint16_T rtb_IGBT_Enable;
   uint16_T rtb_DataTypeConversion2;
-  real_T rtb_IProdOut_e;
-  real_T rtb_Opamp_converter;
+  real_T rtb_IProdOut_g_tmp;
   real_T rtb_SignPreSat;
+  real_T rtb_Sum;
   real_T rtb_Sum1;
-  real_T rtb_ZeroGain;
+  real_T rtb_Switch1;
+  real_T tmp;
   int16_T rtb_y1;
   int16_T rtb_y2;
   boolean_T rtb_LogicalOperator2;
@@ -178,27 +179,26 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
    *  DataTypeConversion: '<S7>/Data Type Conversion2'
    *  Gain: '<S7>/1//ADC_resolution'
    */
-  rtb_Opamp_converter = Openloop_voltage_control_P.uADC_resolution_Gain *
-    (real_T)Openloop_voltage_control_B.Volt_Protection *
+  rtb_Switch1 = Openloop_voltage_control_P.uADC_resolution_Gain * (real_T)
+    Openloop_voltage_control_B.Volt_Protection *
     Openloop_voltage_control_P.Opamp_converter_Gain;
 
   /* DataTypeConversion: '<S7>/unit converter1' */
-  rtb_ZeroGain = floor(rtb_Opamp_converter);
-  if (rtIsNaN(rtb_ZeroGain) || rtIsInf(rtb_ZeroGain)) {
-    rtb_ZeroGain = 0.0;
+  tmp = floor(rtb_Switch1);
+  if (rtIsNaN(tmp) || rtIsInf(tmp)) {
+    tmp = 0.0;
   } else {
-    rtb_ZeroGain = fmod(rtb_ZeroGain, 65536.0);
+    tmp = fmod(tmp, 65536.0);
   }
 
   /* DataTypeConversion: '<S2>/Data Type Conversion' incorporates:
    *  DataTypeConversion: '<S7>/unit converter1'
    */
-  rtb_DataTypeConversion = rtb_ZeroGain < 0.0 ? (uint16_T)-(int16_T)(uint16_T)
-    -rtb_ZeroGain : (uint16_T)rtb_ZeroGain;
+  rtb_DataTypeConversion = tmp < 0.0 ? (uint16_T)-(int16_T)(uint16_T)-tmp :
+    (uint16_T)tmp;
 
   /* Sum: '<S7>/Sum1' */
-  rtb_Sum1 = (real_T)Openloop_voltage_control_B.SCIReceive[3] -
-    rtb_Opamp_converter;
+  rtb_Sum1 = (real_T)Openloop_voltage_control_B.SCIReceive[3] - rtb_Switch1;
 
   /* Sum: '<S54>/Sum' incorporates:
    *  DiscreteIntegrator: '<S45>/Integrator'
@@ -210,42 +210,44 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
   /* Saturate: '<S52>/Saturation' */
   if (rtb_SignPreSat >
       Openloop_voltage_control_P.DiscretePIDController1_UpperSat) {
-    /* Product: '<S113>/Divide1' */
-    rtb_Divide1_g = Openloop_voltage_control_P.DiscretePIDController1_UpperSat;
+    /* Signum: '<S36>/SignPreIntegrator' */
+    rtb_SignPreIntegrator =
+      Openloop_voltage_control_P.DiscretePIDController1_UpperSat;
   } else if (rtb_SignPreSat <
              Openloop_voltage_control_P.DiscretePIDController1_LowerSat) {
-    /* Product: '<S113>/Divide1' */
-    rtb_Divide1_g = Openloop_voltage_control_P.DiscretePIDController1_LowerSat;
+    /* Signum: '<S36>/SignPreIntegrator' */
+    rtb_SignPreIntegrator =
+      Openloop_voltage_control_P.DiscretePIDController1_LowerSat;
   } else {
-    /* Product: '<S113>/Divide1' */
-    rtb_Divide1_g = rtb_SignPreSat;
+    /* Signum: '<S36>/SignPreIntegrator' */
+    rtb_SignPreIntegrator = rtb_SignPreSat;
   }
 
   /* End of Saturate: '<S52>/Saturation' */
 
-  /* Product: '<S113>/Divide1' incorporates:
+  /* Signum: '<S36>/SignPreIntegrator' incorporates:
    *  Gain: '<S7>/Gain'
    */
-  rtb_Divide1_g *= Openloop_voltage_control_P.Gain_Gain;
+  rtb_SignPreIntegrator *= Openloop_voltage_control_P.Gain_Gain;
 
-  /* Signum: '<S36>/SignPreIntegrator' incorporates:
+  /* Product: '<S42>/IProd Out' incorporates:
    *  Gain: '<S7>/Gain1'
    */
-  rtb_SignPreIntegrator = Openloop_voltage_control_P.Gain1_Gain * rtb_Divide1_g;
+  rtb_IProdOut_g = Openloop_voltage_control_P.Gain1_Gain * rtb_SignPreIntegrator;
 
   /* DataTypeConversion: '<S7>/unit converter2' */
-  rtb_ZeroGain = floor(rtb_SignPreIntegrator);
-  if (rtIsNaN(rtb_ZeroGain) || rtIsInf(rtb_ZeroGain)) {
-    rtb_ZeroGain = 0.0;
+  tmp = floor(rtb_IProdOut_g);
+  if (rtIsNaN(tmp) || rtIsInf(tmp)) {
+    tmp = 0.0;
   } else {
-    rtb_ZeroGain = fmod(rtb_ZeroGain, 65536.0);
+    tmp = fmod(tmp, 65536.0);
   }
 
   /* DataTypeConversion: '<S4>/Data Type Conversion4' incorporates:
    *  DataTypeConversion: '<S7>/unit converter2'
    */
-  rtb_IGBT_Enable = rtb_ZeroGain < 0.0 ? (uint16_T)-(int16_T)(uint16_T)
-    -rtb_ZeroGain : (uint16_T)rtb_ZeroGain;
+  rtb_IGBT_Enable = tmp < 0.0 ? (uint16_T)-(int16_T)(uint16_T)-tmp : (uint16_T)
+    tmp;
 
   /* Product: '<S7>/Divide3' incorporates:
    *  Gain: '<S1>/Gain1'
@@ -253,31 +255,32 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
    *  Product: '<S9>/Divide1'
    *  Switch: '<S2>/Switch'
    */
-  rtb_IProdOut_e = (real_T)((uint32_T)Openloop_voltage_control_P.Gain1_Gain_f *
+  rtb_IProdOut_g_tmp = (real_T)((uint32_T)
+    Openloop_voltage_control_P.Gain1_Gain_f *
     Openloop_voltage_control_B.SCIReceive[4]) * 0.015625;
 
-  /* Signum: '<S36>/SignPreIntegrator' incorporates:
+  /* Product: '<S42>/IProd Out' incorporates:
    *  Constant: '<S7>/CLK frequency'
    *  Product: '<S7>/Divide3'
    *  Product: '<S7>/Product1'
    */
-  rtb_SignPreIntegrator = Openloop_voltage_control_P.CLKfrequency_Value /
-    rtb_IProdOut_e;
-  rtb_SignPreIntegrator *= rtb_Divide1_g;
+  rtb_IProdOut_g = Openloop_voltage_control_P.CLKfrequency_Value /
+    rtb_IProdOut_g_tmp;
+  rtb_IProdOut_g *= rtb_SignPreIntegrator;
 
   /* DataTypeConversion: '<S7>/unit converter3' */
-  rtb_ZeroGain = floor(rtb_SignPreIntegrator);
-  if (rtIsNaN(rtb_ZeroGain) || rtIsInf(rtb_ZeroGain)) {
-    rtb_ZeroGain = 0.0;
+  tmp = floor(rtb_IProdOut_g);
+  if (rtIsNaN(tmp) || rtIsInf(tmp)) {
+    tmp = 0.0;
   } else {
-    rtb_ZeroGain = fmod(rtb_ZeroGain, 65536.0);
+    tmp = fmod(tmp, 65536.0);
   }
 
   /* DataTypeConversion: '<S2>/Data Type Conversion2' incorporates:
    *  DataTypeConversion: '<S7>/unit converter3'
    */
-  rtb_DataTypeConversion2 = rtb_ZeroGain < 0.0 ? (uint16_T)-(int16_T)(uint16_T)
-    -rtb_ZeroGain : (uint16_T)rtb_ZeroGain;
+  rtb_DataTypeConversion2 = tmp < 0.0 ? (uint16_T)-(int16_T)(uint16_T)-tmp :
+    (uint16_T)tmp;
 
   /* SignalConversion generated from: '<S7>/SCI Transmit' */
   Openloop_voltage_control_B.TmpSignalConversionAtSCITransmi[0] =
@@ -287,16 +290,17 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
   Openloop_voltage_control_B.TmpSignalConversionAtSCITransmi[2] =
     rtb_DataTypeConversion2;
 
-  /* Product: '<S113>/Divide1' incorporates:
+  /* Signum: '<S36>/SignPreIntegrator' incorporates:
    *  Constant: '<S113>/CLK frequency1'
+   *  Product: '<S113>/Divide1'
    */
-  rtb_Divide1_g = Openloop_voltage_control_P.CLKfrequency1_Value /
-    rtb_IProdOut_e;
+  rtb_SignPreIntegrator = Openloop_voltage_control_P.CLKfrequency1_Value /
+    rtb_IProdOut_g_tmp;
 
   /* Switch: '<S2>/Switch' */
   if (Openloop_voltage_control_B.SCIReceive[9] >
       Openloop_voltage_control_P.Switch_Threshold) {
-    /* Signum: '<S36>/SignPreIntegrator' incorporates:
+    /* Product: '<S42>/IProd Out' incorporates:
      *  Constant: '<S9>/CLK frequency'
      *  Constant: '<S9>/V_f2'
      *  Constant: '<S9>/V_f3'
@@ -307,25 +311,25 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
      *  Sum: '<S9>/Add1'
      *  Sum: '<S9>/Plus1'
      */
-    rtb_SignPreIntegrator = (((real_T)Openloop_voltage_control_B.SCIReceive[3] +
-      Openloop_voltage_control_P.V_f2_Value) -
-      Openloop_voltage_control_P.V_in1_Value) /
+    rtb_IProdOut_g = (((real_T)Openloop_voltage_control_B.SCIReceive[3] +
+                       Openloop_voltage_control_P.V_f2_Value) -
+                      Openloop_voltage_control_P.V_in1_Value) /
       (Openloop_voltage_control_P.V_f3_Value + (real_T)
        Openloop_voltage_control_B.SCIReceive[3]) *
-      (Openloop_voltage_control_P.CLKfrequency_Value_e / rtb_IProdOut_e);
+      (Openloop_voltage_control_P.CLKfrequency_Value_e / rtb_IProdOut_g_tmp);
   }
 
   /* DataTypeConversion: '<S2>/Data Type Conversion2' */
-  rtb_ZeroGain = floor(rtb_SignPreIntegrator);
-  if (rtIsNaN(rtb_ZeroGain) || rtIsInf(rtb_ZeroGain)) {
-    rtb_ZeroGain = 0.0;
+  tmp = floor(rtb_IProdOut_g);
+  if (rtIsNaN(tmp) || rtIsInf(tmp)) {
+    tmp = 0.0;
   } else {
-    rtb_ZeroGain = fmod(rtb_ZeroGain, 65536.0);
+    tmp = fmod(tmp, 65536.0);
   }
 
   /* DataTypeConversion: '<S2>/Data Type Conversion2' */
-  rtb_DataTypeConversion2 = rtb_ZeroGain < 0.0 ? (uint16_T)-(int16_T)(uint16_T)
-    -rtb_ZeroGain : (uint16_T)rtb_ZeroGain;
+  rtb_DataTypeConversion2 = tmp < 0.0 ? (uint16_T)-(int16_T)(uint16_T)-tmp :
+    (uint16_T)tmp;
 
   /* MATLAB Function: '<S4>/MATLAB Function' */
   switch (Openloop_voltage_control_B.SCIReceive[0]) {
@@ -456,21 +460,18 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
    *  Product: '<S9>/Divide'
    *  Switch: '<S2>/Switch1'
    */
-  rtb_IProdOut_e = (real_T)((uint32_T)Openloop_voltage_control_P.Gain_Gain_f *
-    Openloop_voltage_control_B.SCIReceive[2]) * 0.015625;
+  rtb_IProdOut_g_tmp = (real_T)((uint32_T)Openloop_voltage_control_P.Gain_Gain_f
+    * Openloop_voltage_control_B.SCIReceive[2]) * 0.015625;
 
-  /* Signum: '<S36>/SignPreIntegrator' incorporates:
+  /* Product: '<S42>/IProd Out' incorporates:
    *  Constant: '<S113>/CLK frequency'
    *  Product: '<S113>/Divide'
    */
-  rtb_SignPreIntegrator = Openloop_voltage_control_P.CLKfrequency_Value_ei /
-    rtb_IProdOut_e;
+  rtb_IProdOut_g = Openloop_voltage_control_P.CLKfrequency_Value_ei /
+    rtb_IProdOut_g_tmp;
 
-  /* Product: '<S7>/Divide1' incorporates:
-   *  Sum: '<S7>/Sum'
-   */
-  rtb_Opamp_converter = ((real_T)Openloop_voltage_control_B.SCIReceive[1] -
-    rtb_Opamp_converter) / (real_T)Openloop_voltage_control_B.SCIReceive[1];
+  /* Sum: '<S7>/Sum' */
+  rtb_Sum = (real_T)Openloop_voltage_control_B.SCIReceive[1] - rtb_Switch1;
 
   /* Switch: '<S2>/Switch1' incorporates:
    *  Constant: '<S7>/CLK frequency'
@@ -479,6 +480,7 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
    *  Constant: '<S9>/V_f1'
    *  Constant: '<S9>/V_in'
    *  DiscreteIntegrator: '<S93>/Integrator'
+   *  Product: '<S7>/Divide1'
    *  Product: '<S7>/Divide2'
    *  Product: '<S7>/Product'
    *  Product: '<S98>/PProd Out'
@@ -491,37 +493,37 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
    */
   if (Openloop_voltage_control_B.SCIReceive[9] >
       Openloop_voltage_control_P.Switch1_Threshold) {
-    rtb_IProdOut_e = (((real_T)Openloop_voltage_control_B.SCIReceive[1] +
-                       Openloop_voltage_control_P.V_f_Value) -
-                      Openloop_voltage_control_P.V_in_Value) /
+    rtb_Switch1 = (((real_T)Openloop_voltage_control_B.SCIReceive[1] +
+                    Openloop_voltage_control_P.V_f_Value) -
+                   Openloop_voltage_control_P.V_in_Value) /
       (Openloop_voltage_control_P.V_f1_Value + (real_T)
        Openloop_voltage_control_B.SCIReceive[1]) *
-      (Openloop_voltage_control_P.CLKfrequency_Value_e / rtb_IProdOut_e);
+      (Openloop_voltage_control_P.CLKfrequency_Value_e / rtb_IProdOut_g_tmp);
   } else {
-    rtb_IProdOut_e = (rtb_Opamp_converter * (real_T)
-                      Openloop_voltage_control_B.SCIReceive[5] +
-                      Openloop_voltage_control_DW.Integrator_DSTATE_k) *
-      (Openloop_voltage_control_P.CLKfrequency_Value / rtb_IProdOut_e);
+    rtb_Switch1 = (rtb_Sum * (real_T)Openloop_voltage_control_B.SCIReceive[5] +
+                   Openloop_voltage_control_DW.Integrator_DSTATE_k) / (real_T)
+      Openloop_voltage_control_B.SCIReceive[1] *
+      (Openloop_voltage_control_P.CLKfrequency_Value / rtb_IProdOut_g_tmp);
   }
 
   /* DataTypeConversion: '<S2>/Data Type Conversion' */
-  rtb_ZeroGain = floor(rtb_IProdOut_e);
-  if (rtIsNaN(rtb_ZeroGain) || rtIsInf(rtb_ZeroGain)) {
-    rtb_ZeroGain = 0.0;
+  tmp = floor(rtb_Switch1);
+  if (rtIsNaN(tmp) || rtIsInf(tmp)) {
+    tmp = 0.0;
   } else {
-    rtb_ZeroGain = fmod(rtb_ZeroGain, 65536.0);
+    tmp = fmod(tmp, 65536.0);
   }
 
   /* DataTypeConversion: '<S2>/Data Type Conversion' */
-  rtb_DataTypeConversion = rtb_ZeroGain < 0.0 ? (uint16_T)-(int16_T)(uint16_T)
-    -rtb_ZeroGain : (uint16_T)rtb_ZeroGain;
+  rtb_DataTypeConversion = tmp < 0.0 ? (uint16_T)-(int16_T)(uint16_T)-tmp :
+    (uint16_T)tmp;
 
   /* DataTypeConversion: '<S4>/Data Type Conversion1' */
   rtb_MOSFET_Enable = rtb_RelationalOperator3;
 
   /* S-Function (c2802xpwm): '<S5>/ePWM2_MOSFET' */
   {
-    EPwm2Regs.TBPRD = (uint16_T)(rtb_SignPreIntegrator);
+    EPwm2Regs.TBPRD = (uint16_T)(rtb_IProdOut_g);
   }
 
   /*-- Update CMPA value for ePWM2 --*/
@@ -557,7 +559,7 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
 
   /* S-Function (c2802xpwm): '<S5>/ePWM1_IGBT' */
   {
-    EPwm1Regs.TBPRD = (uint16_T)(rtb_Divide1_g);
+    EPwm1Regs.TBPRD = (uint16_T)(rtb_SignPreIntegrator);
   }
 
   /*-- Update CMPA value for ePWM1 --*/
@@ -609,7 +611,7 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
   }
 
   /* Gain: '<S36>/ZeroGain' */
-  rtb_ZeroGain = Openloop_voltage_control_P.ZeroGain_Gain * rtb_SignPreSat;
+  rtb_Switch1 = Openloop_voltage_control_P.ZeroGain_Gain * rtb_SignPreSat;
 
   /* DeadZone: '<S38>/DeadZone' */
   if (rtb_SignPreSat >
@@ -625,7 +627,7 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
   /* End of DeadZone: '<S38>/DeadZone' */
 
   /* RelationalOperator: '<S36>/NotEqual' */
-  rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreSat);
+  rtb_NotEqual = (rtb_Switch1 != rtb_SignPreSat);
 
   /* Signum: '<S36>/SignPreSat' */
   if (rtb_SignPreSat < 0.0) {
@@ -641,16 +643,16 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
   /* End of Signum: '<S36>/SignPreSat' */
 
   /* Product: '<S42>/IProd Out' */
-  rtb_IProdOut_e = rtb_Sum1 * (real_T)Openloop_voltage_control_B.SCIReceive[8];
+  rtb_IProdOut_g = rtb_Sum1 * (real_T)Openloop_voltage_control_B.SCIReceive[8];
 
   /* Signum: '<S36>/SignPreIntegrator' */
-  if (rtb_IProdOut_e < 0.0) {
+  if (rtb_IProdOut_g < 0.0) {
     /* Signum: '<S36>/SignPreIntegrator' */
     rtb_SignPreIntegrator = -1.0;
-  } else if (rtb_IProdOut_e > 0.0) {
+  } else if (rtb_IProdOut_g > 0.0) {
     /* Signum: '<S36>/SignPreIntegrator' */
     rtb_SignPreIntegrator = 1.0;
-  } else if (rtb_IProdOut_e == 0.0) {
+  } else if (rtb_IProdOut_g == 0.0) {
     /* Signum: '<S36>/SignPreIntegrator' */
     rtb_SignPreIntegrator = 0.0;
   } else {
@@ -668,11 +670,11 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
   }
 
   /* DataTypeConversion: '<S36>/DataTypeConv2' */
-  rtb_ZeroGain = floor(rtb_SignPreIntegrator);
-  if (rtIsNaN(rtb_ZeroGain) || rtIsInf(rtb_ZeroGain)) {
+  tmp = floor(rtb_SignPreIntegrator);
+  if (rtIsNaN(tmp) || rtIsInf(tmp)) {
     rtb_y2 = 0;
   } else {
-    rtb_y2 = (int16_T)fmod(rtb_ZeroGain, 256.0);
+    rtb_y2 = (int16_T)fmod(tmp, 256.0);
   }
 
   /* Switch: '<S36>/Switch' incorporates:
@@ -685,20 +687,22 @@ void Openloop_voltage_control_step0(void) /* Sample time: [0.001s, 0.0s] */
   if (rtb_NotEqual && (((rtb_y1 & 128U) != 0U ? rtb_y1 | -128 : rtb_y1 & 127) ==
                        ((rtb_y2 & 128U) != 0U ? rtb_y2 | -128 : rtb_y2 & 127)))
   {
-    rtb_IProdOut_e = Openloop_voltage_control_P.Constant1_Value;
+    rtb_Sum1 = Openloop_voltage_control_P.Constant1_Value;
+  } else {
+    rtb_Sum1 = rtb_IProdOut_g;
   }
 
   /* End of Switch: '<S36>/Switch' */
 
   /* Update for DiscreteIntegrator: '<S45>/Integrator' */
   Openloop_voltage_control_DW.Integrator_DSTATE +=
-    Openloop_voltage_control_P.Integrator_gainval * rtb_IProdOut_e;
+    Openloop_voltage_control_P.Integrator_gainval * rtb_Sum1;
 
   /* Update for DiscreteIntegrator: '<S93>/Integrator' incorporates:
    *  Product: '<S90>/IProd Out'
    */
-  Openloop_voltage_control_DW.Integrator_DSTATE_k += rtb_Opamp_converter *
-    (real_T)Openloop_voltage_control_B.SCIReceive[6] *
+  Openloop_voltage_control_DW.Integrator_DSTATE_k += rtb_Sum * (real_T)
+    Openloop_voltage_control_B.SCIReceive[6] *
     Openloop_voltage_control_P.Integrator_gainval_f;
 }
 
