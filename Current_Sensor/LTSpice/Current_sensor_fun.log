@@ -1,0 +1,48 @@
+Circuit: * C:\Users\hites\Desktop\Github_Ideas\Boost converter\Boost-converter\Current_Sensor\LTSpice\Current_sensor_fun.asc
+
+I_sw_mosfet: Removing PWL point (2.25e-005,0)
+I_sw_mosfet: Removing PWL point (4.5e-005,0)
+I_sw_mosfet: Removing PWL point (6.75e-005,0)
+I_sw_mosfet: Removing PWL point (9e-005,0)
+I_sw_mosfet: Removing PWL point (0.0001125,0)
+I_sw_mosfet: Removing PWL point (0.000135,0)
+I_sw_mosfet: Removing PWL point (0.0001575,0)
+I_sw_mosfet: Removing PWL point (0.00018,0)
+I_sw_mosfet: Removing PWL point (0.0002025,0)
+I_sw_mosfet: Removing PWL point (0.000225,0)
+I_sw_mosfet: Removing PWL point (0.0002475,0)
+I_sw_mosfet: Removing PWL point (0.00027,0)
+I_sw_mosfet: Removing PWL point (0.0002925,0)
+I_sw_mosfet: Removing PWL point (0.000315,0)
+I_sw_mosfet: Removing PWL point (0.0003375,0)
+I_sw_mosfet: Removing PWL point (0.00036,0)
+I_sw_mosfet: Removing PWL point (0.0003825,0)
+I_sw_mosfet: Removing PWL point (0.000405,0)
+I_sw_mosfet: Removing PWL point (0.0004275,0)
+I_sw_mosfet: Removing PWL point (0.00045,0)
+I_sw_mosfet: Removing PWL point (0.0004725,0)
+I_sw_mosfet: Removing PWL point (0.000495,0)
+I_sw_igbt: Removing PWL point (8.67e-005,0)
+I_sw_igbt: Removing PWL point (0.0001734,0)
+I_sw_igbt: Removing PWL point (0.0002601,0)
+I_sw_igbt: Removing PWL point (0.0003468,0)
+I_sw_igbt: Removing PWL point (0.0004335,0)
+.OP point found by inspection.
+
+Date: Tue Sep 06 22:28:53 2022
+Total elapsed time: 0.039 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 5110
+traniter = 5110
+tranpoints = 2556
+accept = 2421
+rejected = 135
+matrix size = 4
+fillins = 0
+solver = Normal
+Matrix Compiler1: 118 bytes object code size  0.1/0.0/[0.0]
+Matrix Compiler2:      20 opcodes  0.1/[0.0]/0.0
+

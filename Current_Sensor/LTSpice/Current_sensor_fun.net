@@ -1,0 +1,12 @@
+* C:\Users\hites\Desktop\Github_Ideas\Boost converter\Boost-converter\Current_Sensor\LTSpice\Current_sensor_fun.asc
+R1 V_shunt_IGBT N002 0.02
+I_sw_IGBT 0 V_shunt_IGBT PWL Repeat forever (0 0 20u 0 21u 4 75.7u 5 76.7u 0 86.7u 0) endrepeat
+L1 N002 0 9n
+R2 V_shunt_MOSFET N001 0.02
+I_sw_MOSFET 0 V_shunt_MOSFET PWL Repeat forever (0 0 10u 0 10.5u 4 19.25u 5 19.75u 0 22.5u 0) endrepeat
+L2 N001 0 9n
+.tran 0.5m
+* Transistor Current with IGBT model
+;tran 0.1m
+.backanno
+.end
