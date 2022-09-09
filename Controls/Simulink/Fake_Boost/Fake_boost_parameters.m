@@ -1,4 +1,3 @@
-%
 % @Author: Hitesh Dialani
 % @Date: 09-09-2022
 clc; clear; close all;
