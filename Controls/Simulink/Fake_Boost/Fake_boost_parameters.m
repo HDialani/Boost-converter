@@ -1,5 +1,7 @@
+%
+% @Author: Hitesh Dialani
+% @Date: 09-09-2022
 clc; clear; close all;
-
 %% General Parameters
 V_DC=45; % 
 R_Load=400; 
@@ -21,10 +23,8 @@ t_sw_IGBT=1/(15e3);
 R_DC_IGBT=0.1;
 
 %% Closed loop
-
-% % Works with continous powergui
-Kp=0.6;
-Ki=4.5;
+Kp_MOSFET=0.6;
+Ki_MOSFET=4.5;
  
-Kp1=0.8;
-Ki1=5;
+Kp_IGBT=0.8;
+Ki_IGBT=5;
